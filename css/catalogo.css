@@ -1,22 +1,10 @@
-body {
-    font-family: Arial, sans-serif;
-    background-color: #355E3B;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-}
-
 .catalogo {
-    display: flex;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(165px,1fr));
+    justify-items: center;
     gap: 20px;
     padding: 20px;
     width: 100%;
-    flex-wrap: wrap;
-    align-items: center;
     justify-content: center;
 }
 
