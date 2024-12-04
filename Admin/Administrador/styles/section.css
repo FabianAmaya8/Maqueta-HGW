@@ -1,0 +1,75 @@
+section{
+    width: 92%; height: max-content;
+    background-color: transparent;
+    position: absolute; top: 12vh; right: 4%;
+    display: grid;
+    grid-template-columns: 37% auto auto;
+    grid-template-rows: auto auto auto;
+    grid-template-areas: 
+    "contenedor1 contenedor2 contenedor3"
+    "contenedor1 contenedor4 contenedor5"
+    "contenedor6 contenedor6 contenedor7";
+    padding-top: 45px;
+    gap: 20px;
+    grid-area: section;
+    transition: 240ms ease-in-out;
+}
+.on-section{
+    width: 76%; right: 4%;
+}
+section div{
+    background-color: rgb(255, 255, 255);
+    border-radius: 9px;
+    box-shadow: 0.01px 0px 10px rgba(60, 60, 60, 0.267);
+    width: 100%; height: 22vh;
+}
+.contenedor1{
+    grid-area: contenedor1;
+    height: 46.5vh;
+    display: grid;
+    grid-template-columns: 100%;
+    grid-template-rows: 20% auto;
+}
+.contenedor-tittle{
+    width: 100%; height: 100%;
+    background-color: var(--fondo-titulos);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+.foto-perfil{
+    height: 100%; height: 100%;
+    display: flex;
+    justify-content: center;
+}
+.foto-perfil img{
+    width: 25%; height: 45%;
+    margin-top: 2%;
+    border-radius: 100%;
+}
+.contenedor1 span{
+    text-transform: capitalize;
+    user-select: none;
+    color: var(--letra);
+    font-weight: 700;
+    font-size: 2vh;
+}
+.contenedor2{
+    grid-area: contenedor2;
+}
+.contenedor3{
+    grid-area: contenedor3;
+}
+.contenedor4{
+    grid-area: contenedor4;
+}
+.contenedor5{
+    grid-area: contenedor5;
+}
+.contenedor6{
+    grid-area: contenedor6;
+}
+.contenedor7{
+    grid-area: contenedor7;
+}

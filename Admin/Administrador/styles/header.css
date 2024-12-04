@@ -1,0 +1,92 @@
+*{
+    font-family: sans-serif;
+}
+body{
+    margin: 0;
+    background-color: var(--body);
+}
+:root{
+    --body: rgb(240, 240, 240);
+    --nav-bar: #8DC989;
+    --fondo-titulos: #8DC989;
+    --letra: white;
+}
+.header{
+    position: absolute; right: 0; top: 0;
+    width: 93.5%; height: 12vh;
+    z-index: 0;
+}
+.contenedor-btn-menu{
+    background-color: #8DC989; 
+    width: 6.5%; height: 12vh;
+    transition: 250ms ease-in-out;
+    position: absolute;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0 0 10px 0;
+}
+.on{
+    width: 10%;
+    border-radius: 0 40px 0 0;
+}
+.btn-menu{
+    width: 13vh; height: 100%;
+    background-color: transparent;
+    background-image: url(iconos/casa_blanco.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 60%;
+    border: none;
+    animation: cambio-icono-hover-out 270ms linear;
+    transition: 370ms ease-in-out;
+}
+.btn-menu:hover{
+    animation: cambio-icono-hover 270ms linear forwards;
+    cursor: pointer;
+}
+.btn-menu:active{
+    width: 9vh; height: 90%;
+}
+@keyframes cambio-icono-hover{
+    0%{
+        background-image: url(iconos/casa_blanco.svg);
+    }
+    25%{
+        background-image: url(iconos/casa_blanco.svg);
+        background-size: 30%;
+    }
+    50%{
+        background-size: 0%;
+        background-image: url(iconos/Equis_blanca_delgada.png);
+    }
+    75%{
+        background-size: 30%;
+    }
+    100%{
+        background-image: url(iconos/Equis_blanca_delgada.png);
+        background-size: 60%;
+    }
+}
+@keyframes cambio-icono-hover-out{
+    0%{
+        background-image: url(iconos/Equis_blanca_delgada.png);
+        background-size: 60%;
+    }
+    25%{
+        background-size: 30%;
+    }
+    50%{
+        background-size: 0%;
+        background-image: url(iconos/Equis_blanca_delgada.png);
+    }
+    75%{
+        background-image: url(iconos/casa_blanco.svg);
+        background-size: 30%;
+    }
+    100%{
+        background-image: url(iconos/casa_blanco.svg);
+    }
+    
+}
