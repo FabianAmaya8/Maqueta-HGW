@@ -1,0 +1,36 @@
+.nav-usuario{
+    height: 0; width: 20%;
+    position: absolute; right: 10.1%; top: 0;
+    background-color: var(--nav-bar);
+    border-radius: 0 0 20px 20px;
+    transition: 230ms ease-in-out;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: start;
+    overflow: hidden;
+}
+.btn-noslider{
+    border: none;
+    width: 100%; height: 10%;
+    background-color: var(--nav-bar);
+    color: white;
+    transition: 250ms ease-in-out;
+}
+.btn-noslider:hover{
+    background-color: var(--fondo-hover);
+    cursor: pointer;
+}
+.btn-noslider:active{
+    background-color: var(--fondo-active);
+}
+.nav-usuario .btn1{
+    margin-top: 29.8%;
+}
+.nav-usuario button{
+    height: 28%;
+}
+.on-usuario{
+    height: 27.7vh;
+}

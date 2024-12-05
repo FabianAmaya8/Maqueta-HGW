@@ -1,19 +1,27 @@
 <!DOCTYPE html>
 <html lang="es">
     <head>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="styles/header.css">
         <link rel="stylesheet" href="styles/nav-bar.css">
         <link rel="stylesheet" href="styles/section.css">
+        <link rel="stylesheet" href="styles/usuario.css">
     </head>
     <body>
         <div class="contenedor-btn-menu" id="contenedor-btn-menu">
             <button class="btn-menu" onclick="nav_bar()"></button>
         </div>
         <header class="header">
-            
+            <button class="usuario" onclick="usuario()" id="usuario"></button>
+            <div class="separador" id="separador"></div>
+            <div class="logo-hgw"></div>
         </header>
+        <nav class="nav-usuario" id="nav-usuario">
+            <button class="btn-noslider btn1"><span>Mi cuenta</span></button>
+            <button class="btn-noslider"><span>Cerrar sesion</span></button>
+        </nav>
         <nav class="nav-bar" id="nav-bar">
             <button class="btn"><span>menú</span><div class="curva1"></div><div class="curva2"></div></button>
             <button class="btn"><span>gestión de usuarios</span><div class="curva1"></div><div class="curva2"></div></button>
@@ -24,18 +32,44 @@
         <section id="section">
             <div class="contenedor1">
                 <div class="contenedor-tittle">
-                    <span>Bienvenido administrador</span>
+                    <span class="tittle">Bienvenido administrador</span>
                 </div>
-                <div class="foto-perfil">
+                <div class="perfil">
                     <img src="styles/Imagenes/pexels-guvo-29578737.jpg">
+                    <span class="text">Andres Calamardo</span>
+                    <span class="id text">#3699</span>
                 </div>
             </div>
-            <div class="contenedor2"></div>
-            <div class="contenedor3"></div>
-            <div class="contenedor4"></div>
-            <div class="contenedor5"></div>
-            <div class="contenedor6"></div>
-            <div class="contenedor7"></div>
+            <div class="contenedor2">
+                <div class="canva1">
+                    <span>Ganancias por mes:</span>
+                </div>
+            </div>
+            <div class="contenedor3">
+                <div class="canva-canva">
+                    <canvas id="canva1"></canvas>
+                </div>
+            </div>
+            <div class="contenedor4 contenedor2">
+                <div class="canva1">
+                    <span>Visitas a la pagina:</span>
+                </div>
+            </div>
+            <div class="contenedor5">
+                <div class="canva-canva">
+                    <canvas id="canva3"></canvas>
+                </div>
+            </div>
+            <div class="contenedor6">
+                <div class="grafico-largo canva1">
+                    <span class="span-1">Una gran cantidad de personas eligen las bebidas</span>
+                    <span class="span-2">Productos, Catalogo, Ventas </span>
+                    <div class="canva2">
+                        <canvas id="canva2"></canvas>
+                    </div>
+                </div>
+            </div>
+            <div class="contenedor7"></div><br><br>
         </section>
         <script src="javaScript/javaS.js"></script>
     </body>
