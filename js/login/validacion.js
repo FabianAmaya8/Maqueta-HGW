@@ -21,7 +21,7 @@ export function validacionLogin() {
           text: ' Bienvenido Administrador',
           confirmButtonText:'Ingresar',
         }).then (()=>{
-          window.location.href= 'Admin/dashboard.html'
+          window.location.href = '/Admin/Administrador/Index.html'
   });
         return; 
   } else{

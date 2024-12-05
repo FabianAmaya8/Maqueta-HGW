@@ -135,6 +135,7 @@
     gap: 30px;
 }
 
+
 /*----- media query -----*/
 @media (max-width: 768px){
     .anuncio{
