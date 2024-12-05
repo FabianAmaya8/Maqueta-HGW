@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="../../css/personal/personal.css">
+    <link rel="stylesheet" href="../../css/personal/info-personal.css">
+    <link rel="stylesheet" href="/css/registro.css">
+    <link rel="shortcut icon" href="../../img/logo.png" type="image/x-icon">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <title>HGW</title>
+</head>
+<body>
+    <div class="container">
+        <div class="card">
+            <div class="form">
+                <div class="left-side">
+                    <div class="left-heading">
+                        <h3>Registro HGW</h3>
+                    </div>
+                    <div class="steps-content">
+                        <h3>paso <span class="Paso numero 1">1</span></h3>
+                        <p class="step-number-content active">Ingresa tus datos personales
+                        </p>
+                        <p class="step-number-content d-none">Añade tu foto de perfil
+                        </p>
+                    </div>
+                    <ul class="progress-bar">
+                        <li class="active">Personal Information</li>
+                        <li>Datos de envio</li>
+                        <li>Foto de Usuario</li>
+                    </ul>
+                </div>
+                <div class="right-side">
+                    <div class="main active">
+                        <small><i class="fa fa-smile-o"></i></small>
+                        <div class="text">
+                            <h2>Tu informacion Personal</h2>
+                            <p>Ingresa tus datos personales para acercarte a HGW</p>
+                        </div>
+                        <div class="input-text">
+                            <div class="input-div">
+                                <input type="text" required require id="user_name">
+                                <span>Nombres</span>
+                            </div>
+                            <div class="input-div">
+                                <input type="text" required>
+                                <span>Apellido</span>
+                            </div>
+                        </div>
+                        <div class="input-text">
+                            <div class="input-div">
+                                <input type="text" required require id="user_name">
+                                <span>Patrocinador</span>
+                            </div>
+                            <div class="input-div">
+                                <input type="text" required>
+                                <span>Usuario</span>
+                            </div>
+                        </div>
+                        <div class="input-text">
+                            <div class="input-div">
+                                <input type="text" required require>
+                                <span>Contraseña</span>
+                            </div>
+                            <div class="input-div">
+                                <input type="text" required require>
+                                <span>Confirme contraseña</span>
+                            </div>
+                        </div>
+                        <div class="input-text">
+                            <div class="input-div">
+                                <input type="text" required require>
+                                <span>Numero Telefonico</span>
+                            </div>
+                            <div class="input-div">
+                                <input type="text" required require>
+                                <span>E-mail Address</span>
+                            </div>
+                        </div>
+
+                        <div class="input-text">
+                            <div class="input-div">
+                                <select>
+                                    <option>Seleccione tipo de ID</option>
+                                    <option>Cedula</option>
+                                    <option>T.I</option>
+                                    <option>DNI</option>
+                                </select>
+    
+                            </div>
+                            <div class="input-div">
+                                    <input type="text" required require>
+                                    <span>Introduzca documento</span>
+                            </div>
+                        </div>
+                        
+                        <div class="input-text">
+                            <div class="input-div">
+                                <select>
+                                    <option>Seleccione pais</option>
+                                    <option>Colombia</option>
+                                    <option>Peru</option>
+                                    <option>Ecuador</option>
+                                    <option>Argentina</option>
+                                    <option>Mexico</option>
+                                    <option>Bolivia</option>
+                                    <option>El salvador</option>
+                                    <option>Panama</option>
+                                    <option>Chile</option>
+                                </select>
+    
+                            </div>
+                            <div class="input-div">
+    
+                                <select>
+                                    <option>Seleccione ciudad</option>
+                                    <option>Amazonas</option>
+                                    <option>Antioquia</option>
+                                    <option>Arauca</option>
+                                    <option>Atlántico</option>
+                                    <option>Bolívar</option>
+                                    <option>Boyacá</option>
+                                    <option>Caldas</option>
+                                    <option>Caquetá</option>
+                                    <option>Casanare</option>
+                                    <option>Cauca</option>
+                                    <option>Cesar</option>
+                                    <option>Chocó</option>
+                                    <option>Córdoba</option>
+                                    <option>Cundinamarca</option>
+                                    <option>Guainía</option>
+                                    <option>Guaviare</option>
+                                    <option>Huila</option>
+                                    <option>La Guajira</option>
+                                    <option>Magdalena</option>
+                                    <option>Meta</option>
+                                    <option>Nariño</option>
+                                    <option>Norte de Santander</option>
+                                    <option>Putumayo</option>
+                                    <option>Quindío</option>
+                                    <option>Risaralda</option>
+                                    <option>San Andrés y Providencia</option>
+                                    <option>Santander</option>
+                                    <option>Sucre</option>
+                                    <option>Tolima</option>
+                                    <option>Valle del Cauca</option>
+                                    <option>Vaupés</option>
+                                    <option>Vichada</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="buttons">
+                            <button class="next_button">siguiente paso</button>
+                        </div>
+                    </div>
+                    
+                    <div class="main">
+                        <small><i class="fa fa-smile-o"></i></small>
+                        <div class="text">
+                            <h2>Direccion</h2>
+                            <p>Ingresa tu direccion de envio para que los productos lleguen directo a tu casa</p>
+                        </div>
+                        <div class="input-text">
+                            <div class="input-div">
+                                <input type="text" required require>
+                                <span>Direccion de envio</span>
+                            </div>
+                            <div class="input-div">
+                                <input type="text" required require>
+                                <span>codigo postal</span>
+                            </div>
+                        </div>
+                        <div class="input-text">
+                            <div class="input-div">
+                                <input type="text" required>
+                                <span>Provincia</span>
+                            </div>
+                        <div class="buttons button_space">
+                            <button class="back_button">Back</button>
+                            <button class="next_button">Next Step</button>
+                        </div>
+                    </div>
+                   
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+    <script src="/js/registro.js"></script>
+</html>
