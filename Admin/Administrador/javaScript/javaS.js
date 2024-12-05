@@ -10,7 +10,7 @@ function nav_bar(){
     else if(bar.className = "nav-bar on"){
         bar.className = "nav-bar";
         contenedor_btn_menu.className = "contenedor-btn-menu";
-        section.className = "section";
+        section.className = "";
     }
 }
 function usuario(){
