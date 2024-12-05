@@ -108,6 +108,7 @@
     font-size: 40px;
     border: none;
     border-radius: 10px;
+    
 }
 .carts{
     width: 100%;
@@ -134,6 +135,7 @@
     justify-items: center;
     gap: 30px;
 }
+
 
 /*----- media query -----*/
 @media (max-width: 768px){

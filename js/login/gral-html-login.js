@@ -73,7 +73,7 @@ export function htmlLogin() {
     optionsDiv.appendChild(divider);
     
     const registerLink = document.createElement('a');
-    registerLink.href = 'num2.html';
+    registerLink.href = '/usuario/registro/registro.html';
     registerLink.className = 'Registrar';
     registerLink.textContent = 'Crear una cuenta';
     optionsDiv.appendChild(registerLink);
