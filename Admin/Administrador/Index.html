@@ -8,6 +8,7 @@
         <link rel="stylesheet" href="styles/nav-bar.css">
         <link rel="stylesheet" href="styles/section.css">
         <link rel="stylesheet" href="styles/usuario.css">
+        <link rel="stylesheet" href="styles/Generador_dashboard.css">
     </head>
     <body>
         <div class="contenedor-btn-menu" id="contenedor-btn-menu">
@@ -29,48 +30,89 @@
             <button class="btn"><span>gestión de compras</span><div class="curva1"></div><div class="curva2"></div></button>
             <button class="btn"><span>educación</span><div class="curva1"></div><div class="curva2"></div></button>
         </nav>
-        <section id="section" class="section">
-            <div class="contenedor1">
-                <div class="contenedor-tittle">
-                    <span class="tittle">Bienvenido administrador</span>
+        <main class="main">
+            <section id="section" class="section">
+                <div class="contenedor1">
+                    <div class="contenedor-tittle">
+                        <span class="tittle">Bienvenido administrador</span>
+                    </div>
+                    <div class="perfil">
+                        <img src="styles/Imagenes/pexels-guvo-29578737.jpg">
+                        <span class="text">Andres Calamardo</span>
+                        <span class="id text">#3699</span>
+                    </div>
                 </div>
-                <div class="perfil">
-                    <img src="styles/Imagenes/pexels-guvo-29578737.jpg">
-                    <span class="text">Andres Calamardo</span>
-                    <span class="id text">#3699</span>
+                <div class="contenedor2">
+                    <div class="canva1">
+                        <span>Ganancias por mes:</span>
+                    </div>
                 </div>
-            </div>
-            <div class="contenedor2">
-                <div class="canva1">
-                    <span>Ganancias por mes:</span>
+                <div class="contenedor3">
+                    <div class="canva-canva">
+                        <canvas id="canva1"></canvas>
+                    </div>
                 </div>
-            </div>
-            <div class="contenedor3">
-                <div class="canva-canva">
-                    <canvas id="canva1"></canvas>
+                <div class="contenedor4 contenedor2">
+                    <div class="canva1">
+                        <span>Visitas a la pagina:</span>
+                        </div>
                 </div>
-            </div>
-            <div class="contenedor4 contenedor2">
-                <div class="canva1">
-                    <span>Visitas a la pagina:</span>
+                <div class="contenedor5">
+                    <div class="canva-canva">
+                        <canvas id="canva3"></canvas>
+                    </div>
                 </div>
-            </div>
-            <div class="contenedor5">
-                <div class="canva-canva">
-                    <canvas id="canva3"></canvas>
+                <div class="contenedor6">
+                    <div class="grafico-largo canva1">
+                        <span class="span-1">Una gran cantidad de personas eligen las bebidas</span>
+                        <span class="span-2">Productos, Catalogo, Ventas </span>
+                        <div class="canva2">
+                            <canvas id="canva2"></canvas>
+                        </div>
+                    </div>
                 </div>
-            </div>
-            <div class="contenedor6">
-                <div class="grafico-largo canva1">
-                    <span class="span-1">Una gran cantidad de personas eligen las bebidas</span>
-                    <span class="span-2">Productos, Catalogo, Ventas </span>
-                    <div class="canva2">
-                        <canvas id="canva2"></canvas>
+                <div class="contenedor7"></div><br><br>
+            </section>
+            <div class="generador-dashboard" id="generador-dashboard">
+                <div class="menu-dashboard">
+                    <div class="interface">  
+                        <select id="select" required>
+                            <option>Eliga el tipo de diagrama a generar</option>
+                            <option>Lineas</option>
+                            <option>Barras</option>
+                            <option>Pastel</option>
+                        </select>              
+                        <div class="inputs">
+                            <input id="informacion" placeholder="agregar informacion" required>
+                            <input id="porcentajes" placeholder="agregar porcentajes" required type="number">
+                            <input id="mensaje" placeholder="ingrese que representan los porcentajes" required>
+                        </div>
+                        <div class="buttons">
+                            <button onclick="sumar()" class="btn-dashboard">Añadir</button>
+                            <button onclick="crear()" class="btn-dashboard">Crear</button>
+                            <button onclick="eliminar()" class="btn-dashboard">Eliminar grafico</button>
+                            <button onclick="eliminar_datos()" class="btn-dashboard">Eliminar datos</button>
+                        </div>
+                </div>
+                <div class="lista">
+                    <div class="listas-contenedor">
+                        <h4>informacion</h4>
+                        <ul id="lista-informacion"></ul>
+                    </div>
+                    <div class="listas-contenedor">
+                        <h4>porcentajes</h3>
+                        <ul id="lista-porcentajes"></ul>
+                    </div>
+                    <div class="listas-contenedor">
+                        <h4>Texto info</h4>
+                        <ul id="lista-representacion" class="ultimo-ul"></ul>
                     </div>
                 </div>
             </div>
-            <div class="contenedor7"></div><br><br>
-        </section>
+                <div class="contenedor-canvas"><div class="tamaño-canva-barras" id="tamaño-canva"><canvas id="canva-generate"></canvas></div></div>
+            </div>  
+        </main>
         <script src="javaScript/javaS.js"></script>
+        <script src="javaScript/dashboard.js"></script>
     </body>
 </html>

@@ -1,16 +1,16 @@
 section{
     width: 92%; height: max-content;
     background-color: transparent;
-    position: absolute; top: 12vh; right: 4%;
     display: grid;
-    grid-template-columns: 35% auto 32%;
+    margin-right: 3.8%; margin-left: auto;
+    margin-top: 10%;
+    grid-template-columns: 34% 31% 31%;
     grid-template-rows: 40% 40% 35%;
     grid-template-areas: 
     "contenedor1 contenedor2 contenedor3"
     "contenedor1 contenedor4 contenedor5"
     "contenedor6 contenedor6 contenedor7";
-    margin-top: 4.5%;
-    gap: 4% 2%;
+    gap: 6% 2%;
     grid-area: section;
     transition: 240ms ease-in-out;
 }
@@ -20,7 +20,7 @@ section{
     margin-top: 4%;
 }
 .on-section{
-    width: 76%; right: 4%;
+    width: 74%; right: 4%;
 }
 section div{
     background-color: rgb(255, 255, 255);
