@@ -1,10 +1,10 @@
 section{
-    width: 92%; height: max-content;
+    width: 88%; height: max-content;
     background-color: transparent;
     display: grid;
-    margin-right: 3.8%; margin-left: auto;
+    margin-right: 6%; margin-left: auto;
     margin-top: 10%;
-    grid-template-columns: 34% 31% 31%;
+    grid-template-columns: 38% 29% 29%;
     grid-template-rows: 40% 40% 35%;
     grid-template-areas: 
     "contenedor1 contenedor2 contenedor3"
@@ -20,7 +20,7 @@ section{
     margin-top: 4%;
 }
 .on-section{
-    width: 74%; right: 4%;
+    width: 71%; right: 4%;
 }
 section div{
     background-color: rgb(255, 255, 255);

@@ -2,14 +2,14 @@
     background-color: white;
     box-sizing: border-box;
     border: none;
-    margin-top: 10%; margin-right: 4%; margin-left: auto;
+    margin-top: 10%; margin-right: 6%; margin-left: auto;
     box-shadow: 3px 1px 10px rgba(0, 0, 0, 0.268);
     padding: 5%;
     border-radius: 30px;
-    width: 92%;  height: 90vh;
+    width: 88%;  height: 90vh;
     overflow: hidden;
     display: grid;
-    grid-template-columns: 40% 50%;
+    grid-template-columns: 50% 50%;
     column-gap: 9%;
     grid-template-rows: 100%;
     grid-template-areas: 
@@ -19,7 +19,15 @@
     transition: 250ms ease-in-out;
 }
 .on-generador-dashboard{
-    width: 74%;
+    width: 71%;
+    grid-template-columns: 50% 50%;
+    column-gap: 2%; row-gap: 2%;
+}
+.on-generador-dashboard .tamaño-canva-pie{
+    margin-top: 30%; width: 100%; height: 100%;
+}
+.on-generador-dashboard .tamaño-canva-barras{
+    margin-top: 20%; width: 100%; height: 100%;
 }
 .generador-dashboard input{
     width: 29%;
@@ -56,8 +64,18 @@
 .generador-dashboard select:focus{
     outline: 1px solid var(--btn-dashboard);
 }
-.on-generador-dashboard .listas-contenedor, .on-generador-dashboard input{
-    font-size: 80%;
+.on-generador-dashboard .listas-contenedor{
+    font-size: 90%;
+}
+.on-generador-dashboard input{
+    font-size: 80%; height: 70%;
+}
+.on-generador-dashboard select{
+    height: 20%;
+}
+.on-generador-dashboard button{
+    width: 21%; height: 90%;
+    font-size: 70%;
 }
 .generador-dashboard select:hover{
     cursor: pointer;
@@ -70,10 +88,14 @@
     width: 100%; height: 100%;
 }
 .contenedor-canvas .tamaño-canva-barras{
-    width: 100%; height: 60%;
+    width: 100%; height: 50%;
+    margin-right: 20%; margin-top: 5%;
+    transition: 150ms ease-in-out;
 }
 .contenedor-canvas .tamaño-canva-pie{
-    width: 70%; height: 90%;
+    width: 70%; height: 80%;
+    margin-right: 20%; margin-top: 5%;
+    transition: 150ms ease-in-out;
 }
 .menu-dashboard{
     grid-area: menu-dashboard;
