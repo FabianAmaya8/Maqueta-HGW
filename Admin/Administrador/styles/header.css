@@ -120,6 +120,7 @@ body{
     align-items: center;
     justify-content: center;
     border-radius: 0 0 10px 0;
+    border: transparent;
 }
 .on{
     width: 10%;
