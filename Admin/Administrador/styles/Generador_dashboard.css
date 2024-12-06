@@ -26,8 +26,11 @@
     height: 65%;
     font-size: 80%;
     border-radius: 3px;
-    border: 0.1px solid var(--btn-dashboard);
-    transition: 250ms ease-in-out;
+    border: none;
+    box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.122);
+}
+.generador-dashboard input:focus{
+    outline: 1px solid var(--btn-dashboard);
 }
 .generador-dashboard button{
     width: 22%;
@@ -47,8 +50,11 @@
     font-size: 80%;
     border-radius: 8px;
     border: none;
-    transition: 250ms ease-in-out;
-    border: 0.1px solid var(--btn-dashboard);
+    box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.122);
+    padding: 2%;
+}
+.generador-dashboard select:focus{
+    outline: 1px solid var(--btn-dashboard);
 }
 .on-generador-dashboard .listas-contenedor, .on-generador-dashboard input{
     font-size: 80%;

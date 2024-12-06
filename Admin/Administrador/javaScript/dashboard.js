@@ -30,7 +30,12 @@ function sumar(){
         html_porcentajes.value = "";
     }
     else if(isNaN(html_porcentajes.value)){
-        alert("Ingrese un porcentaje valido");
+        Swal.fire({
+            title: "Cuidado",
+            text: "Ingrese un porcentaje valido",
+            icon: "info",
+            confirmButtonText: "Aceptar"
+        });
     }
     var li3 = null;
     if(html_mensaje.value != ""){
@@ -58,12 +63,22 @@ function crear(){
     }
     let tipoDiagrama = document.getElementById("select").value;
     if(Informacion.length == 0 || porcentajes.legnth == 0 || mensaje == ""){
-        alert("Debe llenar todos los campos");
+        Swal.fire({
+            title: "Cuidado",
+            text:"Debe llenar todos los campos",
+            icon: "info",
+            confirmButtonText: "Aceptar"
+        });
         return;
     }
     if(tipoDiagrama == "Eliga el tipo de diagrama a generar"){
-        alert("eliga un tipo de diagrama");
-        return;
+    Swal.fire({
+        title: "Cuidado",
+        text: "eliga un tipo de diagrama",
+        icon: "info",
+        cinfirmarButtonText: "Aceptar"
+    });
+    return;
     }
     if(tipoDiagrama == "Lineas"){
         tipoDiagrama = "line";
