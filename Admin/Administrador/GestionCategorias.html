@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles/header.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+        <link rel="stylesheet" href="styles/nav-bar.css">
+        <link rel="stylesheet" href="styles/usuario.css">
+        <link rel="stylesheet" href="../Administrador/styles/tablas.css">
+        <script src="javaScript/javaS.js"></script>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script src="../Administrador/javaScript/filtro.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <div class="contenedor-btn-menu" id="contenedor-btn-menu">
+        <button id="busqueda" class="btn-menu" onclick="nav_bar()"></button>
+    </div>
+    <header class="header">
+        <button class="usuario" onclick="usuario()" id="usuario"></button>
+        <div class="separador" id="separador"></div>
+        <div class="logo-hgw"></div>
+    </header>
+    <nav class="nav-usuario" id="nav-usuario">
+        <button class="btn-noslider btn1"><span>Mi cuenta</span></button>
+        <button class="btn-noslider"><span>Cerrar sesion</span></button>
+    </nav>
+    <nav class="nav-bar" id="nav-bar">
+        <button class="btn"onclick="window.location.href='index.html';"><span>menú</span><div class="curva1"></div><div class="curva2"></div></button>
+        <button class="btn" onclick="window.location.href='GestionUsuarios.html';"><span>gestión de usuarios</span><div class="curva1"></div><div class="curva2"></div></button>
+        <button class="btn" onclick="window.location.href='GestionCategorias.html';"><span>gestión de productos</span><div class="curva1"></div><div class="curva2"></div></button>
+        <button class="btn" onclick="window.location.href='#.html';"><span>gestión de compras</span><div class="curva1"></div><div class="curva2"></div></button>
+        <button class="btn" onclick="window.location.href='#.html';"><span>educación</span><div class="curva1"></div><div class="curva2"></div></button>
+    </nav>
+    <section id="section">
+        <div class="options">
+            <button class="create-button" onclick="window.location.href='#.html';">crear categoría</button>
+            <button class="create-button" onclick="window.location.href='GestionSubategorias.html';">administrar subcategorías</button>
+            <button class="create-button" onclick="window.location.href='Gestionproductos.html';">administrar productos</button>
+            <div class="bar">
+            <input type="text" id="buscar" class="inp-opt">
+            <i class="bx bx-search"></i>
+            </div>
+        </div>
+        <div class="tablaUs" id="tablita">
+            <table>
+                <thead>
+                    <tr>
+                        <th>id</th>
+                        <th>nombre de categoria</th>
+                        <th>descripción</th>
+                        <th>acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>Superalimentos</td>
+                        <td>Alimentos como chía, linaza, quinoa, acai, moras, etc.</td>
+                        <td>
+                            <button class="btn-opt-edit" onclick="window.location.href='EditarUsuario.html';"><i class='bx bxs-edit-alt' ></i></button>
+                            <button class="btn-opt" id="eliminate"><i class='bx bx-trash' ></i></button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Granos y semillas</td>
+                        <td>Arroz integral, avena, trigo sarraceno, semillas de girasol, etc.</td>
+                        <td>
+                            <button class="btn-opt-edit" onclick="window.location.href='EditarUsuario.html';"><i class='bx bxs-edit-alt' ></i></button>
+                            <button class="btn-opt" id="eliminate"><i class='bx bx-trash' ></i></button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>Harina y productos de panadería</td>
+                        <td>Harina de almendra, harina de coco, panecillos integrales, galletas saludables, etc.</td>
+                        <td>
+                            <button class="btn-opt-edit" onclick="window.location.href='EditarUsuario.html';"><i class='bx bxs-edit-alt' ></i></button>
+                            <button class="btn-opt" id="eliminate"><i class='bx bx-trash' ></i></button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>Tés y infusiones</td>
+                        <td>Tés de hierbas, tés de frutas, infusiones de menta, etc.</td>
+                        <td>
+                            <button class="btn-opt-edit" onclick="window.location.href='EditarUsuario.html';"><i class='bx bxs-edit-alt' ></i></button>
+                            <button class="btn-opt" id="eliminate"><i class='bx bx-trash' ></i></button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td>Bebidas saludables</td>
+                        <td>Jugos de frutas naturales, agua de coco, kombucha, etc.</td>
+                        <td>
+                            <button class="btn-opt-edit" onclick="window.location.href='EditarUsuario.html';"><i class='bx bxs-edit-alt' ></i></button>
+                            <button class="btn-opt" id="eliminate"><i class='bx bx-trash' ></i></button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>6</td>
+                        <td>Suplementos</td>
+                        <td>Vitaminas, minerales, proteínas en polvo, suplementos de hierbas, etc.</td>
+                        <td>
+                            <button class="btn-opt-edit" onclick="window.location.href='EditarUsuario.html';"><i class='bx bxs-edit-alt' ></i></button>
+                            <button class="btn-opt" id="eliminate"><i class='bx bx-trash' ></i></button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>7</td>
+                        <td>Cosmética natural</td>
+                        <td>Champús, jabones, cremas, lociones, etc.</td>
+                        <td>
+                            <button class="btn-opt-edit" onclick="window.location.href='EditarUsuario.html';"><i class='bx bxs-edit-alt' ></i></button>
+                            <button class="btn-opt" id="eliminate"><i class='bx bx-trash' ></i></button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>8</td>
+                        <td>Productos para el hogar</td>
+                        <td>Productos de limpieza ecológicos, velas aromáticas, etc.</td>
+                        <td>
+                            <button class="btn-opt-edit" onclick="window.location.href='EditarUsuario.html';"><i class='bx bxs-edit-alt' ></i></button>
+                            <button class="btn-opt" id="eliminate"><i class='bx bx-trash' ></i></button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>9</td>
+                        <td>Productos para el cuidado personal</td>
+                        <td>Champú, jabón, cremas, lociones, etc.</td>
+                        <td>
+                            <button class="btn-opt-edit" onclick="window.location.href='EditarUsuario.html';"><i class='bx bxs-edit-alt' ></i></button>
+                            <button class="btn-opt" id="eliminate"><i class='bx bx-trash' ></i></button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>10</td>
+                        <td>Productos para el cuidado de la piel</td>
+                        <td>Aceites esenciales, cremas hidratantes, exfoliantes, etc.</td>
+                        <td>
+                            <button class="btn-opt-edit" onclick="window.location.href='EditarUsuario.html';"><i class='bx bxs-edit-alt' ></i></button>
+                            <button class="btn-opt" id="eliminate"><i class='bx bx-trash' ></i></button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+    </div>
+    </section>
+</body>
+</html>
