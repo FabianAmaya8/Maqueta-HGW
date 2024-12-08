@@ -41,113 +41,128 @@
                             <h2>Tu informacion Personal</h2>
                             <p>Ingresa tus datos personales para acercarte a HGW</p>
                         </div>
-                        <div class="input-text">
-                            <label for="user_name">Nombres</label>
-                            <input type="text" required id="user_name">
-                        
-                            <label for="last_name">Apellido</label>
-                            <input type="text" required id="last_name">
-                        </div>
-                        
-                        <div class="input-text">
-                            <label for="sponsor">Patrocinador</label>
-                            <input type="text" required id="sponsor">
-                        
-                            <label for="username">Usuario</label>
-                            <input type="text" required id="username">
-                        </div>
-                        
-                        <div class="input-text">
-                            <label for="password">Contraseña</label>
-                            <input type="password" required id="password">
-                        
-                            <label for="confirm_password">Confirme contraseña</label>
-                            <input type="password" required id="confirm_password">
-                        </div>
-                        
-                        <div class="input-text">
-                            <label for="phone_number">Número Telefónico</label>
-                            <input type="tel" required id="phone_number">
-                        
-                            <label for="email">E-mail Address</label>
-                            <input type="email" required id="email">
-                        </div>
+                        <form action="">
 
+                            <div class="input-text">
+                                <div class="input-item">
+                                    <label for="user_name">Nombres</label>
+                                    <input type="text" required id="user_name">
+                                </div>
+                                <div class="input-item">
+                                    <label for="last_name">Apellido</label>
+                                    <input type="text" required id="last_name">
+                                </div>
+                            </div>
+                            
+                            <div class="input-text">
+                                <div class="input-item">
+                                    <label for="sponsor">Patrocinador</label>
+                                    <input type="text" required id="sponsor">
+                                </div>
+                                <div class="input-item">
+                                    <label for="username">Usuario</label>
+                                    <input type="text" required id="username">
+                                </div>
+                            </div>
+                            
+                            <div class="input-text">
+                                <div class="input-item">
+                                    <label for="password">Contraseña</label>
+                                    <input type="password" required id="password">
+                                </div>
+                                <div class="input-item">
+                                    <label for="confirm_password">Confirme contraseña</label>
+                                    <input type="password" required id="confirm_password">
+                                </div>
+                            </div>
+                            
+                            <div class="input-text">
+                                <div class="input-item">
+                                    <label for="phone_number">Número Telefónico</label>
+                                    <input type="tel" required id="phone_number">
+                                </div>
+                                <div class="input-item">
+                                    <label for="email">E-mail Address</label>
+                                    <input type="email" required id="email">
+                                </div>
+                            </div>
 
-                        <div class="input-text">
-                            <div class="input-div">
-                                <select>
-                                    <option>Seleccione tipo de ID</option>
-                                    <option>Cedula</option>
-                                    <option>T.I</option>
-                                    <option>DNI</option>
-                                </select>
-    
+                            <div class="input-text">
+                                <div class="input-item">
+                                    <label for="document_type">Tipo de ID</label>
+                                        <select>
+                                            <option>Seleccione tipo de Documento</option>
+                                            <option>Cedula</option>
+                                            <option>T.I</option>
+                                            <option>DNI</option>
+                                        </select>
+                                </div>
+                                <div class="input-item">
+                                        <label for="document_number">Introduzca documento</label>
+                                        <input type="doc" required id="document_number">
+                                </div>
                             </div>
-                            <div class="input-div">                    
-                                    <label for="document_number">Introduzca documento</label>
-                                    <input type="doc" required id="document_number">
+                            
+                            <div class="input-text">
+                                <div class="input-item">
+                                    <label for="birth_date">Pais</label>
+                                    <select>
+                                        <option>Seleccione pais</option>
+                                        <option>Colombia</option>
+                                        <option>Peru</option>
+                                        <option>Ecuador</option>
+                                        <option>Argentina</option>
+                                        <option>Mexico</option>
+                                        <option>Bolivia</option>
+                                        <option>El salvador</option>
+                                        <option>Panama</option>
+                                        <option>Chile</option>
+                                    </select>
+                                </div>
+                                <div class="input-item">
+                                    <label for="city">Ciudad</label>
+
+                                    <select>
+                                        <option>Seleccione ciudad</option>
+                                        <option>Amazonas</option>
+                                        <option>Antioquia</option>
+                                        <option>Arauca</option>
+                                        <option>Atlántico</option>
+                                        <option>Bolívar</option>
+                                        <option>Boyacá</option>
+                                        <option>Caldas</option>
+                                        <option>Caquetá</option>
+                                        <option>Casanare</option>
+                                        <option>Cauca</option>
+                                        <option>Cesar</option>
+                                        <option>Chocó</option>
+                                        <option>Córdoba</option>
+                                        <option>Cundinamarca</option>
+                                        <option>Guainía</option>
+                                        <option>Guaviare</option>
+                                        <option>Huila</option>
+                                        <option>La Guajira</option>
+                                        <option>Magdalena</option>
+                                        <option>Meta</option>
+                                        <option>Nariño</option>
+                                        <option>Norte de Santander</option>
+                                        <option>Putumayo</option>
+                                        <option>Quindío</option>
+                                        <option>Risaralda</option>
+                                        <option>San Andrés y Providencia</option>
+                                        <option>Santander</option>
+                                        <option>Sucre</option>
+                                        <option>Tolima</option>
+                                        <option>Valle del Cauca</option>
+                                        <option>Vaupés</option>
+                                        <option>Vichada</option>
+                                    </select>
+                                </div>
                             </div>
-                        </div>
-                        
-                        <div class="input-text">
-                            <div class="input-div">
-                                <select>
-                                    <option>Seleccione pais</option>
-                                    <option>Colombia</option>
-                                    <option>Peru</option>
-                                    <option>Ecuador</option>
-                                    <option>Argentina</option>
-                                    <option>Mexico</option>
-                                    <option>Bolivia</option>
-                                    <option>El salvador</option>
-                                    <option>Panama</option>
-                                    <option>Chile</option>
-                                </select>
-    
+                            <div class="buttons">
+                                <button class="next_button">siguiente paso</button>
                             </div>
-                            <div class="input-div">
-    
-                                <select>
-                                    <option>Seleccione ciudad</option>
-                                    <option>Amazonas</option>
-                                    <option>Antioquia</option>
-                                    <option>Arauca</option>
-                                    <option>Atlántico</option>
-                                    <option>Bolívar</option>
-                                    <option>Boyacá</option>
-                                    <option>Caldas</option>
-                                    <option>Caquetá</option>
-                                    <option>Casanare</option>
-                                    <option>Cauca</option>
-                                    <option>Cesar</option>
-                                    <option>Chocó</option>
-                                    <option>Córdoba</option>
-                                    <option>Cundinamarca</option>
-                                    <option>Guainía</option>
-                                    <option>Guaviare</option>
-                                    <option>Huila</option>
-                                    <option>La Guajira</option>
-                                    <option>Magdalena</option>
-                                    <option>Meta</option>
-                                    <option>Nariño</option>
-                                    <option>Norte de Santander</option>
-                                    <option>Putumayo</option>
-                                    <option>Quindío</option>
-                                    <option>Risaralda</option>
-                                    <option>San Andrés y Providencia</option>
-                                    <option>Santander</option>
-                                    <option>Sucre</option>
-                                    <option>Tolima</option>
-                                    <option>Valle del Cauca</option>
-                                    <option>Vaupés</option>
-                                    <option>Vichada</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="buttons">
-                            <button class="next_button">siguiente paso</button>
-                        </div>
+                        </form>
                     </div>
                     
                     <div class="main">
@@ -174,7 +189,6 @@
                         </div>
                     </div>
 
-                     
             <div class="main">
                 <small><i class="fa fa-smile-o"></i></small>
                 <div class="text">
@@ -185,7 +199,7 @@
                     <span></span>
                     <div class="circle">
                         <span>
-                            <img id="preview_image" src="https://i.imgur.com/hnwphgM.jpg" alt="User Photo">
+                            <img id="preview_image" src="https://i.pravatar.cc/300" alt="User Photo">
                         </span>
                     </div>
                     <div class="upload_area">
