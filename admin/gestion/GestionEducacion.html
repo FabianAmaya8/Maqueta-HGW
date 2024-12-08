@@ -35,11 +35,9 @@
     </nav>
     <section id="section">
         <div class="options">
-            <button class="create-button" onclick="window.location.href='../../Admin/creacion/CrearCategoria.html';">crear video</button>
-            <button class="create-button" onclick="window.location.href='../../Admin/gestion/GestionSubategorias.html';">administrar documentos</button>
-            <button class="create-button" onclick="window.location.href='../../Admin/gestion/Gestionproductos.html';">administrar productos</button>
+            <button class="create-button" onclick="location.href='../../Admin/creacion/CrearCategoria.html';">crear documento</button>
             <div class="bar">
-            <input type="text" id="buscar" class="inp-opt">
+            <input type="text" id="buscar" class="inp-opt" placeholder="documentos subidos">
             <i class="bx bx-search"></i>
             </div>
         </div>
@@ -48,104 +46,105 @@
                 <thead>
                     <tr>
                         <th>id</th>
-                        <th>nombre de categoria</th>
-                        <th>descripción</th>
+                        <th>tipo de documento</th>
+                        <th>clasificación</th>
                         <th>acciones</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
                         <td>1</td>
-                        <td>Superalimentos</td>
-                        <td>Alimentos como chía, linaza, quinoa, acai, moras, etc.</td>
+                        <td>PDF</td>
+                        <td>Aprendizaje básico</td>
                         <td>
-                            <button class="btn-opt-edit" onclick="window.location.href='../../admin/edicion/Editarcategorias.html';"><i class='bx bxs-edit-alt' ></i></button>
-                            <button class="btn-opt" id="eliminate"><i class='bx bx-trash' ></i></button>
+                            <button class="btn-opt-edit" onclick="location.href='../../admin/edicion/Editarcategorias.html';"><i class='bx bxs-edit-alt'></i></button>
+                            <button class="btn-opt" id="eliminate"><i class='bx bx-trash'></i></button>
                         </td>
                     </tr>
                     <tr>
                         <td>2</td>
-                        <td>Granos y semillas</td>
-                        <td>Arroz integral, avena, trigo sarraceno, semillas de girasol, etc.</td>
+                        <td>Imagen</td>
+                        <td>Aprendizaje de proceso</td>
                         <td>
-                            <button class="btn-opt-edit" onclick="window.location.href='../../admin/edicion/Editarcategorias.html';"><i class='bx bxs-edit-alt' ></i></button>
-                            <button class="btn-opt" id="eliminate"><i class='bx bx-trash' ></i></button>
+                            <button class="btn-opt-edit" onclick="location.href='../../admin/edicion/Editarcategorias.html';"><i class='bx bxs-edit-alt'></i></button>
+                            <button class="btn-opt" id="eliminate"><i class='bx bx-trash'></i></button>
                         </td>
                     </tr>
                     <tr>
                         <td>3</td>
-                        <td>Harina y productos de panadería</td>
-                        <td>Harina de almendra, harina de coco, panecillos integrales, galletas saludables, etc.</td>
+                        <td>Video</td>
+                        <td>Aprendizaje de productos</td>
                         <td>
-                            <button class="btn-opt-edit" onclick="window.location.href='../../admin/edicion/Editarcategorias.html';"><i class='bx bxs-edit-alt' ></i></button>
-                            <button class="btn-opt" id="eliminate"><i class='bx bx-trash' ></i></button>
+                            <button class="btn-opt-edit" onclick="location.href='../../admin/edicion/Editarcategorias.html';"><i class='bx bxs-edit-alt'></i></button>
+                            <button class="btn-opt" id="eliminate"><i class='bx bx-trash'></i></button>
                         </td>
                     </tr>
                     <tr>
                         <td>4</td>
-                        <td>Tés y infusiones</td>
-                        <td>Tés de hierbas, tés de frutas, infusiones de menta, etc.</td>
+                        <td>PDF</td>
+                        <td>Enseñe a otros</td>
                         <td>
-                            <button class="btn-opt-edit" onclick="window.location.href='../../admin/edicion/Editarcategorias.html';"><i class='bx bxs-edit-alt' ></i></button>
-                            <button class="btn-opt" id="eliminate"><i class='bx bx-trash' ></i></button>
+                            <button class="btn-opt-edit" onclick="location.href='../../admin/edicion/Editarcategorias.html';"><i class='bx bxs-edit-alt'></i></button>
+                            <button class="btn-opt" id="eliminate"><i class='bx bx-trash'></i></button>
                         </td>
                     </tr>
                     <tr>
                         <td>5</td>
-                        <td>Bebidas saludables</td>
-                        <td>Jugos de frutas naturales, agua de coco, kombucha, etc.</td>
+                        <td>Imagen</td>
+                        <td>Aprendizaje básico</td>
                         <td>
-                            <button class="btn-opt-edit" onclick="window.location.href='../../admin/edicion/Editarcategorias.html';"><i class='bx bxs-edit-alt' ></i></button>
-                            <button class="btn-opt" id="eliminate"><i class='bx bx-trash' ></i></button>
+                            <button class="btn-opt-edit" onclick="location.href='../../admin/edicion/Editarcategorias.html';"><i class='bx bxs-edit-alt'></i></button>
+                            <button class="btn-opt" id="eliminate"><i class='bx bx-trash'></i></button>
                         </td>
                     </tr>
                     <tr>
                         <td>6</td>
-                        <td>Suplementos</td>
-                        <td>Vitaminas, minerales, proteínas en polvo, suplementos de hierbas, etc.</td>
+                        <td>Video</td>
+                        <td>Aprendizaje de proceso</td>
                         <td>
-                            <button class="btn-opt-edit" onclick="window.location.href='../../admin/edicion/Editarcategorias.html';"><i class='bx bxs-edit-alt' ></i></button>
-                            <button class="btn-opt" id="eliminate"><i class='bx bx-trash' ></i></button>
+                            <button class="btn-opt-edit" onclick="location.href='../../admin/edicion/Editarcategorias.html';"><i class='bx bxs-edit-alt'></i></button>
+                            <button class="btn-opt" id="eliminate"><i class='bx bx-trash'></i></button>
                         </td>
                     </tr>
                     <tr>
                         <td>7</td>
-                        <td>Cosmética natural</td>
-                        <td>Champús, jabones, cremas, lociones, etc.</td>
+                        <td>PDF</td>
+                        <td>Aprendizaje de productos</td>
                         <td>
-                            <button class="btn-opt-edit" onclick="window.location.href='../../admin/edicion/Editarcategorias.html';"><i class='bx bxs-edit-alt' ></i></button>
-                            <button class="btn-opt" id="eliminate"><i class='bx bx-trash' ></i></button>
+                            <button class="btn-opt-edit" onclick="location.href='../../admin/edicion/Editarcategorias.html';"><i class='bx bxs-edit-alt'></i></button>
+                            <button class="btn-opt" id="eliminate"><i class='bx bx-trash'></i></button>
                         </td>
                     </tr>
                     <tr>
                         <td>8</td>
-                        <td>Productos para el hogar</td>
-                        <td>Productos de limpieza ecológicos, velas aromáticas, etc.</td>
+                        <td>Imagen</td>
+                        <td>Enseñe a otros</td>
                         <td>
-                            <button class="btn-opt-edit" onclick="window.location.href='../../admin/edicion/Editarcategorias.html';"><i class='bx bxs-edit-alt' ></i></button>
-                            <button class="btn-opt" id="eliminate"><i class='bx bx-trash' ></i></button>
+                            <button class="btn-opt-edit" onclick="location.href='../../admin/edicion/Editarcategorias.html';"><i class='bx bxs-edit-alt'></i></button>
+                            <button class="btn-opt" id="eliminate"><i class='bx bx-trash'></i></button>
                         </td>
                     </tr>
                     <tr>
                         <td>9</td>
-                        <td>Productos para el cuidado personal</td>
-                        <td>Champú, jabón, cremas, lociones, etc.</td>
+                        <td>Video</td>
+                        <td>Aprendizaje básico</td>
                         <td>
-                            <button class="btn-opt-edit" onclick="window.location.href='../../admin/edicion/Editarcategorias.html';"><i class='bx bxs-edit-alt' ></i></button>
-                            <button class="btn-opt" id="eliminate"><i class='bx bx-trash' ></i></button>
+                            <button class="btn-opt-edit" onclick="location.href='../../admin/edicion/Editarcategorias.html';"><i class='bx bxs-edit-alt'></i></button>
+                            <button class="btn-opt" id="eliminate"><i class='bx bx-trash'></i></button>
                         </td>
                     </tr>
                     <tr>
                         <td>10</td>
-                        <td>Productos para el cuidado de la piel</td>
-                        <td>Aceites esenciales, cremas hidratantes, exfoliantes, etc.</td>
+                        <td>PDF</td>
+                        <td>Aprendizaje de proceso</td>
                         <td>
-                            <button class="btn-opt-edit" onclick="window.location.href='../../admin/edicion/Editarcategorias.html';"><i class='bx bxs-edit-alt' ></i></button>
-                            <button class="btn-opt" id="eliminate"><i class='bx bx-trash' ></i></button>
+                            <button class="btn-opt-edit" onclick="location.href='../../admin/edicion/Editarcategorias.html';"><i class='bx bxs-edit-alt'></i></button>
+                            <button class="btn-opt" id="eliminate"><i class='bx bx-trash'></i></button>
                         </td>
                     </tr>
                 </tbody>
             </table>
+            
     </div>
     </section>
 </body>
