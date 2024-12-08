@@ -1,7 +1,12 @@
-
+.contenedor-principal{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
 .catalogo {
     display: grid;
-    grid-template-columns: repeat(auto-fit,minmax(100px,1fr));
+    grid-template-columns: repeat(auto-fit,minmax(160px,1fr));
     justify-items: center;
     gap: 20px;
     padding: 20px;
@@ -50,16 +55,16 @@
 .contenedor-info {
     display: flex;
     justify-content: center;
-    padding: 30px;
+    align-items: center;
+    gap: 15px;
+    width: 90%;
 }
 .catalog-k {
     display: flex;
     flex-direction: column;
+    justify-content: center;
     gap: 20px;
     width: 100%;
-    max-width: 500px;
-    align-items: flex-start;
-    margin-left: 100px;
 }
 
 .card {
@@ -71,9 +76,6 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: flex-start;
-    width: 250%;
-    height: 200px;
 }
 .card h2 {
     font-size: 18px;
@@ -97,13 +99,10 @@
 }
 
 .KITS {
-    width: 200%;
-    max-width: 1000px;
-    align-items: flex-start;
-    margin-left: 500px;
+    width: 100%;
+    max-width: 500px;
 }
 .slider-KITS {
-    width: 75%;
     overflow: hidden;
     border-radius: 15px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -116,16 +115,11 @@
     width: 500%;
 }
 .slider-KITS li {
-    width: 75%;
     list-style: none;
 }
 .slider-KITS img {
     width: 100%;
     display: block;
-}
-.slider-KITS h2 {
-    text-align: center;
-    margin-top: 20px;
 }
 @keyframes cambio {
     0% {margin-left: 0;}
@@ -150,7 +144,15 @@
 }
 .productos-container>.carts {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
     justify-items: center;
-    gap: 10px;
+    gap: 30px;
+}
+
+/*----- media query -----*/
+@media (max-width: 768px){
+    .contenedor-info{
+        flex-direction: column;
+        align-items: center;
+    }
 }

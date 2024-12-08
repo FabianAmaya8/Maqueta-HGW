@@ -1,75 +1,81 @@
+import { productsData } from './data-productos.js';
+
+// Función para seleccionar un producto aleatoriamente
+function getRandomProduct() {
+  const randomIndex = Math.floor(Math.random() * productsData.length);
+  return productsData[randomIndex];
+}
+
+// Función para formatear el precio con signo de pesos y separadores de miles
+function formatPrice(price) {
+  return `$${price.toLocaleString()}`; // Agrega el signo de pesos y formatea números grandes
+}
+
 // Función para crear un solo producto
-function createProduct(categotia, name, price, imageUrl) {
-    const cartProducto = document.createElement('div');
-    cartProducto.className = 'cart-producto';
-  
-    const productLink = document.createElement('a');
-    productLink.href = '#';
-  
-    const bannerProductosDiv = document.createElement('div');
-    bannerProductosDiv.className = 'baner-productos';
-  
-    const bannerImgDiv = document.createElement('div');
-    bannerImgDiv.className = 'baner-img';
-  
-    const productImg = document.createElement('img');
-    productImg.src = imageUrl;
-    productImg.alt = 'producto';
-  
-    bannerImgDiv.appendChild(productImg);
-    bannerProductosDiv.appendChild(bannerImgDiv);
-  
-    const infoProductoDiv = document.createElement('div');
-    infoProductoDiv.className = 'info-producto';
-  
-    const productCategoria = document.createElement('p');
-    productCategoria.textContent = categotia;
-    productCategoria.className = 'categoria';
+function createProduct(categoria, name, price, imageUrl) {
+  const cartProducto = document.createElement('article'); // Cambiado a 'article' por semántica
+  cartProducto.className = 'cart-producto';
 
-    const productName = document.createElement('h3');
-    productName.textContent = name;
-    productName.className = 'nombre';
-  
-    const productPrice = document.createElement('p');
-    productPrice.textContent = price;
-    productPrice.className = 'precio';
+  const productLink = document.createElement('a');
+  productLink.href = '#';
+  productLink.setAttribute('aria-label', `Ver más sobre ${name}`); // Accesibilidad
 
-    const productCarrito = document.createElement('button');
-    productCarrito.textContent = "Agregar al carrito";
-    productCarrito.className = 'btn-carrito';
-  
-    infoProductoDiv.appendChild(productCategoria);
-    infoProductoDiv.appendChild(productName);
-    infoProductoDiv.appendChild(productPrice);
-    infoProductoDiv.appendChild(productCarrito);
-  
-    productLink.appendChild(bannerProductosDiv);
-    productLink.appendChild(infoProductoDiv);
-  
-    cartProducto.appendChild(productLink);
-    return cartProducto;
-  }
-  
-  // Función para crear múltiples productos dependiendo de la clase
-  function createProductsFromClass() {
-    // Seleccionar todos los contenedores con la clase 'carts'
-    const cartsContainers = document.querySelectorAll('.carts');
-  
-    cartsContainers.forEach(container => {
-      // Obtener la cantidad de productos desde la clase del contenedor
-      const productCount = parseInt(container.classList[1]); // Asume que la clase es 'carts X', donde X es el número de productos
-  
-      // Limpiar el contenedor antes de agregar nuevos productos
-      container.innerHTML = '';
-  
-      // Crear la cantidad de productos correspondiente
-      for (let i = 0; i < productCount; i++) {
-        const product = createProduct('Categoría', 'Name producto ' + (i + 1), '$76000', '../../../../img/hgw/producto.png');
-        container.appendChild(product);
-      }
-    });
-  }
-  
-  // Llamar a la función para crear los productos cuando la página se cargue
-  window.onload = createProductsFromClass;
-  
+  const bannerProductosDiv = document.createElement('figure'); // Cambiado a 'figure'
+  bannerProductosDiv.className = 'baner-productos';
+
+  const productImg = document.createElement('img');
+  productImg.src = imageUrl;
+  productImg.alt = `Imagen del producto ${name}`; // Accesibilidad
+
+  bannerProductosDiv.appendChild(productImg);
+
+  const infoProductoDiv = document.createElement('section'); // Cambiado a 'section'
+  infoProductoDiv.className = 'info-producto';
+
+  const productCategoria = document.createElement('p');
+  productCategoria.textContent = categoria;
+  productCategoria.className = 'categoria';
+
+  const productName = document.createElement('h3');
+  productName.textContent = name;
+  productName.className = 'nombre';
+
+  const productPrice = document.createElement('p');
+  productPrice.textContent = formatPrice(price); // Aplica formato al precio
+  productPrice.className = 'precio';
+
+  const productCarrito = document.createElement('button');
+  productCarrito.textContent = "Agregar al carrito";
+  productCarrito.className = 'btn-carrito';
+  productCarrito.setAttribute('aria-label', `Agregar ${name} al carrito`); // Accesibilidad
+
+  infoProductoDiv.appendChild(productCategoria);
+  infoProductoDiv.appendChild(productName);
+  infoProductoDiv.appendChild(productPrice);
+  infoProductoDiv.appendChild(productCarrito);
+
+  productLink.appendChild(bannerProductosDiv);
+  productLink.appendChild(infoProductoDiv);
+
+  cartProducto.appendChild(productLink);
+  return cartProducto;
+}
+
+// Función para crear múltiples productos dependiendo de la clase
+function createProductsFromClass() {
+  const cartsContainers = document.querySelectorAll('.carts');
+
+  cartsContainers.forEach(container => {
+    const productCount = parseInt(container.classList[1]); // Asume que la clase es 'carts X', donde X es el número de productos
+
+    container.innerHTML = '';
+
+    for (let i = 0; i < productCount; i++) {
+      const { categoria, name, price, imageUrl } = getRandomProduct();
+      const product = createProduct(categoria, name, price, imageUrl);
+      container.appendChild(product);
+    }
+  });
+}
+
+window.onload = createProductsFromClass;

@@ -373,12 +373,10 @@ footer{
     text-align: center;
 }
 /*----- Carta de producto -----*/
-
 .cart-producto{
     background: #f6eeee;
     border: 1px solid #DBE9EA;
     border-radius: 10px;
-    width: 200px;
     text-align: center;
     padding: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -396,16 +394,19 @@ footer{
     display: flex;
     flex-direction: column;
     align-items: center;
+    width: 150px;
 }
 .baner-productos{
     width: 95%;
-}
-.baner-img{
+    aspect-ratio: 1/1;
+    overflow: hidden;
+    padding-bottom: 10px;
     border-bottom: 2px solid #0000004c;
 }
-.baner-img img{
+.baner-productos img{
     width: 100%;
     height: 100%;
+    object-fit: cover;
     transition: transform 1s ease;
 }
 .categoria {
