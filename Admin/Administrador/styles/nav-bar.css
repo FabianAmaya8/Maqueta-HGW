@@ -3,12 +3,12 @@
     top: 12vh;
     padding-top: 3%;
     background-color: var(--nav-bar);
-    position: absolute; bottom: 0%;
-    z-index: 1;
+    position: fixed; bottom: 0%;
+    z-index: 4;
     transition: 240ms ease-in-out;
     overflow: hidden;
     display: flex;
-    flex-direction: column;    
+    flex-direction: column; 
     justify-content: flex-start;
     border-radius: 0 0 40px 0;
     grid-area: nav-bar;

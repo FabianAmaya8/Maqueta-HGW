@@ -1,34 +1,40 @@
 section{
-    width: 92%; height: max-content;
+    width: 88%; height: max-content;
     background-color: transparent;
-    position: absolute; top: 12vh; right: 4%;
     display: grid;
-    grid-template-columns: 37% auto auto;
-    grid-template-rows: auto auto auto;
+    margin-right: 6%; margin-left: auto;
+    margin-top: 10%;
+    grid-template-columns: 38% 29% 29%;
+    grid-template-rows: 40% 40% 35%;
     grid-template-areas: 
     "contenedor1 contenedor2 contenedor3"
     "contenedor1 contenedor4 contenedor5"
     "contenedor6 contenedor6 contenedor7";
-    padding-top: 45px;
-    gap: 20px;
+    gap: 6% 2%;
     grid-area: section;
     transition: 240ms ease-in-out;
 }
+.contenedor1 .text{
+    color: var(--texto);
+    font-size: 3vh;
+    margin-top: 4%;
+}
 .on-section{
-    width: 76%; right: 4%;
+    width: 71%; right: 4%;
 }
 section div{
     background-color: rgb(255, 255, 255);
     border-radius: 9px;
     box-shadow: 0.01px 0px 10px rgba(60, 60, 60, 0.267);
-    width: 100%; height: 22vh;
+    width: 100%; height: 100%;
 }
 .contenedor1{
     grid-area: contenedor1;
-    height: 46.5vh;
+    height: 100%; width: 100%;
     display: grid;
     grid-template-columns: 100%;
-    grid-template-rows: 20% auto;
+    grid-template-rows: 20% 80%;
+    transition: 240ms ease-in-out;
 }
 .contenedor-tittle{
     width: 100%; height: 100%;
@@ -37,26 +43,86 @@ section div{
     justify-content: center;
     align-items: center;
     overflow: hidden;
+    border-radius: 9px 9px 0 0;
 }
-.foto-perfil{
-    height: 100%; height: 100%;
+.contenedor1 .tittle{
+    font-size: 2.6vh;
+}
+.perfil{
+    width: 100%; height: 100%;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
 }
-.foto-perfil img{
-    width: 25%; height: 45%;
-    margin-top: 2%;
+.perfil img{
+    width: 35%; height: 50%;
+    margin-top: 4%;
     border-radius: 100%;
+    user-select: none;
 }
 .contenedor1 span{
     text-transform: capitalize;
     user-select: none;
-    color: var(--letra);
+    color: var(--titulos);
     font-weight: 700;
     font-size: 2vh;
 }
+.contenedor1 .id{
+    margin-bottom: 10%;
+    color: var(--texto-segundario);
+}
 .contenedor2{
     grid-area: contenedor2;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+}
+.contenedor2 .canva1{
+    height: 100%; width: 100%;
+}
+.canva1{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+.canva1::before{
+    content: "";
+    width: 0%; height: 100%;
+    position: absolute; left: 0;
+    background-color: transparent;
+    border-right: 7px solid var(--fondo-titulos);
+    transition: 250ms ease-in-out;
+    z-index: 0;
+}
+.canva-canva{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+.canva1:hover{
+    cursor: pointer;
+}
+.canva1:hover span{
+    color: white;
+}
+.canva1:hover::before{
+    width: 100%;
+    background-color: var(--fondo-titulos-transparente);
+}
+.canva1 span{
+    color: var(--texto-segundario);
+    font-size: 3vh;
+    display: flex;
+    justify-content: center;
+    user-select: none;
+    z-index: 3;
+    transition: 250ms ease-in-out;
+}
+.canva-canva canvas{
+    padding: 3%;
 }
 .contenedor3{
     grid-area: contenedor3;
@@ -69,6 +135,55 @@ section div{
 }
 .contenedor6{
     grid-area: contenedor6;
+}
+.grafico-largo{
+    position: relative;
+    display: flex;
+    transition: 250ms ease-in-out;
+    overflow: hidden;
+}
+.grafico-largo .span-1{
+    position: absolute; left: 3.5%;
+    width: 70%; height: 100%;
+    overflow: hidden;
+    font-size: 0vh;
+    color: var(--texto-segundario);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 250ms ease-in-out;
+}
+.grafico-largo .span-2{
+    position: absolute; left: 28%;
+    font-size: 4.5vh;
+    color: var(--texto-segundario);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.grafico-largo:hover .canva2{
+    left: 80%;
+}
+.grafico-largo:hover .span-2{
+    font-size: 0;
+    background-color: transparent;
+    color: transparent;
+    left: -50%;
+}
+.grafico-largo:hover .span-1{
+    font-size: 130%;
+}
+.canva2{
+    width: 20%; height: 100%;
+    position: absolute; left: 1%;
+    transition: 250ms ease-in-out;
+}
+.canva2 canvas{
+    padding: 3%;
+    position: relative;
+    z-index: 4;
+    margin-left: 5%;
+    position: absolute;
 }
 .contenedor7{
     grid-area: contenedor7;

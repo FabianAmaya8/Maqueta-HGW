@@ -5,27 +5,122 @@ body{
     margin: 0;
     background-color: var(--body);
 }
+.main{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
 :root{
     --body: rgb(240, 240, 240);
     --nav-bar: #8DC989;
     --fondo-titulos: #8DC989;
-    --letra: white;
+    --fondo-titulos-transparente: #a2e59de4;
+    --titulos: white;
+    --texto: #8DC989;
+    --texto-segundario: #a6a4a4;
+    --color-logo: white;
+    --fondo-hover: rgb(176, 234, 172);
+    --fondo-active: #8DC989;
+    --color1-diagramas:#8DC989;
+    --color2-diagramas:rgb(255, 255, 120);
+    --color3-diagramas:rgb(173, 216, 230);
+    --color4-diagramas:rgb(255, 182, 193);
+    --back-dashboard: #F4F5F3;
+    --btn-dashboard: #ADBBC6;
+    --btn-dashboard-hover: #d5d4d4;
 }
 .header{
     position: absolute; right: 0; top: 0;
     width: 93.5%; height: 12vh;
-    z-index: 0;
+    z-index: 3;
+    display: flex;
+    justify-content: end;
+}
+.separador{
+    width: 0.25%; height: 100%;
+    background-color: var(--nav-bar);
+    margin-right: 2.8%;
+    z-index: 3;
+    transition: 250ms ease-in-out;
+}
+.on-separador{
+    background-color: white;
+    width: 21.36%;
+    z-index: 1;
+}
+.usuario{
+    width: 10%; height: 100%; 
+    border-radius: 100%;
+    background-image: url(iconos/usuario-relleno.png);
+    background-size: 50%;
+    background-repeat: no-repeat;
+    background-position: center;
+    transition: 250ms ease-in-out;
+    position: absolute; right: 11%;
+    border: none;
+    background-color: transparent;
+    z-index: 3;
+}
+.usuario-logo-on{
+    right: 16.5%;
+}
+.usuario:hover{
+    cursor: pointer;
+    animation: usuario 2s linear forwards;
+    background-image: url(iconos/usuario-gray.png);
+    background-size: 45%;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+@keyframes usuario{
+    0%{
+        background-size: 50% 70%;
+    }
+    11%{
+        transform: translate(0, -9%);
+    }
+    15%{
+        background-size: 35% 75%;
+    }
+    18%{
+        background-size: 45%;
+    }
+    20%{
+        background-size: 50% 50%;
+        transition: 400ms;
+    }
+    24%{
+        transform: translate(0, 0);
+    }
+    29%{
+        background-size: 40% 80%;
+    }
+    37%{
+        background-size: 45%;
+    }
+}
+.header .logo-hgw{
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.196);
+    z-index: 1;
+    width: 8%; height: 100%;
+    background-color: var(--color-logo);
+    background-image: url(iconos/logo.png);
+    background-repeat: no-repeat;
+    background-size: 85%;
+    background-position: center;
+    border-radius: 0 0 0 10px;
 }
 .contenedor-btn-menu{
     background-color: #8DC989; 
     width: 6.5%; height: 12vh;
     transition: 250ms ease-in-out;
-    position: absolute;
-    z-index: 2;
+    position: fixed; top: 0; 
+    z-index: 4;
     display: flex;
     align-items: center;
     justify-content: center;
     border-radius: 0 0 10px 0;
+    border: transparent;
 }
 .on{
     width: 10%;

@@ -4,7 +4,7 @@
     box-sizing: border-box;
 }
 :root {
-    --fondo : radial-gradient(circle, rgba(122, 189, 135, 1) 0%, rgba(202, 222, 200, 1) 44%, rgba(232, 251, 237, 1) 100%);
+    --fondo : #eee;
     --header : linear-gradient(90deg, #acd4c0, #1f5f39);
     --footer: linear-gradient(90deg, rgba(11, 37, 48, 0.804) 0%, rgba(31, 95, 91, 0.751) 50%, rgba(73, 178, 101, 1) 100%);
     --blanco: #eee; 
@@ -375,8 +375,8 @@ footer{
 /*----- Carta de producto -----*/
 
 .cart-producto{
-    background: #f9f9f9;
-    border: 1px solid #ddd;
+    background: #f6eeee;
+    border: 1px solid #DBE9EA;
     border-radius: 10px;
     width: 200px;
     text-align: center;
@@ -392,7 +392,7 @@ footer{
 }
 .cart-producto a{
     text-decoration: none;
-    color: #fff;
+    color: #DBE9EA;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -426,8 +426,9 @@ footer{
     font-weight: bold;
 }
 .btn-carrito {
-    background: #eee;
+    background: #2c3e50;
     border: 1px solid #ccc;
+    color: white;
     border-radius: 5px;
     padding: 10px;
     cursor: pointer;
@@ -435,7 +436,7 @@ footer{
     margin-top: 10px;
 }
 .btn-carrito:hover {
-    background: #ddd;
+    background: #acd4c0 ;
 }
 
 /*----- media query -----*/
