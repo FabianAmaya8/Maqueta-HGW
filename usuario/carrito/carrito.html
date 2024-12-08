@@ -11,27 +11,31 @@
     <title>HGW</title>
 </head>
 <body>
+    <script type="module" src="../../js/carrito/carrito-general.js"></script>
     <script type="module" src="../../js/fijos.js"></script>
     
     <main class="contenido">
         <div class="conten-item">
             <div class="secciones">
                 <div class="btn-section">
-                    <button>Carrito de Compras</button>
+                    <button onclick="mostrarDiv('i1')">Carrito de Compras</button>
                 </div>
                 <div class="btn-section">
-                    <button>Detalles de Envío</button>
+                    <button onclick="mostrarDiv('i2')">Detalles de Envío</button>
                 </div>
                 <div class="btn-section">
-                    <button>Opciones de Pago</button>
+                    <button onclick="mostrarDiv('i3')">Opciones de Pago</button>
                 </div>
             </div>
         </div>
-        <div class="conten-item">
+        <div class="conten-item i1">
+            <!-- seccion 1. Carrito De Compras -->
+            
             <div id="carrito-de-compras">
                 <h2>Carrito de Compras</h2>
                 <div class="carrito-item">
-                    <div class="productos 3"></div>
+
+                    <section class="productos 3"></section>
                     
                     <div class="resumen">
                         <h3>Resumen</h3>
@@ -43,27 +47,154 @@
                             <span>Envío:</span>
                             <span>$10000.00</span>
                         </div>
-                        <!-- <div class="item-resumen">
-                            <span>Puntos:</span>
-                            <span>13</span>
-                        </div> -->
                         <div class="totales">
                             <span>Total:</span>
                             <span class="total"></span>
                         </div>
-                        <!-- <div class="total-puntos">
-                            <span>Total Puntos:</span>
-                            <span>13</span>
-                        </div> -->
                         <div class="acciones-carrito">
-                            <button class="siguiente">Siguiente</button>
+                            <button onclick="mostrarDiv('i2')" class="siguiente">Siguiente</button>
                             <button class="cancelar">Cancelar</button>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+        <div class="conten-item i2">
+            <!-- seccion 2. Detalles de Envío -->
+            
+            <div id="detalles-envio">
+                <h2>Detalles de Envío</h2>
+                <div class="carrito-item">
+                    <section>
+                        <form>
+                            <div class="grupo-formulario">
+                                <label for="nombre">Nombre</label>
+                                <input type="text" id="nombre" name="nombre" required />
+                            </div>
+                            <div class="grupo-formulario">
+                                <label for="apellido">Apellido</label>
+                                <input type="text" id="apellido" name="apellido" required />
+                            </div>
+                            <div class="grupo-formulario">
+                                <label for="direccion">Dirección</label>
+                                <input type="text" id="direccion" name="direccion" required />
+                            </div>
+                            <div class="grupo-formulario">
+                                <label for="direccion2">Dirección 2</label>
+                                <input type="text" id="direccion2" name="direccion2" />
+                            </div>
+                            <div class="grupo-formulario">
+                                <label for="pais">País</label>
+                                <select id="pais" name="pais" required>
+                                    <option value="">Selecciona un país</option>
+                                    <option value="usa">EE.UU.</option>
+                                    <option value="canada">Canadá</option>
+                                    <option value="mexico">México</option>
+                                </select>
+                            </div>
+                            <div class="grupo-formulario">
+                                <label for="ciudad">Ciudad</label>
+                                <input type="text" id="ciudad" name="ciudad" required />
+                            </div>
+                            <div class="grupo-formulario">
+                                <label for="codigo-postal">Código Postal</label>
+                                <input type="text" id="codigo-postal" name="codigo-postal" required/>
+                            </div>
+                            <div class="grupo-formulario">
+                                <label for="telefono">Teléfono</label>
+                                <input type="tel" id="telefono" name="telefono" required />
+                            </div>
+                        </form>
+                    </section>
+                    <div class="resumen">
+                        <h3>Resumen</h3>
+                        <div class="item-resumen">
+                            <span>Subtotal:</span>
+                            <span class="subtotal">$228000.00</span>
+                        </div>
+                        <div class="item-resumen">
+                            <span>Envío:</span>
+                            <span>$10000.00</span>
+                        </div>
+                        <div class="totales">
+                            <span>Total:</span>
+                            <span class="total">$486000.00</span>
+                        </div>
+                        <div class="acciones-carrito">
+                            <button onclick="mostrarDiv('i3')" class="siguiente">Siguiente</button>
+                            <button onclick="mostrarDiv('i1')" class="cancelar">Cancelar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="conten-item i3">
+            <!-- seccion 3. Opciones de Pago -->
+            <div id="opciones-pago">
+                <h2>Opciones de Pago</h2>
+                <div class="carrito-item">
+                    <section class="metodos">
+                        <div class="metodo-pago">
+                            <div class="cabecera-metodo-pago">
+                                <input type="radio" id="tarjeta-credito" name="metodo-pago" value="tarjeta-credito" checked="">
+                                <label for="tarjeta-credito">Tarjeta de Crédito</label>
+                            </div>
+                            <div class="detalles-metodo-pago">
+                                <div class="grupo-formulario">
+                                    <label for="nombre-titular">Nombre del Titular</label>
+                                    <input type="text" id="input-name" name="numero-tarjeta" placeholder="e.g. Jane Appleseed" required="">
+                                </div>
+                                <div class="grupo-formulario">
+                                    <label for="numero-tarjeta">Número de Tarjeta</label>
+                                    <input type="text" class="input" id="input-number" placeholder="e.g. 1234 5678 9123 0000" required="">
+                                </div>
+                                <div class="grupo-formulario">
+                                    <label for="fecha-expiracion">Fecha de Expiración</label>
+                                    <div class="fecha-expiracion">
+                                        <input type="number" class="input" id="input-month" placeholder="MM" maxlength="2" required="">
+                                        <input type="number" class="input" id="input-year" placeholder="YY" maxlength="2" required="">
+                                    </div>
+                                </div>
+                                <div class="grupo-formulario">
+                                    <label for="cvv">CVV</label>
+                                    <input type="text" class="input" id="input-cvc" placeholder="e.g. 123" maxlength="3" required="">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="metodo-pago">
+                            <div class="cabecera-metodo-pago">
+                                <input type="radio" id="pay-pal" name="metodo-pago" value="pay-pal">
+                                <label for="pay-pal">PayPal</label>
+                            </div>
+                            <div class="detalles-metodo-pago">
+                                <p>
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed doeiusmod tempor incididunt ut labore.
+                                </p>
+                            </div>
+                        </div>
+                    </section><div class="resumen">
+                        <h3>Resumen</h3>
+                        <div class="item-resumen">
+                            <span>Subtotal:</span>
+                            <span class="subtotal">$228000.00</span>
+                        </div>
+                        <div class="item-resumen">
+                            <span>Envío:</span>
+                            <span>$10000.00</span>
+                        </div>
+                        <div class="totales">
+                            <span>Total:</span>
+                            <span class="total">$486000.00</span>
+                        </div>
+                        <div class="acciones-carrito">
+                            <button id="aler" class="siguiente">Siguiente</button>
+                            <button onclick="mostrarDiv('i2')" class="cancelar">Cancelar</button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
     </main>
-    <script src="../../js/carrito/carrito-cart.js"></script>
 </body>
 </html>
