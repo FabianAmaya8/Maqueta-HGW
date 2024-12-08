@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../../Admin/styles/header.css">
+        <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+            <link rel="stylesheet" href="../../Admin/styles/nav-bar.css">
+            <link rel="stylesheet" href="../../Admin/styles/usuario.css">
+            <link rel="stylesheet" href="../../Admin/styles/tablas.css">
+            <script src="../../Admin/javaScript/javaS.js"></script>
+            <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+            <script src="../../Admin/javaScript/filtro.js"></script>
+        <title>HGW</title>
+    </head>
+<body>
+    <div class="contenedor-btn-menu" id="contenedor-btn-menu">
+        <button id="busqueda" class="btn-menu" onclick="nav_bar()"></button>
+    </div>
+    <header class="header">
+        <button class="usuario" onclick="usuario()" id="usuario"></button>
+        <div class="separador" id="separador"></div>
+        <div class="logo-hgw"></div>
+    </header>
+    <nav class="nav-usuario" id="nav-usuario">
+        <button class="btn-noslider btn1"><span>Mi cuenta</span></button>
+        <button class="btn-noslider"><span>Cerrar sesion</span></button>
+    </nav>
+    <nav class="nav-bar" id="nav-bar">
+        <button class="btn"onclick="window.location.href='../../Admin/index.html';"><span>menú</span><div class="curva1"></div><div class="curva2"></div></button>
+        <button class="btn" onclick="window.location.href='../../Admin/gestion/GestionUsuarios.html';"><span>gestión de usuarios</span><div class="curva1"></div><div class="curva2"></div></button>
+        <button class="btn" onclick="window.location.href='../../Admin/gestion/GestionCategorias.html';"><span>gestión de productos</span><div class="curva1"></div><div class="curva2"></div></button>
+        <button class="btn" onclick="window.location.href='../../Admin/gestion/#.html';"><span>gestión de compras</span><div class="curva1"></div><div class="curva2"></div></button>
+        <button class="btn" onclick="window.location.href='../../Admin/gestion/GestionEducacion.html';"><span>educación</span><div class="curva1"></div><div class="curva2"></div></button>
+    </nav>
+    <section id="section">
+        <div class="options">
+            <button class="create-button" onclick="window.location.href='../../Admin/creacion/CrearUsuario.html';">crear usuarios</button>
+            <button class="create-button" onclick="window.location.href='../../Admin/gestion/GestionBonos.html';">administrar bonos</button>
+            <div class="bar">
+            <input type="text" id="buscar" class="inp-opt">
+            <i class="bx bx-search"></i>
+            </div>
+        </div>
+        <div class="tablaUs" id="tablita">
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nombre</th>
+                    <th>Correo</th>
+                    <th>Documento</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>Juan Pérez</td>
+                    <td>juan.perez@example.com</td>
+                    <td>12345678</td>
+                    <td>
+                        <button class="btn-opt-edit" onclick="window.location.href='../../admin/edicion/EditarUsuario.html';"><i class='bx bxs-edit-alt' ></i></button>
+                        <button class="btn-opt" id="eliminate"><i class='bx bx-trash' ></i></button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>María Gómez</td>
+                    <td>maria.gomez@example.com</td>
+                    <td>87654321</td>
+                    <td>
+                        <button class="btn-opt-edit" onclick="window.location.href='../../admin/edicion/EditarUsuario.html';"><i class='bx bxs-edit-alt' ></i></button>
+                        <button class="btn-opt" id="eliminate"><i class='bx bx-trash' ></i></button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>Pedro López</td>
+                    <td>pedro.lopez@example.com</td>
+                    <td>11223344</td>
+                    <td>
+                        <button class="btn-opt-edit" onclick="window.location.href='../../admin/edicion/EditarUsuario.html';"><i class='bx bxs-edit-alt' ></i></button>
+                        <button class="btn-opt" id="eliminate"><i class='bx bx-trash' ></i></button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td>Ana Martínez</td>
+                    <td>ana.martinez@example.com</td>
+                    <td>44332211</td>
+                    <td>
+                        <button class="btn-opt-edit" onclick="window.location.href='../../admin/edicion/EditarUsuario.html';"><i class='bx bxs-edit-alt' ></i></button>
+                        <button class="btn-opt" id="eliminate"><i class='bx bx-trash' ></i></button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>5</td>
+                    <td>Carlos Ramírez</td>
+                    <td>carlos.ramirez@example.com</td>
+                    <td>55667788</td>
+                    <td>
+                        <button class="btn-opt-edit" onclick="window.location.href='../../admin/edicion/EditarUsuario.html';"><i class='bx bxs-edit-alt' ></i></button>
+                        <button class="btn-opt" id="eliminate"><i class='bx bx-trash' ></i></button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>6</td>
+                    <td>Laura Torres</td>
+                    <td>laura.torres@example.com</td>
+                    <td>66778899</td>
+                    <td>
+                        <button class="btn-opt-edit" onclick="window.location.href='../../admin/edicion/EditarUsuario.html';"><i class='bx bxs-edit-alt' ></i></button>
+                        <button class="btn-opt" id="eliminate"><i class='bx bx-trash' ></i></button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>7</td>
+                    <td>Jorge Díaz</td>
+                    <td>jorge.diaz@example.com</td>
+                    <td>99887766</td>
+                    <td>
+                        <button class="btn-opt-edit" onclick="window.location.href='../../admin/edicion/EditarUsuario.html';"><i class='bx bxs-edit-alt' ></i></button>
+                        <button class="btn-opt" id="eliminate"><i class='bx bx-trash' ></i></button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>8</td>
+                    <td>Sofia Fernández</td>
+                    <td>sofia.fernandez@example.com</td>
+                    <td>33445566</td>
+                    <td>
+                        <button class="btn-opt-edit" onclick="window.location.href='../../admin/edicion/EditarUsuario.html';"><i class='bx bxs-edit-alt' ></i></button>
+                        <button class="btn-opt" id="eliminate"><i class='bx bx-trash' ></i></button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    </section>
+</body>
+</html>
