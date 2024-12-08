@@ -1,0 +1,140 @@
+.producto {
+    display: flex;
+    max-width: 1200px;
+    margin: 30px auto;
+    gap: 20px;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}   
+
+.producto-izquierda {
+    flex: 1;
+}
+
+.producto-izquierda img {
+    width: 100%;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+.miniaturas {
+    display: flex;
+    gap: 10px;
+}
+
+.miniaturas img {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.producto-derecha {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 50px;
+}
+
+h1 {
+    font-size: 2em;
+    margin-bottom: 10px;
+    color: #03624c;
+}
+
+.precio {
+    font-size: 1.5em;
+    color: #000;
+    font-weight: bold;
+}
+
+.detalle {
+    background-color: #e6f5e6;
+    color: #03624c;
+    padding: 10px;
+    border-radius: 5px;
+
+}
+
+.descripcion {
+    font-size: 1em;
+    color: #555;
+    line-height: 1.5;
+}
+
+.boton-uso {
+    background-color: #03624c;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    text-decoration: none;
+}
+
+.boton-uso:hover {
+    background-color: #06302b;
+}
+
+.info-extra p {
+    font-size: 0.9em;
+    color: #333;
+}
+
+.accion {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.accion input {
+    width: 60px;
+    padding: 5px;
+    font-size: 1em;
+    text-align: center;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.boton-carrito {
+    background-color: #03624c;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+}
+
+.boton-carrito:hover {
+    background-color: #06302b;
+}
+.Alimentacion,
+.Cuidadopersonal,
+.Accesorios,
+.equipo,
+.cosmeticos,
+.merchandise,
+.todoslosproductos {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.productos-container {
+    width: 90%;
+    padding: 20px;
+}
+
+.productos-container>.carts {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    justify-items: center;
+    gap: 10px;
+}
