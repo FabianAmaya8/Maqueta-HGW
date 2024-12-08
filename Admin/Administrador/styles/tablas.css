@@ -26,6 +26,12 @@ section{
         flex-direction: column;
         gap: 50px;
         justify-items: center;
+        border: 5px solid var(--fondo-titulos-transparente);
+        border-radius: 15px;
+        padding-top: 60px;
+        padding-bottom: 60px;
+        padding-left: 25px;
+        padding-right: 25px;
 }
 .options{
     display: flex;
@@ -134,3 +140,4 @@ thead{
 .btn-opt{
     cursor: pointer;
 }
+

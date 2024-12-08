@@ -9,3 +9,8 @@ $(document).ready(function(){
         $(this).closest('tr').remove();
     })
 })
+function precio(){
+    var pr=Math.floor(Math.random()*(100000-50000+1));
+    document.getElementById('#price').innerText=pr;
+}
+document.addEventListener('DOMContentLoaded', precio())
