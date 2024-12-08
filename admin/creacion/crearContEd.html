@@ -35,14 +35,21 @@
     </nav>
     <section id="section">
         <div class="editors">
-            <select id="despl" required>
-                <option>Elija el tipo de bono</option>
-                <option>bono de compra</option>
-                <option>bono de inicio rápido</option>
-                <option>bono de elite</option>
-                <option>bono de compra</option>
-                <option>bono de equipo</option>
-            </select>
+        <div class="butones">
+        <select id="despl" required>
+            <option>tipo de archivo</option>
+            <option>PDF</option>
+            <option>Imagen</option>
+            <option>video</option>
+        </select>
+        <select id="despl" required>
+            <option>Elija clasificacion del archivo</option>
+            <option>aprendizaje básico</option>
+            <option>enseñe a otros</option>
+            <option>aprendizaje de productos</option>
+            <option>aprendizaje de procesos</option>
+        </select>
+        </div>
             <div class="date">
             <label for="fecha">fecha del bono:</label>
             <input id ="fecha" type="date" class="edit-np">
@@ -60,68 +67,101 @@
                 <table>
                     <thead>
                         <tr>
-                            <th>id usuario</th>
-                            <th>nombre usuario</th>
-                            <th>id bono</th>
-                            <th>tipo de bono</th>
-                            <th>fecha de entrega de bono</th>
-                            <th>opciones</th>
+                            <th>id</th>
+                            <th>tipo de documento</th>
+                            <th>clasificación</th>
+                            <th>acciones</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
                             <td>1</td>
-                            <td>Juan Pérez</td>
-                            <td>101</td>
-                            <td>bono de equipo</td>
-                            <td>2024-12-01</td>
+                            <td>PDF</td>
+                            <td>Aprendizaje básico</td>
                             <td>
-                                <button class="btn-opt-edit" onclick="location.href='EditarBonos.html';"><i class='bx bxs-edit-alt' ></i></button>
-                                <button class="btn-opt" id="eliminate"><i class='bx bx-trash' ></i> </button>
+                                <button class="btn-opt-edit" onclick="location.href='../../admin/edicion/Editarcategorias.html';"><i class='bx bxs-edit-alt'></i></button>
+                                <button class="btn-opt" id="eliminate"><i class='bx bx-trash'></i></button>
                             </td>
                         </tr>
                         <tr>
                             <td>2</td>
-                            <td>María Gómez</td>
-                            <td>102</td>
-                            <td>bono de compra</td>
-                            <td>2024-12-02</td>
+                            <td>Imagen</td>
+                            <td>Aprendizaje de proceso</td>
                             <td>
-                                <button class="btn-opt-edit" onclick="location.href='EditarBonos.html';"><i class='bx bxs-edit-alt' ></i></button>
-                                <button class="btn-opt" id="eliminate"><i class='bx bx-trash' ></i> </button>
+                                <button class="btn-opt-edit" onclick="location.href='../../admin/edicion/Editarcategorias.html';"><i class='bx bxs-edit-alt'></i></button>
+                                <button class="btn-opt" id="eliminate"><i class='bx bx-trash'></i></button>
                             </td>
                         </tr>
                         <tr>
                             <td>3</td>
-                            <td>Carlos Ramírez</td>
-                            <td>103</td>
-                            <td>bono de inicio rápido</td>
-                            <td>2024-12-03</td>
+                            <td>Video</td>
+                            <td>Aprendizaje de productos</td>
                             <td>
-                                <button class="btn-opt-edit" onclick="location.href='EditarBonos.html';"><i class='bx bxs-edit-alt' ></i></button>
-                                <button class="btn-opt" id="eliminate"><i class='bx bx-trash' ></i> </button>
+                                <button class="btn-opt-edit" onclick="location.href='../../admin/edicion/Editarcategorias.html';"><i class='bx bxs-edit-alt'></i></button>
+                                <button class="btn-opt" id="eliminate"><i class='bx bx-trash'></i></button>
                             </td>
                         </tr>
                         <tr>
                             <td>4</td>
-                            <td>Ana Lucía</td>
-                            <td>104</td>
-                            <td>bono de elite</td>
-                            <td>2024-12-04</td>
+                            <td>PDF</td>
+                            <td>Enseñe a otros</td>
                             <td>
-                                <button class="btn-opt-edit" onclick="location.href='EditarBonos.html';"><i class='bx bxs-edit-alt' ></i></button>
-                                <button class="btn-opt" id="eliminate"><i class='bx bx-trash' ></i> </button>
+                                <button class="btn-opt-edit" onclick="location.href='../../admin/edicion/Editarcategorias.html';"><i class='bx bxs-edit-alt'></i></button>
+                                <button class="btn-opt" id="eliminate"><i class='bx bx-trash'></i></button>
                             </td>
                         </tr>
                         <tr>
                             <td>5</td>
-                            <td>Pablo Fernández</td>
-                            <td>105</td>
-                            <td>bono de recompra</td>
-                            <td>2024-12-05</td>
+                            <td>Imagen</td>
+                            <td>Aprendizaje básico</td>
                             <td>
-                                <button class="btn-opt-edit" onclick="location.href='EditarBonos.html';"><i class='bx bxs-edit-alt' ></i></button>
-                                <button class="btn-opt" id="eliminate"><i class='bx bx-trash' ></i> </button>
+                                <button class="btn-opt-edit" onclick="location.href='../../admin/edicion/Editarcategorias.html';"><i class='bx bxs-edit-alt'></i></button>
+                                <button class="btn-opt" id="eliminate"><i class='bx bx-trash'></i></button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>6</td>
+                            <td>Video</td>
+                            <td>Aprendizaje de proceso</td>
+                            <td>
+                                <button class="btn-opt-edit" onclick="location.href='../../admin/edicion/Editarcategorias.html';"><i class='bx bxs-edit-alt'></i></button>
+                                <button class="btn-opt" id="eliminate"><i class='bx bx-trash'></i></button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>7</td>
+                            <td>PDF</td>
+                            <td>Aprendizaje de productos</td>
+                            <td>
+                                <button class="btn-opt-edit" onclick="location.href='../../admin/edicion/Editarcategorias.html';"><i class='bx bxs-edit-alt'></i></button>
+                                <button class="btn-opt" id="eliminate"><i class='bx bx-trash'></i></button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>8</td>
+                            <td>Imagen</td>
+                            <td>Enseñe a otros</td>
+                            <td>
+                                <button class="btn-opt-edit" onclick="location.href='../../admin/edicion/Editarcategorias.html';"><i class='bx bxs-edit-alt'></i></button>
+                                <button class="btn-opt" id="eliminate"><i class='bx bx-trash'></i></button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>9</td>
+                            <td>Video</td>
+                            <td>Aprendizaje básico</td>
+                            <td>
+                                <button class="btn-opt-edit" onclick="location.href='../../admin/edicion/Editarcategorias.html';"><i class='bx bxs-edit-alt'></i></button>
+                                <button class="btn-opt" id="eliminate"><i class='bx bx-trash'></i></button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>10</td>
+                            <td>PDF</td>
+                            <td>Aprendizaje de proceso</td>
+                            <td>
+                                <button class="btn-opt-edit" onclick="location.href='../../admin/edicion/Editarcategorias.html';"><i class='bx bxs-edit-alt'></i></button>
+                                <button class="btn-opt" id="eliminate"><i class='bx bx-trash'></i></button>
                             </td>
                         </tr>
                     </tbody>

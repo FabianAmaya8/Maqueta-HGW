@@ -61,9 +61,6 @@ tr td{
     border: 1px solid var(--texto-segundario);
     transition: 100ms ease-in-out;
 }
-tr td:hover{
-    padding: 30px;
-}
 thead{
     background-color: var(--body);
     color: var(--texto);
