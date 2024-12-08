@@ -10,6 +10,7 @@
     <link rel="shortcut icon" href="../../img/logo.png" type="image/x-icon">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" href="">
     <title>HGW</title>
 </head>
 <body>
@@ -41,45 +42,37 @@
                             <p>Ingresa tus datos personales para acercarte a HGW</p>
                         </div>
                         <div class="input-text">
-                            <div class="input-div">
-                                <input type="text" required require id="user_name">
-                                <span>Nombres</span>
-                            </div>
-                            <div class="input-div">
-                                <input type="text" required>
-                                <span>Apellido</span>
-                            </div>
+                            <label for="user_name">Nombres</label>
+                            <input type="text" required id="user_name">
+                        
+                            <label for="last_name">Apellido</label>
+                            <input type="text" required id="last_name">
                         </div>
+                        
                         <div class="input-text">
-                            <div class="input-div">
-                                <input type="text" required require id="user_name">
-                                <span>Patrocinador</span>
-                            </div>
-                            <div class="input-div">
-                                <input type="text" required>
-                                <span>Usuario</span>
-                            </div>
+                            <label for="sponsor">Patrocinador</label>
+                            <input type="text" required id="sponsor">
+                        
+                            <label for="username">Usuario</label>
+                            <input type="text" required id="username">
                         </div>
+                        
                         <div class="input-text">
-                            <div class="input-div">
-                                <input type="text" required require>
-                                <span>Contraseña</span>
-                            </div>
-                            <div class="input-div">
-                                <input type="text" required require>
-                                <span>Confirme contraseña</span>
-                            </div>
+                            <label for="password">Contraseña</label>
+                            <input type="password" required id="password">
+                        
+                            <label for="confirm_password">Confirme contraseña</label>
+                            <input type="password" required id="confirm_password">
                         </div>
+                        
                         <div class="input-text">
-                            <div class="input-div">
-                                <input type="text" required require>
-                                <span>Numero Telefonico</span>
-                            </div>
-                            <div class="input-div">
-                                <input type="text" required require>
-                                <span>E-mail Address</span>
-                            </div>
+                            <label for="phone_number">Número Telefónico</label>
+                            <input type="tel" required id="phone_number">
+                        
+                            <label for="email">E-mail Address</label>
+                            <input type="email" required id="email">
                         </div>
+
 
                         <div class="input-text">
                             <div class="input-div">
@@ -91,9 +84,9 @@
                                 </select>
     
                             </div>
-                            <div class="input-div">
-                                    <input type="text" required require>
-                                    <span>Introduzca documento</span>
+                            <div class="input-div">                    
+                                    <label for="document_number">Introduzca documento</label>
+                                    <input type="doc" required id="document_number">
                             </div>
                         </div>
                         
@@ -163,28 +156,55 @@
                             <h2>Direccion</h2>
                             <p>Ingresa tu direccion de envio para que los productos lleguen directo a tu casa</p>
                         </div>
-                        <div class="input-text">
-                            <div class="input-div">
-                                <input type="text" required require>
-                                <span>Direccion de envio</span>
-                            </div>
-                            <div class="input-div">
-                                <input type="text" required require>
-                                <span>codigo postal</span>
-                            </div>
-                        </div>
-                        <div class="input-text">
-                            <div class="input-div">
-                                <input type="text" required>
-                                <span>Provincia</span>
-                            </div>
+                    <div class="input-text">
+                        <label for="shipping_address">Dirección de Envío</label>
+                        <input type="text" required id="shipping_address">
+                    
+                        <label for="postal_code">Código Postal</label>
+                        <input type="text" required id="postal_code">
+                    </div>
+                    
+                    <div class="input-text">
+                        <label for="province">Provincia</label>
+                        <input type="text" required id="province">
+                    </div>
                         <div class="buttons button_space">
-                            <button class="back_button">Back</button>
-                            <button class="next_button">Next Step</button>
+                            <button class="back_button">Atras</button>
+                            <button class="next_button">Siguiente</button>
                         </div>
                     </div>
-                   
+
+                     
+            <div class="main">
+                <small><i class="fa fa-smile-o"></i></small>
+                <div class="text">
+                    <h2>User Photo</h2>
+                    <p>Upload your profile picture and share yourself.</p>
                 </div>
+                <div class="user_card">
+                    <span></span>
+                    <div class="circle">
+                        <span>
+                            <img id="preview_image" src="https://i.imgur.com/hnwphgM.jpg" alt="User Photo">
+                        </span>
+                    </div>
+                    <div class="upload_area">
+                        <label for="profile_picture" class="upload_label">Change Photo</label>
+                        <input type="file" id="profile_picture" accept="image/*" style="display: none;">
+                    </div>
+                    <div class="user_name">
+                        <h3>Peter Hawkins</h3>
+                        <div class="detail">
+                            <p><a href="#">Izmir, Turkey</a> Hiring</p>
+                            <p>17 last day · 94 Apply</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="buttons button_space">
+                    <button class="back_button">Atras</button>
+                    <button class="submit_button">Enviar</button>
+                </div>
+                <link rel="stylesheet" href="/usuario/personal/personal.html">
             </div>
         </div>
     </div>

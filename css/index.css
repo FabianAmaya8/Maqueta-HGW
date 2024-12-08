@@ -93,6 +93,7 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
+    margin: 20px;
     align-items: center;
 }
 .destacados-contenido{
@@ -111,6 +112,7 @@
     
 }
 .carts{
+    
     width: 100%;
     display: flex;
     justify-content: space-around;

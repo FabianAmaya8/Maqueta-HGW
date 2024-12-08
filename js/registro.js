@@ -1,103 +1,125 @@
-var next_click = document.querySelectorAll(".next_button");
-var main_form = document.querySelectorAll(".main");
-var step_list = document.querySelectorAll(".progress-bar li");
-var num = document.querySelector(".step-number");
-let formnumber = 0;
+let formIndex = 0;
 
-next_click.forEach(function (next_click_form) {
-    next_click_form.addEventListener('click', function () {
-        if (!validateform()) {
-            return false
+// Botones "Next" y "Back"
+const nextButtons = document.querySelectorAll(".next_button");
+const backButtons = document.querySelectorAll(".back_button");
+
+// Formularios y otros elementos
+const forms = document.querySelectorAll(".main");
+const progressBarItems = document.querySelectorAll(".progress-bar li");
+const stepNumber = document.querySelector(".step-number");
+const stepNumberContent = document.querySelectorAll(".step-number-content");
+
+// Mostrar el nombre en la sección final
+const usernameInput = document.querySelector("#user_name");
+const displayedName = document.querySelector(".shown_name");
+
+// Validación de formularios
+function validateForm() {
+    const activeInputs = document.querySelectorAll(".main.active input");
+    let isValid = true;
+
+    activeInputs.forEach(input => {
+        input.classList.remove("warning");
+        if (input.hasAttribute("required") && input.value.trim() === "") {
+            input.classList.add("warning");
+            isValid = false;
         }
-        formnumber++;
-        updateform();
-        progress_forward();
-        contentchange();
+    });
+
+    return isValid;
+}
+
+// Actualizar formulario activo
+function updateForm() {
+    forms.forEach((form, index) => {
+        form.classList.toggle("active", index === formIndex);
+    });
+}
+
+// Avanzar en el progreso
+function progressForward() {
+    progressBarItems.forEach((item, index) => {
+        item.classList.toggle("active", index <= formIndex);
+    });
+
+    stepNumber.textContent = formIndex + 1;
+    updateStepContent();
+}
+
+// Retroceder en el progreso
+function progressBackward() {
+    progressBarItems[formIndex + 1]?.classList.remove("active");
+    stepNumber.textContent = formIndex + 1;
+    updateStepContent();
+}
+
+// Actualizar contenido de pasos
+function updateStepContent() {
+    stepNumberContent.forEach((content, index) => {
+        content.classList.toggle("active", index === formIndex);
+        content.classList.toggle("d-none", index !== formIndex);
+    });
+}
+
+// Listeners para botones "Next"
+nextButtons.forEach(button => {
+    button.addEventListener("click", () => {
+        if (!validateForm()) return;
+
+        formIndex++;
+        updateForm();
+        progressForward();
     });
 });
 
-var back_click = document.querySelectorAll(".back_button");
-back_click.forEach(function (back_click_form) {
-    back_click_form.addEventListener('click', function () {
-        formnumber--;
-        updateform();
-        progress_backward();
-        contentchange();
+// Listeners para botones "Back"
+backButtons.forEach(button => {
+    button.addEventListener("click", () => {
+        if (formIndex > 0) {
+            formIndex--;
+            updateForm();
+            progressBackward();
+        }
     });
 });
-var shownname = document.querySelector(".shown_name");
 
+// Listener para botón "Submit"
+const submitButton = document.querySelector(".submit_button");
+submitButton.addEventListener("click", () => {
+    if (!validateForm()) return;
 
+    displayedName.textContent = usernameInput.value;
+    formIndex++;
+    updateForm();
+    progressForward();
+});
+
+// Listener para previsualizar imagen
+const fileInput = document.querySelector("#profile_picture");
+const previewImage = document.querySelector("#preview_image");
+
+fileInput.addEventListener("change", () => {
+    const file = fileInput.files[0];
+    if (file) {
+        const reader = new FileReader();
+        reader.onload = () => {
+            previewImage.src = reader.result;
+        };
+        reader.readAsDataURL(file);
+    }
+});
 var submit_click = document.querySelectorAll(".submit_button");
+
 submit_click.forEach(function (submit_click_form) {
     submit_click_form.addEventListener('click', function () {
-        shownname.innerHTML = username.value;
-        formnumber++;
-        updateform();
+        Swal.fire({
+            title: "¡Buen trabajo!",
+            text: "¡Te haz registrado!",
+            icon: "success",
+            confirmButtonText: '¡Genial!'
+        }).then(() => {
+            window.location.href = '/usuario/personal/personal.html';
+        });
     });
 });
-
-var heart = document.querySelector(".fa-heart");
-heart.addEventListener('click', function () {
-    heart.classList.toggle('heart');
-});
-
-
-var share = document.querySelector(".fa-share-alt");
-share.addEventListener('click', function () {
-    share.classList.toggle('share');
-});
-
-
-
-function updateform() {
-    main_form.forEach(function (mainform_number) {
-        mainform_number.classList.remove('active');
-    })
-    main_form[formnumber].classList.add('active');
-}
-
-function progress_forward() {
-    step_list.forEach(list => {
-
-        list.classList.remove('active');
-
-     }); 
-
-
-    num.innerHTML = formnumber + 1;
-    step_list[formnumber].classList.add('active');
-}
-
-function progress_backward() {
-    var form_num = formnumber + 1;
-    step_list[form_num].classList.remove('active');
-    num.innerHTML = form_num;
-}
-
-var step_num_content = document.querySelectorAll(".step-number-content");
-
-function contentchange() {
-    step_num_content.forEach(function (content) {
-        content.classList.remove('active');
-        content.classList.add('d-none');
-    });
-    step_num_content[formnumber].classList.add('active');
-}
-
-
-function validateform() {
-    validate = true;
-    var validate_inputs = document.querySelectorAll(".main.active input");
-    validate_inputs.forEach(function (vaildate_input) {
-        vaildate_input.classList.remove('warning');
-        if (vaildate_input.hasAttribute('require')) {
-            if (vaildate_input.value.length == 0) {
-                validate = false;
-                vaildate_input.classList.add('warning');
-            }
-        }
-    });
-    return validate;
-
-}

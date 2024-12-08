@@ -33,7 +33,7 @@
 .container .card .left-side {
     width: 35%;
     background: rgb(11, 37, 48);
-    background: linear-gradient(0deg, rgba(11, 37, 48, 1) 0%, rgba(31, 95, 91, 1) 50%, rgba(73, 178, 101, 1) 100%);
+    background: linear-gradient(0deg, rgb(19, 66, 92) 0%, rgba(31, 95, 91, 1) 50%, rgba(73, 178, 101, 1) 100%);
     height: 100%;
     border-top-left-radius: 20px;
     border-bottom-left-radius: 20px;
@@ -179,7 +179,7 @@
     position: relative;
 
 }
-input[type="text"] {
+input[type="text"], [type="password"], input[type="email"],input[type="tel"], input[type="doc"] {
     width: 100%;
     height: 40px;
     border: none;
@@ -190,7 +190,6 @@ input[type="text"] {
     box-sizing: border-box;
     padding: 0px 10px;
 }
-
 select {
     width: 100%;
     height: 40px;
@@ -201,20 +200,6 @@ select {
     gap: 20px;
     box-sizing: border-box;
     padding: 0px 10px;
-}
-
-.input-text .input-div span {
-    position: absolute;
-    top: 10px;
-    left: 10px;
-    font-size: 14px;
-    transition: all 0.5s;
-}
-
-.input-div span {
-    top: -15px;
-    left: 6px;
-    font-size: 10px;
 }
 
 .buttons button {
@@ -293,24 +278,6 @@ select {
     width: 100%;
 
 }
-
-.detail {
-    display: flex;
-    justify-content: space-between;
-    margin-right: 50px;
-}
-
-.detail p {
-    font-size: 12px;
-    font-weight: 700;
-
-}
-
-.detail p a {
-    text-decoration: none;
-    color: blue;
-}
-
 @keyframes stroke {
     100% {
         stroke-dashoffset: 0;
