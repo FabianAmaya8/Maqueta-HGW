@@ -1,4 +1,5 @@
 import { productsData } from './data-productos.js';
+import { mostrarAlerta } from './alerta-añadir.js';
 
 // Función para seleccionar un producto aleatoriamente
 function getRandomProduct() {
@@ -47,17 +48,21 @@ function createProduct(categoria, name, price, imageUrl) {
   const productCarrito = document.createElement('button');
   productCarrito.textContent = "Agregar al carrito";
   productCarrito.className = 'btn-carrito';
+  productCarrito.id = 'añadir';
   productCarrito.setAttribute('aria-label', `Agregar ${name} al carrito`); // Accesibilidad
+
+  productCarrito.addEventListener('click', mostrarAlerta);
+
 
   infoProductoDiv.appendChild(productCategoria);
   infoProductoDiv.appendChild(productName);
   infoProductoDiv.appendChild(productPrice);
-  infoProductoDiv.appendChild(productCarrito);
-
+  
   productLink.appendChild(bannerProductosDiv);
   productLink.appendChild(infoProductoDiv);
-
+  
   cartProducto.appendChild(productLink);
+  cartProducto.appendChild(productCarrito);
   return cartProducto;
 }
 

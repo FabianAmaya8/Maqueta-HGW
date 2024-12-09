@@ -17,42 +17,7 @@ export function initFooter() {
     logoImgFooter.alt = 'logo';
     logoDivFooter.appendChild(logoImgFooter);
     
-    const infoText = document.createElement('p');
-    infoText.textContent = 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora, culpa nostrum dolor soluta reprehenderit eaque neque nam ea adipisci quo molestiae unde temporibus error accusamus amet iusto pariatur quia inventore.';
-    
     informacionDiv.appendChild(logoDivFooter);
-    informacionDiv.appendChild(infoText);
-    
-    // Navegación en el footer
-    const footerNav = document.createElement('div');
-    footerNav.className = 'footer-nav';
-    
-    const footerNavTitle = document.createElement('h2');
-    footerNavTitle.textContent = 'Navegador';
-    
-    const footerUl = document.createElement('ul');
-    footerUl.className = 'footer-ul';
-    
-    // Lista de enlaces del footer
-    const footerLinks = [
-        { href: '../../../../Index.html', text: 'Inicio', file: 'Index.html' },
-        { href: '../../../../usuario/educacion/educacion.html', text: 'Educacion', file: 'educacion.html' },
-        { href: '../../../../usuario/catalogo/catalogo.html', text: 'Catalogo', file: 'catalogo.html' },
-        { href: '../../../../usuario/personal/personal.html', text: 'Personal', file: 'personal.html' },
-        { href: '../../../../usuario/carrito/carrito.html', text: 'Tu Carrito', file: 'carrito.html' }
-    ];
-    
-    footerLinks.forEach(link => {
-        const li = document.createElement('li');
-        const a = document.createElement('a');
-        a.href = link.href;
-        a.textContent = link.text;
-        li.appendChild(a);
-        footerUl.appendChild(li);
-    });
-    
-    footerNav.appendChild(footerNavTitle);
-    footerNav.appendChild(footerUl);
     
     // Información de contacto
     const contactoDiv = document.createElement('div');
@@ -80,7 +45,6 @@ export function initFooter() {
     
     // Añadir todo al footer
     footerDiv.appendChild(informacionDiv);
-    footerDiv.appendChild(footerNav);
     footerDiv.appendChild(contactoDiv);
     
     // Agregar el footer al cuerpo del documento

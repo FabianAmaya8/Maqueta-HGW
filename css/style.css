@@ -328,7 +328,7 @@ footer{
 }
 .footer{
     display: grid;
-    grid-template-columns: repeat(3,1fr);
+    grid-template-columns: repeat(2,1fr);
     align-items: center;
     gap: 15px;
     margin: 15px;
@@ -340,28 +340,15 @@ footer{
     align-items: center;
     gap: 5px;
 }
-.informacion p{
-    text-align: center;
+.informacion .logo{
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    background: var(--login-fondo);
 }
-.footer-nav{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    gap: 10px;
-}
-.footer-ul{
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-}
-.footer-ul li{
-    list-style: none;
-}
-.footer-ul a{
-    text-decoration: none;
-    color: #fff;
+.informacion .logo img{
+    width: 100%;
+    
 }
 .contacto{
     display: flex;

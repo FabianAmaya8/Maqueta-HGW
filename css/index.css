@@ -93,15 +93,14 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    margin: 20px;
     align-items: center;
+    gap: 15px;
 }
 .destacados-contenido{
     display: flex;
     justify-content: space-between;
     align-items: center;
     width: 100%;
-    margin: 15px 0;
     gap: 15px;
 }
 .destacados-contenido > button{
@@ -126,6 +125,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    gap: 15px;
 }
 .productos-container{
     width: 90%;
