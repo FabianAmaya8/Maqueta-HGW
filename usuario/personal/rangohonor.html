@@ -4,19 +4,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../../css/style.css">
-    <link rel="stylesheet" href="../../css/personal/pedidos.css">
-    <link rel="shortcut icon" href="../../img/logo.png" type="image/x-icon">
+    <link rel="stylesheet" href="../../css/personal/personal.css">
     <link rel="stylesheet" href="/css/personal/rangohonor.css">
+    <link rel="shortcut icon" href="../../img/logo.png" type="image/x-icon">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <title>HGW</title>
 </head>
-    <script type="module" src="../../js/fijos.js"></script>
-
 <body>
+    <script type="module" src="../../js/fijos.js"></script>
+    
     <main class="contenido">
-            
+        <div class="volver">
+            <div class="volver-item">
+                <button onclick="location.href='personal.html'">
+                    <i class='bx bx-left-arrow-alt'></i>
+                    Volver
+                </button>
+            </div>
+        </div>
+        <div class="conten-item">
             <div class="nivel-menbresia">
-                <h1>RANGO</h1>
+                <h2>RANGO</h2>
                 <div class="botones">
                     <button onclick="cambiarCantidad(1)">PLATA</button>
                     <button onclick="cambiarCantidad(2)">ORO</button>
@@ -26,48 +34,49 @@
                 </div>
                 <div class="barra">
                     <div class="progreso">
-                        <div class="si"></div>
-                        <div class="si"></div>
-                        <div class="si"></div>
-                        <div class="si"></div>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="TEXT-RANGOS">
-            <h1>¡Felicidades llegaste a tu primer rango de honor!<P><span>PLATA</span></P></h1>
-        <div class="rangos-container">
-            <div class="rango">
-                <div class="rango-img">
-                    <img src="https://hgw-bolivia.com/images/PLATA-p-500.png" alt="Plata HGW">
-                </div>
-                <div class="rango-texto">
-                    <h3>PLATA HGW</h3>
-                    <p>Cuando acumulas en tus ganancias $500 dólares hasta $1499,99, calificas al Rango Plata.</p>
+        
+        <div class="conten-item">
+            <div class="conten-rangos">
+                <h2>¡Felicidades llegaste a tu primer rango de honor!
+                    <p>PLATA</p>
+                </h2>
+
+                <div class="rangos-container">
+                    <div class="rango">
+                        <div class="rango-img">
+                            <img src="https://hgw-bolivia.com/images/PLATA-p-500.png" alt="Plata HGW">
+                        </div>
+                        <div class="rango-texto">
+                            <h3>PLATA HGW</h3>
+                            <p>Cuando acumulas en tus ganancias $500 dólares hasta $1499,99, calificas al Rango Plata.</p>
+                        </div>
+                    </div>
+                    <div class="rango">
+                        <div class="rango-img">
+                            <img src="https://hgw-bolivia.com/images/ORO-p-500.png" alt="Oro HGW" >
+                        </div>
+                        <div class="rango-texto">
+                            <h3>ORO HGW</h3>
+                            <p>Cuando acumulas en tus ganancias $1500 dólares hasta $2999,99, calificas al Rango Oro.</p>
+                        </div>
+                    </div>
+                    <div class="rango">
+                        <div class="rango-img">
+                            <img src="https://hgw-bolivia.com/images/PLATINUM-p-500.png" alt="Platinum HGW">
+                        </div>
+                        <div class="rango-texto">
+                            <h3>PLATINUM HGW</h3>
+                            <p>Cuando acumulas en tus ganancias $3000 dólares, calificas al Rango Platino.</p>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div class="rango">
-                <div class="rango-img">
-                    <img src="https://hgw-bolivia.com/images/ORO-p-500.png" alt="Oro HGW" >
-                </div>
-                <div class="rango-texto">
-                    <h3>ORO HGW</h3>
-                    <p>Cuando acumulas en tus ganancias $1500 dólares hasta $2999,99, calificas al Rango Oro.</p>
-                </div>
-            </div>
-            <div class="rango">
-                <div class="rango-img">
-                    <img src="https://hgw-bolivia.com/images/PLATINUM-p-500.png" alt="Platinum HGW">
-                </div>
-                <div class="rango-texto">
-                    <h3>PLATINUM HGW</h3>
-                    <p>Cuando acumulas en tus ganancias $3000 dólares, calificas al Rango Platino.</p>
-                </div>
-            </div>
-        </div>
-        </div>
         </div>
     </main>
-    </body>
-        <script src="../../js/personal/niveles.js"></script>
- </html>
+</body>
+    <script src="../../js/personal/niveles.js"></script>
+</html>
