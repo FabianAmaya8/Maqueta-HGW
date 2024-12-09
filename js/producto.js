@@ -17,7 +17,7 @@ function createProduct(categoria, name, price, imageUrl) {
   cartProducto.className = 'cart-producto';
 
   const productLink = document.createElement('a');
-  productLink.href = '#';
+  productLink.href = '/usuario/paginaproducto/paginaproducto.html';
   productLink.setAttribute('aria-label', `Ver más sobre ${name}`); // Accesibilidad
 
   const bannerProductosDiv = document.createElement('figure'); // Cambiado a 'figure'
