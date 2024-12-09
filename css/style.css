@@ -438,6 +438,7 @@ footer{
 }
 .btn-carrito:hover {
     background: #acd4c0 ;
+    color: #000
 }
 
 /*----- media query -----*/
