@@ -1,21 +1,91 @@
 /*------ ANUNCIO ------*/
-.anuncios{
-    display: grid;
-    grid-template-columns: 2fr 1fr;
-    gap: 15px;
+.anuncio{
+    display: flex;
+    align-items: center;
+    gap: 10px;
 }
-.galeria{
+.text-content{
     display: flex;
     flex-direction: column;
-    align-items: center;
+    gap: 15px;
+    margin: 0 10px;
+}
+.text-content h1 {
+    font-size: 3em;
+    color: rgb(0, 0, 0);
+    text-transform: uppercase;
+    font-weight: bolder;
+}
+.text-content p {
+    font-size: 18px;
+    line-height: 1.6;
+}
+.bts{
+    display: flex;
+    gap: 15px;
+}
+.button {
+    display: inline-block;
+    padding: 15px 35px;
+    border: 2px solid #eee;
+    background-color: #2c3e50;
+    color: #fff;
+    text-decoration: none;
+    text-transform: uppercase;
+    border-radius: 25px;
+    box-shadow: 0 4px 6px #0000001a;
+    transition: background-color 0.3s, transform 0.3s;
+}
+.button:hover {
+    background-color: #acd4c0;
+    transform: translateY(-2px);
+}
+/*------ SLIDER ------*/
+
+.slider-conten{
+    display: flex;
     justify-content: center;
+    align-items: center;
+    width: 95%;
+    max-width: 500px;
 }
-.galeria-img{
-    width: 500px;
-}
-.galeria img{
+.slider {
     width: 100%;
-    height: 100%;
+    overflow: hidden;
+    border-radius: 15px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+.slider ul {
+    display: flex;
+    animation: cambio 36s infinite;
+    padding: 0;
+    margin: 0;
+    width: 500%;
+}
+.slider li {
+    width: 100%;
+    list-style: none;
+}
+.slider img {
+    width: 100%;
+    display: block;
+}
+
+@keyframes cambio {
+    0% {margin-left: 0;}
+    20% {margin-left: -0%;}
+    25% {margin-left: -100%;}
+    45% {margin-left: -100%;}
+    50% {margin-left: -200%;}
+    70% {margin-left: -200%;}
+    75% {margin-left: -300%;}
+    100% {margin-left: -300%;}
+}
+.divider {
+    height: 2px;
+    width: 80%;
+    background: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.514), rgba(0, 0, 0, 0));
+    margin: 50px auto;
 }
 
 /*----- Productos destacados -----*/
@@ -23,26 +93,30 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
+    margin: 20px;
     align-items: center;
 }
 .destacados-contenido{
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 90%;
-    margin: 15px;
+    width: 100%;
+    margin: 15px 0;
     gap: 15px;
 }
-.destacados-contenido button{
-    height: 50px;
+.destacados-contenido > button{
+    height: 40px;
+    font-size: 40px;
     border: none;
     border-radius: 10px;
+    
 }
-.carts{
+.destacados-contenido .carts{
     width: 100%;
     display: flex;
     justify-content: space-around;
-    gap: 10px;
+    gap: 30px;
+    overflow: hidden;
 }
 
 /*----- Productos -----*/
@@ -59,7 +133,15 @@
 }
 .productos-container > .carts{
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
     justify-items: center;
     gap: 30px;
+}
+
+
+/*----- media query -----*/
+@media (max-width: 768px){
+    .anuncio{
+        flex-direction: column;
+    }
 }
