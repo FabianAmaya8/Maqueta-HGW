@@ -23,7 +23,7 @@ section{
     gap: 4% 2%;
     transition: 240ms ease-in-out;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     gap: 50px;
     justify-items: center;
     border: 5px solid var(--fondo-titulos-transparente);
@@ -31,10 +31,13 @@ section{
     border-radius: 15px;
 }
 .TablaUs{
-    max-height: 90%;
-    min-width: 50%;
+    max-height: 50%;
+    width: 50%;
     border-collapse: collapse;
     margin: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
 }
 table{
     width: 100% !important;
@@ -162,4 +165,10 @@ thead{
     width: 100%;
     align-items: center;
     gap: 15px;
+}
+.butones{
+    display: flex;
+    justify-content: space-around;
+    gap: 20px;
+
 }
