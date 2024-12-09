@@ -30,8 +30,14 @@ export const productsData = [
         imageUrl: "../../../../img/hgw/producto 5.png"
     },
     {
-        categoria: "148200.00",
+        categoria: "Merchandise",
         name: "MORRAL",
+        price: 50000,
+        imageUrl: "../../../../img/hgw/producto 6.png"
+    },
+    {
+        categoria: "Alimentos",
+        name: "",
         price: 50000,
         imageUrl: "../../../../img/hgw/producto 6.png"
     },

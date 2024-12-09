@@ -16,16 +16,24 @@
     <script type="module" src="../../js/fijos.js"></script>
 <div class="producto">
     <div class="producto-izquierda">
-        <img src="https://file.healthgreenworld.com/file/image/20220711/08993faaffd7480cb7731719b6dfc0b9.jpg"
+        <img id="producto-principal"
+            src="https://file.healthgreenworld.com/file/image/20220711/08993faaffd7480cb7731719b6dfc0b9.jpg"
             alt="Producto principal">
         <div class="miniaturas">
+            <img src="https://file.healthgreenworld.com/file/image/20220711/08993faaffd7480cb7731719b6dfc0b9.jpg"
+                alt="Vista 1" onclick="cambiarImagen(this)">
             <img src="https://instagram.fbog9-1.fna.fbcdn.net/v/t39.30808-6/450357916_476795474934697_479282111071146869_n.jpg?stp=dst-jpg_e35_tt6&efg=eyJ2ZW5jb2RlX3RhZyI6ImltYWdlX3VybGdlbi4xMDgweDEwODAuc2RyLmYzMDgwOC5kZWZhdWx0X2ltYWdlIn0&_nc_ht=instagram.fbog9-1.fna.fbcdn.net&_nc_cat=101&_nc_ohc=cGNyIIDcGkkQ7kNvgEiWFcJ&_nc_gid=dc6eb86441b14553b0347d57c48fa524&edm=APoiHPcAAAAA&ccb=7-5&ig_cache_key=MzQwNzc1MTA5NzExNzQ3NzA5OA%3D%3D.3-ccb7-5&oh=00_AYBI2u2BbbCgjaMrKCFZOVo8lmLLWPgLVLZCqGbUXfC4iQ&oe=675BD989&_nc_sid=22de04"
-                alt="Vista 1">
-            <img src="/img/productos/teazul.jpg" alt="Vista 2">
+                alt="Vista 1" onclick="cambiarImagen(this)">
+            <img src="/img/productos/teazul.jpg" alt="Vista 2" onclick="cambiarImagen(this)">
             <img src="https://instagram.fbog9-1.fna.fbcdn.net/v/t39.30808-6/369600082_292347110046202_2522183922743263688_n.jpg?stp=dst-jpg_e35_s1080x1080_tt6&efg=eyJ2ZW5jb2RlX3RhZyI6ImltYWdlX3VybGdlbi4xNTAweDE1MDAuc2RyLmYzMDgwOC5kZWZhdWx0X2ltYWdlIn0&_nc_ht=instagram.fbog9-1.fna.fbcdn.net&_nc_cat=110&_nc_ohc=5ncByFooLjwQ7kNvgH0RMcY&_nc_gid=3b191811f8804ac4b6406e689d90c595&edm=APoiHPcAAAAA&ccb=7-5&ig_cache_key=MzE3NjczNzg1NTc3MTMyMDc1Mw%3D%3D.3-ccb7-5&oh=00_AYC3zc0QllMMUhhcZoGQSyIbnBbJhqt40RCTm9UshE2rlw&oe=675BE0EB&_nc_sid=22de04"
-                alt="Vista 3">
+                alt="Vista 3" onclick="cambiarImagen(this)">
         </div>
     </div>
+    <script>
+        function cambiarImagen(imagen) {
+            document.getElementById('producto-principal').src = imagen.src;
+        }
+    </script>
     <div class="producto-derecha">
         <h1>Berry Gano Coffee</h1>
         <p class="precio">$87,400</p>
