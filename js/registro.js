@@ -26,4 +26,17 @@ function mostrarSeccion(seccion) {
         seccionMostrar.style.display = 'block';
     }
 }
+$(document).ready(function () {
+    $('#button_finalizar').click(function () {
+        Swal.fire({
+            icon: "success",
+            title: 'Registro exitoso',
+            text: 'Bienvenido a la empresa',
+            confirmButtonText: 'Ingresar',
+        }).then(() => {
+            location.href = '/Index.html';
+        });
+    });
+});
+
 
