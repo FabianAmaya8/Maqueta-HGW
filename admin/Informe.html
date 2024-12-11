@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="styles/informe.css">
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    </head>
+    <body>
+        <section class="section">
+            <h1 style="text-transform: capitalize; margin: 0;">INFORME</h1>
+            <div class="header">
+                <div class="perfil">
+                    <img src="https://i.pravatar.cc/300">
+                    <span class="text">Andres Calamardo</span>
+                    <span class="id text">#3699</span>
+                </div>
+                <table>
+
+                </table>
+            </div>
+            <div class="canvas">
+                <canvas id="canva1"></canvas>
+                <canvas id="canva2"></canvas>
+                <canvas id="canva3"></canvas>
+            </div>
+        </section>
+        <script src="javaScript/canva-informe.js"></script>
+        <script>
+            imprimir();
+            function imprimir(){
+            setTimeout(()=>{
+                    window.print();
+                    window.close();
+            }, 2000)
+            }
+        </script>
+    </body>
+</html>
