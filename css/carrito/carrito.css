@@ -41,6 +41,17 @@
 }
 
 /* Estilos del carrito de compras */
+.contenido{
+    display: flex;
+    gap: 15px;
+}
+.izquierda{
+    flex: 2;
+}
+.derecha{
+    flex: 1;
+    height: 100%;
+}
 .carrito-item{
     display: flex;
     gap: 25px;
@@ -98,7 +109,7 @@
     padding: 15px;
     display: flex;
     flex-direction: column;
-    flex: 1;
+    height: 100%;
     gap: 1.5em;
 }
 .item-resumen {
@@ -112,7 +123,7 @@
 }
 .acciones-carrito {
     display: flex;
-    justify-content: flex-end;
+    justify-content: center;
     gap: 15px;
 }
 .acciones-carrito button {
@@ -124,7 +135,7 @@
 }
 
 /* Estilos de detalles de envío */
-form {
+#miFormulario {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 1rem;

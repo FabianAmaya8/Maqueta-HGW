@@ -361,6 +361,9 @@ footer{
 }
 /*----- Carta de producto -----*/
 .cart-producto{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     background: #fff;
     border: 1px solid #DBE9EA;
     border-radius: 10px;

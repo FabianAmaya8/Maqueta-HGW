@@ -9,6 +9,7 @@
     justify-content: center;
     gap: 20px;
     width: 90%;
+    padding: 10px;
 }
 .info-perfil{
     position: relative;
