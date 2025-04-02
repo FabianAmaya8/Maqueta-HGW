@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/css/style.css">
-    <link rel="stylesheet" href="/css/paginaproducto/paginaproducto.css">
+    <link rel="stylesheet" href="/css/paginaproducto/paginaproducto2.css">
     <link rel="shortcut icon" href="../../img/logo.png" type="image/x-icon">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
@@ -16,21 +16,21 @@
     <script type="module" src="../../js/fijos.js"></script>
     <main class="contenido">
         <div class="conten-item">
-            
+
             <div class="producto">
                 <div class="producto-izquierda">
                     <figure>
                         <img id="producto-principal"
-                            src="https://file.healthgreenworld.com/file/image/20220711/08993faaffd7480cb7731719b6dfc0b9.jpg"
+                            src="/img/hgw/producto 2.png"
                             alt="Producto principal">
                     </figure>
                     <div class="miniaturas">
-                        <img src="https://file.healthgreenworld.com/file/image/20220711/08993faaffd7480cb7731719b6dfc0b9.jpg"
+                        <img src="/img/productos/cream.jpg"
                             alt="Vista 1" onclick="cambiarImagen(this)">
-                        <img src="/img/productos/bgc.jpg"
+                        <img src="/img/productos/cream2.jpg"
                             alt="Vista 2" onclick="cambiarImagen(this)">
-                        <img src="/img/productos/teazul.jpg" 
-                            alt="Vista 3" onclick="cambiarImagen(this)">
+                        <img src="/img/productos/teazul.jpg" alt="Vista 3" onclick="cambiarImagen(this)">
+                       
                     </div>
                 </div>
                 <script>
@@ -42,24 +42,24 @@
                     <h1>Berry Gano Coffee</h1>
                     <p class="precio">$87,400</p>
                     <p class="detalle">Precio por Unidad – IVA incluido – Precio Regular</p>
-                        <div class="stock-box">
-                            Stock disponible: <span id="stock">15</span>
-                        </div>
+                    <div class="stock-box">
+                        Producto agotado <span id="stock"></span>
+                    </div>
                     <p class="descripcion">
-                        Berry Gano Coffee, un café soluble con polvo de arándanos y extracto de Ganoderma, sin azúcar. Una
+                        Berry Gano Coffee, un café soluble con polvo de arándanos y extracto de Ganoderma, sin azúcar.
+                        Una
                         combinación única que cuida de tu bienestar sin sacrificar el placer de un buen café.
                     </p>
-                    <a target="_blank" href="https://www.youtube.com/watch?v=wFJZLpJoJCA" class="boton-uso">Ver video del producto</a>
+                    <a target="_blank" href="https://www.youtube.com/watch?v=wFJZLpJoJCA" class="boton-uso">Ver video
+                        del producto</a>
                     <div class="info-extra">
                         <p><strong>Categoría:</strong> Alimentación</p>
                         <p><strong>Etiquetas:</strong> </p>
                     </div>
                     <div class="accion">
                         <input type="number" min="1" value="1">
-                        <button onclick="mostrarAler()" class="boton-carrito">Añadir al Carrito</button>
+                        <button onclick="mostrarAlerta()" class="boton-carrito">Añadir al Carrito</button>
                     </div>
-                    <script src="../../js/productos/alerta-añadir.js"></script>
-
                 </div>
             </div>
         </div>
@@ -73,5 +73,6 @@
         </div>
     </main>
 
-<script type="module" src="../../js/productos/producto.js"></script>
+    <script type="module" src="../../js/productos/producto.js"></script>
+
 </html>
