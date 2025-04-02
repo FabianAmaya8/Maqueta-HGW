@@ -4,11 +4,60 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="styles/style_Paneles.css">
+    <link rel="stylesheet" href="styles/style_creacion.css">
+    <link rel="stylesheet" href="styles/bootstrap.min.css">
 </head>
 <body>
     <div class="contenedor">
         <div class="panel">
-            
+            <div class="info">
+                <div class="foto">
+                    <img src="img\catalogo\pat1.jpeg" alt="foto">
+                </div>
+                <div class="datos">
+                    <div class="input-group mb-3">
+                      <input type="text" class="form-control" placeholder="nombre categoria" aria-label="Recipient's username" aria-describedby="basic-addon2">
+                      <span class="input-group-text" id="basic-addon2">nombre</span>
+                    </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="basic-addon1">@</span>
+                        <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
+                      </div>
+                      
+                      <div class="btn-group" id="verificacion">
+                          <button type="button" class="btn btn-outline-success">crear</button>
+                          <button type="button" class="btn btn-outline-danger">cancelar</button>
+                      </div>
+                </div>
+            </div>
+            <div>
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Nombre de ${seccion} </th>
+                            <th>Descripción</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        ${tableData.map(row => `
+                            <tr>
+                                <td>${row.id}</td>
+                                <td>${row.nombre}</td>
+                                <td>${row.descripcion}</td>
+                                <td>
+                                    <div class="btn-group" role="group" aria-label="Basic outlined example">
+                                        <button type="button" class="btn btn-outline-primary" location.href:${row.editarURL}>editar</button>
+                                        <button type="button" class="btn btn-outline-primary">eliminar</button>
+                                    </div>
+                                </td>
+                            </tr>
+                        `).join('')}
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
 

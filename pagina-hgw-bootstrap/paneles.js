@@ -6,8 +6,8 @@ export function panelGestion(tableData, seccion) {
                     <button type="button" class="btn btn-success">crear ${seccion} </button>
                     <button type="button" class="btn btn-success">editar ${seccion} </button>
                     <div class="input-group flex-nowrap">
-                        <span class="input-group-text" id="addon-wrapping">@</span>
-                        <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="addon-wrapping">
+                        <span class="input-group-text" id="addon-wrapping"><i class="bi bi-people"></i></span>
+                        <input type="text" class="form-control" placeholder=${seccion} aria-label="Username" aria-describedby="addon-wrapping">
                     </div>
                 </div>
                 <div>
