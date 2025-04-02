@@ -1,0 +1,33 @@
+:root {
+    --primary-color: #ffffff;   
+    --secondary-color: #6BBF59; 
+    --tertiary-color: #43A047; 
+    --text-color: #333333;      
+    --background-color: #f8f9fa; 
+}
+.acciones{
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    max-height: 100vh;
+    padding: 25px;
+}
+.input-group{
+    max-width:30% ;
+}
+.btn-success{
+    width: 20%;
+    height: 52px;
+    border-radius: 30px;
+    transition: 0.5s;
+    border-width: 2px;
+    font-size: 1;
+    background-color: var(--tertiary-color);
+    border-color: var(--tertiary-color);
+}
+.btn-success:hover{
+    background-color: white;
+    color:var(--tertiary-color) ;
+    border-color: var(--tertiary-color) ;
+    border-width: 2px;
+}

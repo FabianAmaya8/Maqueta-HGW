@@ -1,4 +1,4 @@
-import {panel} from './panelGestion.js';
+import {panelGestion} from './paneles.js';
 
 const tableData = [
     { id: 1, nombre: "Superalimentos", descripcion: "Alimentos como chía, linaza, quinoa, etc.", editarURL: "../edicion/Editarcategoria.html" },
@@ -20,4 +20,4 @@ const modulos={
     5:'Productos'
 }
 
-document.body.innerHTML = panel(tableData, modulos[2]);
+document.body.innerHTML = panelGestion(tableData, modulos[2]);
