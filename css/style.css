@@ -320,6 +320,40 @@ header h2{
     transform: translateY(-3px);
 }
 
+/*----- Chat Bot -----*/
+.chat-bot{
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: var(--chat-bot);
+    z-index: 99;
+}
+
+.chat-bot > button{
+    width: 70px;
+    height: 70px;
+    background: var(--botones);
+    color: var(--blanco);
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 2rem;
+    transition: var(--transicion);
+}
+.chat-bot > button:hover{
+    background: var(--enlaces);
+    font-size: 2.5rem;
+    box-shadow: 0 0 8px var(--sombra);
+    transform: translateY(-3px);
+}
+.bx::after{
+    display: block;
+}
+.dropup .dropdown-toggle::after{
+    display: none;
+}
+.btn .show:active{
+    background-color: inherit;
+}
 
 /*----- FOOTER -----*/
 footer{

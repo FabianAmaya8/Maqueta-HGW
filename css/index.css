@@ -97,18 +97,7 @@
     gap: 15px;
 }
 .destacados-contenido{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    gap: 15px;
-}
-.destacados-contenido > button{
-    height: 40px;
-    font-size: 40px;
-    border: none;
-    border-radius: 10px;
-    
+    width: 80%;
 }
 .destacados-contenido .carts{
     width: 100%;
