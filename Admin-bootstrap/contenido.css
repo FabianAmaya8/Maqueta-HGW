@@ -1,3 +1,85 @@
+:root{
+    --color-btn-principal-letra: #222222de;
+    --color-focus-input: #1987543c;
+    --color-letra-input: #198754b5;
+}
 .contenido{
+    display: flex; 
+    height:max-content;
+    overflow: hidden;
+}
+.form-floating > label{
+    color: var(--color-btn-principal-letra);
+}
+.inputs-form{
     display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex: 1;
+    gap: 1rem;
+    height: 100%;
+}
+.inputs-form > div{
+    width: 100%;
+}
+.form-floating > input:focus{
+    box-shadow: 0 0 0 0.25rem var(--color-focus-input) !important;
+    border-color: var(--color-focus-input);
+}
+.form-floating > input:focus ~ label{
+    color: var(--color-letra-input) !important;
+}
+.imagen-contenedor{
+    flex: 1;
+    height: 100%;
+    border: solid 0.2rem var(--color-btn-principal-letra);
+    transition: 100ms;
+}
+.imagen-contenedor > label:hover{
+    cursor: pointer;
+}
+.imagen-contenedor:hover > label > svg, .imagen-contenedor:hover{
+    transition: 100ms;
+    fill: var(--color-letra-input);
+    border-color: var(--color-letra-input);
+}
+.imagen-contenedor > label{
+    width: 100%; height: 100%;
+    display: flex;
+    justify-content: center; align-items: center;
+}
+.imagen-contenedor > label > svg{
+    width: 20%; height: 20%;
+    fill: var(--color-btn-principal-letra);
+    transition: 100ms;
+}
+.formulario{
+    width: 100%; height: 29.54rem;
+    display: flex;
+    align-items: center;
+    gap: 7%;
+    padding-left: 3rem; padding-right: 3rem; padding-top: 2rem; padding-bottom: 4rem;
+}
+.buttons-form{
+    width: 100%; height: max-content;
+    display: flex;
+    justify-content: end;
+}
+select:focus{
+    box-shadow: 0 0 0 0.25rem var(--color-focus-input) !important;
+    border-color: var(--color-focus-input) !important;
+    color: var(--color-btn-principal-letra);
+}
+select{
+    height: calc(3.5rem + calc(var(--bs-border-width)* 2));
+}
+.alerta_producto{
+    position: absolute;
+    right: -23rem; top: 1rem;
+    z-index: 1;
+    transition: 300ms;
+}
+.alerta_producto-on{
+    transition: 300ms;
+    right: 0;
 }
