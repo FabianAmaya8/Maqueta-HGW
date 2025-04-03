@@ -1,3 +1,6 @@
+:root{
+    --boton-carucel: #47bf26;
+}
 /*------ ANUNCIO ------*/
 .anuncio{
     display: flex;
@@ -97,7 +100,29 @@
     gap: 15px;
 }
 .destacados-contenido{
-    width: 80%;
+    width: 100%;
+}
+.carousel-item{
+    padding: 20px 0;
+}
+.destacados .carousel-indicators{
+    margin-bottom: 0;
+}
+.destacados .carousel-indicators [data-bs-target] {
+    background-color: var(--boton-carucel);
+}
+.destacados .carousel-control-next,
+.destacados .carousel-control-prev{
+    width: auto;
+}
+.destacados .carousel-control-next-icon,
+.destacados .carousel-control-prev-icon {
+    background: none;
+}
+.destacados .carousel-control-next-icon i,
+.destacados .carousel-control-prev-icon i{
+    color: var(--boton-carucel);
+    font-size: 3rem;
 }
 .destacados-contenido .carts{
     width: 100%;

@@ -103,7 +103,7 @@ export function initHeader() {
   const opciones = [
     { href: '#', text: 'Login' },
     { href: '../../../../usuario/personal/info-personal.html', text: 'informacion personal' },
-    { href: '#', text: 'menbresias' },
+    { href: '#', text: 'referidos' },
     { href: '#', text: 'Descargar APP' }
   ];
   
