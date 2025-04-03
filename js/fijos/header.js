@@ -92,6 +92,8 @@ export function initHeader() {
   
   const personalImg = document.createElement('i');
   personalImg.className = 'bx bxs-user-circle';
+
+  
   
   personalImgDiv.appendChild(personalImg);
   summary.appendChild(personalImgDiv);
@@ -104,7 +106,7 @@ export function initHeader() {
     { href: '#', text: 'Login' },
     { href: '../../../../usuario/personal/info-personal.html', text: 'informacion personal' },
     { href: '#', text: 'menbresias' },
-    { href: '#', text: 'Descargar APP' }
+    { href: '#', text: 'Descargar APP' },
   ];
   
   opciones.forEach(opcion => {

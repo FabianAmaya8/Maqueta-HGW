@@ -12,7 +12,7 @@
     <title>HGW</title>
 </head>
 <body>
-    <script type="module" src="js/fijos.js"></script>
+    <script type="module" src="../../js/fijos.js"></script>
 
     <main class="contenido">
         <div class="conten-item">
@@ -51,13 +51,15 @@
             <div class="destacados">
                 <h2>Productos destacados</h2>
                 <div class="destacados-contenido">
-                    <button>
+                    <button id="btn-prev">
                         <i class='bx bxs-chevron-left'></i>
                     </button>
-                    <div class="carts 5"></div>
-                    <button>
+                    <div class="carts 100">
+                    </div>
+                    <button id="btn-next">
                         <i class='bx bxs-chevron-right'></i>
                     </button>
+                        <script src="js/productos/slide.prod.js" defer></script>
                 </div>
             </div>
         </div>
@@ -70,9 +72,7 @@
             </div>
         </div>
     </main>
-
+    <script src="js/productos/slide.prod.js" defer></script>
     <script type="module" src="js/productos/producto.js"></script>
-
-    
 </body>
 </html>

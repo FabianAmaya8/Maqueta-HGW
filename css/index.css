@@ -89,35 +89,38 @@
 }
 
 /*----- Productos destacados -----*/
-.destacados{
+.destacados {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     gap: 15px;
 }
-.destacados-contenido{
+
+.destacados-contenido {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     width: 100%;
-    gap: 15px;
+    overflow: hidden;
+    position: relative;
 }
-.destacados-contenido > button{
+
+.destacados-contenido>button {
     height: 40px;
     font-size: 40px;
     border: none;
     border-radius: 10px;
-    
-}
-.destacados-contenido .carts{
-    width: 100%;
-    display: flex;
-    justify-content: space-around;
-    gap: 30px;
-    overflow: hidden;
+    cursor: pointer;
+    background-color: #ddd;
 }
 
+.destacados-contenido .carts {
+    display: flex;
+    width: max-content;
+    position: relative;
+    animation: cambio 15s infinite linear;
+}
 /*----- Productos -----*/
 
 .productos{
@@ -137,8 +140,6 @@
     justify-items: center;
     gap: 30px;
 }
-
-
 /*----- media query -----*/
 @media (max-width: 768px){
     .anuncio{
