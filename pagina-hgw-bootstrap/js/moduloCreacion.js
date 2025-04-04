@@ -6,4 +6,4 @@ import {subcategorias} from './tablas.js'
 import {productos} from './tablas.js'
 import { gestionables } from './tablas.js';
 
-document.body.innerHTML = panelCreacion(subcategorias, gestionables[3]);
+document.body.innerHTML = panelCreacion(categorias, gestionables[2]);

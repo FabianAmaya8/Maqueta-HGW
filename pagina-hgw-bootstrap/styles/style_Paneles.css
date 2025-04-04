@@ -1,9 +1,16 @@
 :root {
-    --primary-color: #ffffff;   
-    --secondary-color: #6cbf59da; 
     --tertiary-color: #53a36e; 
     --text-color: #1a3122;      
     --background-color: #f8f9fa; 
+    --primary-color: #ffffff;   
+    --secondary-color: #f5f5f5; 
+    --border-color: #d6d6d6;    
+    --text-color: #333333;      
+    --dark-gray: #555555;       
+    --black-color: #222222;     
+    --green-color: #4CAF50;     
+    --green-hover: #388E3C;     
+    
 }
 *{
     padding: 0;
@@ -20,9 +27,7 @@
     background-color: var(--background-color);
     padding: 40px 8px 40px 8px;
 }
-.panel{
-    border-radius: 30px;
-    border:5px solid var(--secondary-color);
+.card{
     display: flex;
     width: 95%;
     max-height: 50%;
@@ -38,7 +43,7 @@
     border-collapse: collapse; 
 }
 .table td, .table th {
-    border: none !important; 
+    border:1px solid var(--border-color) !important; 
     text-align: center;
     color: var(--text-color);
 }

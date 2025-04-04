@@ -1,10 +1,8 @@
 export function panelGestion(tableData, seccion) {
     return `
         <div class="contenedor">
-            <div class="panel">
+            <div class="card">
                 <div class="acciones">
-                    <button type="button" class="btn btn-success">crear ${seccion} </button>
-                    <button type="button" class="btn btn-success">editar ${seccion} </button>
                     <div class="input-group flex-nowrap">
                         <span class="input-group-text" id="addon-wrapping"><i class="bi bi-people"></i></span>
                         <input type="text" class="form-control" placeholder=${seccion} aria-label="Username" aria-describedby="addon-wrapping">
@@ -45,9 +43,9 @@ export function panelGestion(tableData, seccion) {
 export function panelCreacion(tableData, seccion){
     return `
     <div class="contenedor">
-        <div class="panel">
+        <div class="card">
             <div class="info">
-                <div class="foto">
+                <div class="card" id="foto">
                     <img src="./img\catalogo\pat1.jpeg" alt="foto">
                 </div>
                 <div class="datos">
