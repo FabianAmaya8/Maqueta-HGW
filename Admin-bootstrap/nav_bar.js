@@ -1,5 +1,6 @@
 var inputs_valores = ["Nombre Producto", "Precio Producto", "Descripción"];
 var datos_inicio = [{titulo: "hola", contenido: "Informe de referido este mes", extra: "ellos"}, {titulo: "hola", contenido: "Informe de referido este mes", extra: "ellos"}, {titulo: "hola", contenido: "Informe de referido este mes", extra: "ellos"}, {titulo: "hola", contenido: "Informe de referido este mes", extra: "ellos"}];
+var productos = [];
 const contenido = document.getElementById("contenido");
 let nav_bar = `
      <div class="card-body">
@@ -70,9 +71,53 @@ function inicio(){
     `;
     contenido.innerHTML = inicio;
 }
-function productosLista(){
+function productosLista() {
+    function encabezado(){
+        let encabezado = "";
+        if(productos.length > 0){
+            for(let i = 0; i < Object.keys(productos[0]).length; i++){
+                encabezado += `
+                    <th>
+                        ${Object.keys(productos[0])[i]}
+                    </th>
+                `;
+            }
+        }
+        return encabezado;
+    }
+    function filas(){
+        function datos(fila){
+            let datosVar = "";
+            for(let i = 0; i < Object.keys(productos[0]).length; i++){
+                datosVar += `
+                    <td>
+                        ${productos[fila][(Object.keys(productos[0]))[i]]}
+                    </td>
+                `;
+            }
+            return datosVar;
+        }
+        let filasVar = "";
+        for(let i = 0; i < productos.length; i++){
+            filasVar += `
+                <tr>
+                    ${datos(i)}        
+                </tr>
+            `;
+        }
+        return filasVar;
+    }
     let productos_pagina = `
-        <h1>Lista</h1>
+        <div class="contenedor-tablas">
+            <table class="table">
+                <thead>
+                    <tr>
+                        ${encabezado()}            
+                    </tr>
+                </thead>
+                ${filas()}
+            </table>
+        </div>
     `;
     contenido.innerHTML = productos_pagina;
 }
@@ -82,7 +127,7 @@ function crearProductos(){
         for(let i = 0; i < inputs_valores.length; i++){
             inputsHtml += `
                 <div class="form-floating">
-                    <input required class="form-control" id="nombre_producto" placeholder="">
+                    <input id="${inputs_valores[i]}" required class="form-control" id="nombre_producto" placeholder="">
                     <label for="nombre_producto">${inputs_valores[i]}</label>
                 </div>
             `;
@@ -108,7 +153,7 @@ function crearProductos(){
                             <option value="3">Alimentos</option>
                             </select>
                     <div class="buttons-form">
-                        <button type="submit" class="btn btn-success">Crear Producto</button>
+                        <button type="submit" class="btn btn-success" onclick="agregarProducto()">Crear Producto</button>
                     </div>
                 </form>
             </div>
@@ -122,4 +167,12 @@ function crearProductos(){
         }, 3500);
    };
 }
-window.onload = inicio();
+function agregarProducto(){
+    let objeto = {};
+    inputs_valores.forEach(valor => {
+        objeto[valor] = document.getElementById(valor).value;
+    });
+    productos[productos.length] = objeto;
+    console.log(productos);
+}
+window.onload = productosLista();
