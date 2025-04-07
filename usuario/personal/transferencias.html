@@ -17,6 +17,8 @@
 </head>
 <body>
     <script type="module" src="../../js/fijos.js"></script>
+    <script type="module" src="../../js/Administracion financiera/transact.js"></script>
+    <script type="module" src="../../js/mainfinam.js"></script>
     <div class="wrapper rounded">
         <nav class="navbar navbar-expand-lg navbar-dark dark d-lg-flex align-items-lg-start"> <a class="navbar-brand"
                 href="#">Transacciones <p class="text-muted pl-1">Bievenido a tus transacciones</p> </a> <button
@@ -50,10 +52,34 @@
         </div>
         <div class="d-flex justify-content-between align-items-center mt-3">
             <ul class="nav nav-tabs w-75">
-                <li class="nav-item"> <a class="nav-link active" href="#history">Historial</a> </li>
-                <li class="nav-item"> <a class="nav-link" href="#">Reportes</a> </li>
-            </ul> <button class="btn btn-primary">Nueva Transaccion</button>
+                <li class="nav-item"><a class="nav-link active" href="#history">Historial</a></li>
+                <li class="nav-item"><a class="nav-link" href="#">Reportes</a></li>
+            </ul>
+            <button class="btn btn-primary btn-nueva-transaccion">Nueva Transacción</button>
         </div>
+        
+        <div id="i1" style="display: none;" class="mt-4">
+            <h2>Transferencia entre Usuarios</h2>
+            <form id="formTransaccion">
+                <div class="mb-3">
+                    <label for="emisor" class="form-label">Usuario que envía:</label>
+                    <input type="text" id="emisor" class="form-control" required>
+                </div>
+                <div class="mb-3">
+                    <label for="receptor" class="form-label">Usuario que recibe:</label>
+                    <input type="text" id="receptor" class="form-control" required>
+                </div>
+                <div class="mb-3">
+                    <label for="saldo_emisor" class="form-label">Saldo actual del emisor:</label>
+                    <input type="number" id="saldo_emisor" class="form-control" step="0.01" required>
+                </div>
+                <div class="mb-3">
+                    <label for="cantidad" class="form-label">Cantidad a transferir:</label>
+                    <input type="number" id="cantidad" class="form-control" step="0.01" required>
+                </div>
+                <button type="submit" class="btn btn-success w-100">Enviar</button>
+            </form>
+        </div>        
         <div class="table-responsive mt-3">
             <table class="table table-dark table-borderless">
                 <thead>
