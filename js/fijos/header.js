@@ -116,10 +116,7 @@ export function initHeader() {
     a.textContent = opcion.text;
   
     if (opcion.text === 'Login') {
-      a.id = 'loginModal'
-    }
-    if (opcion.text === 'referidos') {
-      a.id = 'modalReferidos'
+      a.className = 'login'
     } else {
       a.textContent = opcion.text;
     }
