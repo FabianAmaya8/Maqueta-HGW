@@ -1,21 +1,17 @@
 export function initLogin() {
-  const modal = document.getElementById('login-modal');
-  const buttons = document.querySelectorAll('.login');
-  const closeModal = document.querySelector('.modal .close');
+  // Elementos del DOM
+  const openModalLink = document.getElementById('loginModal');
   
-  buttons.forEach(button => {
-  button.addEventListener('click', () => {
-      modal.classList.add('show'); // Añade la clase 'show' para mostrar el modal
+  // Al abrir el modal, generar un código y asignarlo al input
+  openModalLink.addEventListener('click', function(e) {
+      e.preventDefault();
+      const modal = new bootstrap.Modal(document.getElementById('login-modal'));
+      modal.show();
   });
-  });
-  
-  closeModal.addEventListener('click', () => {
-    modal.classList.remove('show'); // Elimina la clase 'show' para ocultarlo
-  });
-  
-  window.addEventListener('click', (event) => {
-  if (event.target === modal) {
-      modal.classList.remove('show'); // Elimina la clase 'show' si se hace clic fuera del modal
-  }
+
+  document.getElementById("loginModal").addEventListener("click", function () {
+      setTimeout(() => {
+          document.querySelectorAll(".modal-backdrop").forEach(el => el.remove());
+      }, 100);
   });
 }
