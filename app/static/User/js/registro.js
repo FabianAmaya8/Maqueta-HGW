@@ -1,5 +1,5 @@
-document.addEventListener('DOMContentLoaded', function() {
-    // Get all steps and navigation links
+document.addEventListener('DOMContentLoaded', function () {
+    // Pasos del formulario
     const stepPersonal = document.getElementById('step-personal');
     const stepEnvio = document.getElementById('step-envio');
     const stepFoto = document.getElementById('step-foto');
@@ -18,19 +18,15 @@ document.addEventListener('DOMContentLoaded', function() {
     const currentStepIndicator = document.getElementById('current-step');
     const form = document.getElementById('registration-form');
     
-    // Function to show step
+    // Mostrar paso
     function showStep(step) {
-        // Hide all steps
         stepPersonal.classList.remove('active');
         stepEnvio.classList.remove('active');
         stepFoto.classList.remove('active');
-        
-        // Deactivate all links
         linkPersonal.classList.remove('active');
         linkEnvio.classList.remove('active');
         linkFoto.classList.remove('active');
         
-        // Show selected step
         if (step === 'personal') {
             stepPersonal.classList.add('active');
             linkPersonal.classList.add('active');
@@ -46,7 +42,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
     
-    // Validate form fields for a specific step
+    // Validar paso
     function validateStep(step) {
         let isValid = true;
         
@@ -61,8 +57,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     isValid = false;
                 } else {
                     element.classList.remove('is-invalid');
-                    
-                    // Additional validation for specific fields
+
                     if (field === 'confirmar-contrasena') {
                         const password = document.getElementById('contrasena').value;
                         if (element.value !== password) {
@@ -85,11 +80,9 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
             });
         } else if (step === 'envio') {
-            const requiredFields = ['direccion', 'codigo-postal', 'pais', 'ciudad'];
-            
+            const requiredFields = ['direccion', 'codigo-postal', 'lugar-entrega', 'pais', 'ciudad'];
             requiredFields.forEach(field => {
                 const element = document.getElementById(field);
-                
                 if (!element.value) {
                     element.classList.add('is-invalid');
                     isValid = false;
@@ -99,7 +92,6 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         } else if (step === 'foto') {
             const profilePic = document.getElementById('profile-pic');
-            
             if (!profilePic.files || profilePic.files.length === 0) {
                 profilePic.classList.add('is-invalid');
                 isValid = false;
@@ -111,7 +103,7 @@ document.addEventListener('DOMContentLoaded', function() {
         return isValid;
     }
     
-    // Navigation event listeners
+    // Navegación entre pasos
     btnToEnvio.addEventListener('click', function() {
         if (validateStep('personal')) {
             showStep('envio');
@@ -119,7 +111,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
     
     btnBackIndex.addEventListener('click', function() {
-        
+        location.href = '/';
     });
 
     btnBackPersonal.addEventListener('click', function() {
@@ -136,7 +128,6 @@ document.addEventListener('DOMContentLoaded', function() {
         showStep('envio');
     });
     
-    // Link navigation
     linkPersonal.addEventListener('click', function(e) {
         e.preventDefault();
         showStep('personal');
@@ -162,37 +153,24 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
     
-    // Profile picture preview
+    // Previsualización de la foto de perfil
     document.getElementById('profile-pic').addEventListener('change', function(e) {
         const file = e.target.files[0];
         if (file) {
             const reader = new FileReader();
             reader.onload = function(event) {
                 document.getElementById('preview-profile-pic').src = event.target.result;
-            }
+            };
             reader.readAsDataURL(file);
         }
     });
     
-    // Form submission
-    form.addEventListener('submit', function(e) {
-        e.preventDefault();
-
+    // Envío del formulario
+    form.addEventListener('submit', function (e) {
         if (validateStep('personal') && validateStep('envio') && validateStep('foto')) {
-            Swal.fire({
-                icon: "success",
-                title: 'Registro exitoso',
-                text: 'Bienvenido a la empresa',
-                confirmButtonText: 'Ingresar',
-            }).then(() => {
-                location.href = '/Index.html';
-            });
-
-            // Opcional: resetear el formulario después del registro
-            form.reset();
-            showStep('personal');
-            document.getElementById('preview-profile-pic').src = "/api/placeholder/150/150";
+            // Si todo es válido, no hacemos preventDefault y se envía el formulario
         } else {
+            e.preventDefault();  // Solo prevenimos si hay errores
             if (!validateStep('foto')) {
                 showStep('foto');
             } else if (!validateStep('envio')) {
@@ -202,4 +180,32 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         }
     });
+    
+
+    // Filtrado de ciudades según el país
+    const selectPais = document.getElementById('pais');
+    const selectCiudad = document.getElementById('ciudad');
+    const opcionesCiudad = Array.from(selectCiudad.options);
+
+    function filtrarCiudades() {
+        const idPaisSeleccionado = selectPais.value;
+
+        // Limpiar el select de ciudad y dejar solo la opción por defecto
+        selectCiudad.innerHTML = '<option value="">Selecciona una ciudad</option>';
+
+        // Filtrar y agregar las ciudades que corresponden al país seleccionado
+        const ciudadesFiltradas = opcionesCiudad.filter(opcion => {
+            return opcion.dataset.pais === idPaisSeleccionado;
+        });
+
+        ciudadesFiltradas.forEach(ciudad => {
+            selectCiudad.appendChild(ciudad);
+        });
+    }
+
+    // Ocultar todas las ciudades al principio (excepto la opción por defecto)
+    selectCiudad.innerHTML = '<option value="">Selecciona una ciudad</option>';
+
+    // Evento cuando se cambia el país
+    selectPais.addEventListener('change', filtrarCiudades);
 });

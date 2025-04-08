@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" href="{{ url_for('static', filename='User/css/bootstrap.min.css') }}">
+    <script src="{{ url_for('static', filename='User/js/bootstrap.bundle.min.js') }}"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='User/css/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='User/css/login.css') }}">
+    <link rel="shortcut icon" href="{{ url_for('static', filename='User/img/logo.png') }}" type="image/x-icon">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <title>Iniciar Sesión HGW</title>
+</head>
+<body>    
+    <script type="module" src="{{ url_for('static', filename='User/js/view/fijosView.js') }}"></script>
+
+    <main class="container login-container">
+        <div class="row">
+            <!-- Sidebar -->
+            <div class="col-md-5 sidebar">
+                <h2>Bienvenido a HGW</h2>
+                <p>Inicia sesión para acceder a tu cuenta y disfrutar de todos nuestros servicios.</p>
+                <p>Si aún no tienes una cuenta, puedes registrarte fácilmente haciendo clic en el enlace de registro.</p>
+                <!-- Botones de acción -->
+                <div class="mt-4 d-flex flex-column gap-2">
+                    <a href="{{ url_for('user_bp.register') }}" class="btn btn-outline-primary btn-login">Registrarse</a>
+                    <a href="{{ url_for('view_bp.Home') }}" class="btn btn-outline-secondary btn-login">Volver al inicio</a>
+                </div>
+            </div>
+            
+            <!-- Login Form -->
+            <div class="col-md-7 login-form">
+                <h2>Iniciar Sesión</h2>
+                <form id="login-form" method="POST" action="{{ url_for('user_bp.login') }}">
+                    <div class="form-group">
+                        <label for="usuario" class="form-label">Usuario</label>
+                        <input type="text" class="form-control" id="usuario" name="usuario" placeholder="Ingresa tu usuario" required>
+                        <div class="invalid-feedback">Por favor ingresa tu usuario.</div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="contrasena" class="form-label">Contraseña</label>
+                        <div class="input-with-icon">
+                            <input type="password" class="form-control" id="contrasena" name="contrasena" placeholder="Ingresa tu contraseña" required>
+                            <i class='bx bx-hide' id="toggle-password"></i>
+                        </div>
+                        <div class="invalid-feedback">Por favor ingresa tu contraseña.</div>
+                    </div>
+                    
+                    <button type="submit" id="btn-ingresar" class="btn btn-login">Iniciar Sesión</button>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <script src="{{ url_for('static', filename='User/js/login/fun-login.js') }}"></script>
+    <!-- <script src="{{ url_for('static', filename='User/js/login/validacion.js') }}"></script> -->
+
+</body>
+</html>
