@@ -1,9 +1,9 @@
-from flask import flask, request, jsonify
+from flask import flask, request, jsonify, Blueprint, current_app
 import pymysql
 from datetime import datetime
 
-conexion=conexion_db()
-
+moduloChatbot = Blueprint("chatbot", __name__)
+conexion = current_app.conexion
 def guardarMensaje(id_conversacion, usuario, mensaje):
     if conexion:
         try:
@@ -27,6 +27,6 @@ def recibirMensaje():
     id_conversacion = datos.get('id_conversacion')
     mensajeUsuario = datos.get('mensaje')
     guardarMensaje(id_conversacion, 'usuario', mensajeUsuario)
-    respuesta=procesarMensaje()
+    respuesta=procesarMensaje(mensajeUsuario)
     guardarMensaje(id_conversacion, 'bot')
     return jsonify({'respuesta':respuesta})
