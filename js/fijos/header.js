@@ -105,8 +105,8 @@ export function initHeader() {
   const opciones = [
     { href: '#', text: 'Login' },
     { href: '../../../../usuario/personal/info-personal.html', text: 'informacion personal' },
-    { href: '#', text: 'menbresias' },
-    { href: '#', text: 'Descargar APP' },
+    { href: '#', text: 'referidos' },
+    { href: '#', text: 'Descargar APP' }
   ];
   
   opciones.forEach(opcion => {
@@ -116,7 +116,10 @@ export function initHeader() {
     a.textContent = opcion.text;
   
     if (opcion.text === 'Login') {
-      a.className = 'login'
+      a.id = 'loginModal'
+    }
+    if (opcion.text === 'referidos') {
+      a.id = 'modalReferidos'
     } else {
       a.textContent = opcion.text;
     }

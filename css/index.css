@@ -1,3 +1,6 @@
+:root{
+    --boton-carucel: #47bf26;
+}
 /*------ ANUNCIO ------*/
 .anuncio{
     display: flex;
@@ -96,23 +99,37 @@
     align-items: center;
     gap: 15px;
 }
-
-.destacados-contenido {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.destacados-contenido{
     width: 100%;
-    overflow: hidden;
-    position: relative;
 }
-
-.destacados-contenido>button {
-    height: 40px;
-    font-size: 40px;
-    border: none;
-    border-radius: 10px;
-    cursor: pointer;
-    background-color: #ddd;
+.carousel-item{
+    padding: 20px 0;
+}
+.destacados .carousel-indicators{
+    margin-bottom: 0;
+}
+.destacados .carousel-indicators [data-bs-target] {
+    background-color: var(--boton-carucel);
+}
+.destacados .carousel-control-next,
+.destacados .carousel-control-prev{
+    width: auto;
+}
+.destacados .carousel-control-next-icon,
+.destacados .carousel-control-prev-icon {
+    background: none;
+}
+.destacados .carousel-control-next-icon i,
+.destacados .carousel-control-prev-icon i{
+    color: var(--boton-carucel);
+    font-size: 3rem;
+}
+.destacados-contenido .carts{
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    gap: 30px;
+    overflow: hidden;
 }
 
 .destacados-contenido .carts {
