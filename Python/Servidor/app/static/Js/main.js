@@ -1,0 +1,20 @@
+import { inicio } from './inicio.js';
+import { navBar } from './nav_bar.js';
+import { crearProductos, agregarProducto } from './Productos/crearProductos.js';
+import { productosLista } from './Productos/listaProductos.js';
+import { editarProducto, editarProductoBoton, eliminarProducto } from './Productos/eliminarEditarProducto.js';
+import { listaBonos } from './Bonos/listaBonos.js';
+import { administrarBonos } from './Bonos/administrarBonos.js';
+window.onload = () => {
+    inicio();
+    navBar();
+};
+window.crearProductos = crearProductos;
+window.inicio = inicio;
+window.agregarProducto = agregarProducto;
+window.productosLista = productosLista;
+window.editarProducto = editarProducto;
+window.editarProductoBoton = editarProductoBoton;
+window.eliminarProducto = eliminarProducto;
+window.listaBonos = listaBonos;
+window.administrarBonos = administrarBonos;
