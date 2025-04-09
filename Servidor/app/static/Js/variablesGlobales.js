@@ -10,7 +10,7 @@ export var datos_inicio = [
     { titulo: "Menos Vendido", contenido: "El producto menos vendido es:", extra: "" }
 ];
 export var productos = [];
-export var encabezadoTablaProductos = ["Id", "Nombre Producto", "Precio Producto", "Descripción", "Categoria"];
+export var encabezadoTablaProductos = [{columna: "Id"}, {columna: "Nombre Producto"}, {columna: "Precio Producto"}, {columna: "Descripción"}, {columna: "Categoria"}];
 export var categorias = ["Categoria", "Bebidas", "Cosmeticos", "Alimentos", "Accesorios"];
 export var categoriasVar = ["No Seleccionada", "Bebidas", "Cosmeticos", "Alimentos", "Accesorios"];
 export const contenido = document.getElementById("contenido");

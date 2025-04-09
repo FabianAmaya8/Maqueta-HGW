@@ -11,7 +11,7 @@ export function lista(encabezadoTablaProductos) {
             for(let i = 0; i < encabezadoTablaProductos.length; i++){
                 encabezado += `
                     <th>
-                        ${(encabezadoTablaProductos[i])}
+                        ${(encabezadoTablaProductos[i].columna)}
                     </th>
                 `;
             }
