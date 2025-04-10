@@ -1,32 +1,37 @@
 import { inputs_valores, datos_inicio, encabezadoTablaProductos, productos, categorias, categoriasVar, contenido } from '../variablesGlobales.js';
-export function productosLista(){
-    lista(encabezadoTablaProductos);
+export function productosLista() {
+    let productos_db = [];
+    async function consulta() {
+        await fetch("http://127.0.0.1:5000/Productos").then(state => state.json()).then(respuesta => productos_db = respuesta);
+        lista(Object.keys(productos_db[0]), productos_db);
+    }
+    consulta();
 }
-export function crearLista(encabezado){
-    return lista(encabezado);
+export function crearLista(encabezado, valores) {
+    return lista(encabezado, valores);
 }
-export function lista(encabezadoTablaProductos) {
-    function encabezado(){
+export function lista(encabezadoTablaProductos, valoresFila) {
+    function encabezado() {
         let encabezado = "";
-            for(let i = 0; i < encabezadoTablaProductos.length; i++){
-                encabezado += `
+        for (let i = 0; i < encabezadoTablaProductos.length; i++) {
+            encabezado += `
                     <th>
                         ${(encabezadoTablaProductos[i])}
                     </th>
                 `;
-            }
+        }
         encabezado += `
             ${encabezado == "" ? "" : "<th> Editar/Eliminar </th>"}
         `;
         return encabezado;
     }
-    function filas(){
-        function datos(fila){
+    function filas() {
+        function datos(fila) {
             let datosVar = "";
-            for(let i = 0; i < Object.keys(productos[0]).length; i++){
+            for (let i = 0; i < encabezadoTablaProductos.length; i++) {
                 datosVar += `
                     <td>
-                        ${productos[fila][(Object.keys(productos[0]))[i]]}
+                        ${valoresFila[fila][Object.keys(valoresFila[fila])[i]]}
                     </td>
                 `;
             }
@@ -50,7 +55,7 @@ export function lista(encabezadoTablaProductos) {
             return datosVar;
         }
         let filasVar = "";
-        for(let i = 0; i < productos.length; i++){
+        for (let i = 0; i < valoresFila.length; i++) {
             filasVar += `
                 <tr>
                     ${datos(i)}        

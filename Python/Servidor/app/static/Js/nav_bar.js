@@ -1,6 +1,6 @@
 import { crearProductos, agregarProducto } from "./Productos/crearProductos.js";
 import { inputs_valores, datos_inicio, productos, categorias, categoriasVar, contenido } from './variablesGlobales.js';
-export function navBar(){
+export function navBar() {
     let nav_bar = `
      <div class="card-body">
                 <nav class="navbar navbar-expand-md navbar-light bg-light">
@@ -40,16 +40,23 @@ export function navBar(){
                                     </svg>
                                 </a>
                                 <ul class="dropdown-menu dropdown-menu-end">
-                                    <li><a class="btn btn-secondary dropdown-item btn-usuario-lista">Cerrar Sesión</a></li>
-                                    <li><a class="dropdown-item btn btn-secondary btn-usuario-lista">Gestion Usuario</a></li>
+                                    <li>
+                                        <a class="btn btn-secondary dropdown-item btn-usuario-lista">Cerrar Sesión</a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item btn btn-secondary btn-usuario-lista">Gestion Usuario</a>
+                                    </li>
                                 </ul>
-                            </li>                            
-                            <li class="ms-0 me-3 d-none d-md-block" style="display: flex; align-items: end; user-select: none; color: #131313"> <h1>| HGW </h1> <p style="display: flex; align-items: end; height: 100%; margin-left: 0.2rem;"> Admin</p> </li>
+                            </li>
+                            <li class="ms-0 me-3 d-none d-md-block" style="display: flex; align-items: center; user-select: none; color: #131313;">
+                                <span style="font-size: 2rem; font-weight: 500;">| HGW</span>
+                                <span style="font-size: 1rem; font-weight: 400; margin-left: 0.2rem; position: relative; top: 3px;">Admin</span>
+                            </li>
                         </ul>
                     </div>
                 </nav>
             </div>            
 `;
-let navCarCard = document.getElementById("nav-bar");
-navCarCard.innerHTML = nav_bar;
+    let navCarCard = document.getElementById("nav-bar");
+    navCarCard.innerHTML = nav_bar;
 }

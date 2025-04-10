@@ -8,37 +8,38 @@ export function crearFormulario(inputs_valores, productoValores, editara){
 }
 function crear(inputs_valores, productoValores, editara) {
     let inputsHtml = "";
-    function inputs() {
-        for (let i = 0; i < inputs_valores.length; i++) {
-            if (inputs_valores[i] != "Categoria") {
-                if (inputs_valores[i] == "Precio Producto") {
-                    inputsHtml += `
-                    <div class="form-floating">
-                        <input type="Number" autocomplete="off" ${!isNaN(productoValores[i]) ? "value=" + parseInt(productoValores[i]) : ""} id="${inputs_valores[i].trim()}" required class="form-control" placeholder="">
-                        <label for="nombre_producto">${inputs_valores[i]}</label>
-                    </div>
-                    `;
-                }
-                else {
-                    inputsHtml += `
-                    <div class="form-floating">
-                        <input autocomplete="off" id="${inputs_valores[i]}" ${productoValores[i] != "" && productoValores[i] != undefined ? `value="${productoValores[i].trim()}"` : ""} required class="form-control"placeholder="">
-                        <label for="nombre_producto">${inputs_valores[i]}</label>
-                    </div>
-                `;
+    function options(i){
+        let opciones = "";
+        for(let z = 0; z < inputs_valores[i].form.length; z++){
+            opciones += `<option value=${z}>${inputs_valores[i].form[z]}</option>`;
+        }
+        return opciones
+    }
+    function form(){
+        let formulario = "";
+        for(let i = 0; i < inputs_valores.length; i++){
+            if(typeof inputs_valores[i].form == "string"){
+                if(inputs_valores[i].form == "input"){
+                    formulario += `
+                        <div class="form-floating mb-3">
+                            <input ${inputs_valores[i].required} type="${inputs_valores[i].tipo}" class="form-control" id="${inputs_valores[i].valor}" placeholder="${inputs_valores[i].valor}">
+                            <label for="${inputs_valores[i].valor}">${inputs_valores[i].valor}</label>
+                        </div>
+                    `;        
                 }
             }
+            else if(Array.isArray(inputs_valores[i].form)){
+                formulario += `
+                    <div class="mb-3">
+                        <select class="form-select" id="${inputs_valores[i].valor}">
+                            <option selected disabled>${inputs_valores[i].valor}</option>
+                            ${options(i)}
+                        </select>
+                    </div>
+                `;
+            }
         }
-        return inputsHtml;
-    }
-    function select() {
-        let options = ``;
-        for (let i = 0; i < categorias.length; i++) {
-            options += `
-                <option value="${i}">${categorias[i]}</option>
-            `;
-        }
-        return options
+        return formulario;
     }
     let productos_pagina = `
         <div class="formulario">
@@ -51,10 +52,7 @@ function crear(inputs_valores, productoValores, editara) {
                     <input form="formulario" type="file" accept="image/*" hidden id="imagen">
                 </div>
                 <form class="inputs-form" id="formulario">
-                    ${inputs()}
-                    <select class="form-select" id="Categoria" aria-label="Default select example">
-                            ${select()}
-                    </select>
+                    ${form()}
                     <div class="buttons-form">
                         <button type="submit" class="btn btn-success" onclick="${editara ? "editarProductoBoton()" : "agregarProducto()"}">${editara ? "Editar Producto" : "Crear Producto"}</button>
                     </div>
@@ -70,14 +68,17 @@ function crear(inputs_valores, productoValores, editara) {
         }, 3500);
     };
     document.getElementById("alerta_producto").textContent = ("✔️ Se ha creado el producto correctamente");
-    return productos_pagina;
 }
 export function agregarProducto() {
     if (document.getElementById("formulario").checkValidity()) {
         let objeto = { Id: productos.length + 1 };
         inputs_valores.forEach(valor => {
-            objeto[valor] = (valor != "Categoria" ? document.getElementById(valor).value : categoriasVar[parseInt(document.getElementById(valor).value)]);
+            objeto[valor.valor] = (valor.valor != "Categoria" ? document.getElementById(valor.valor).value : parseInt(document.getElementById(valor.valor).value));
         });
-        productos[productos.length] = objeto;
+        fetch("http://127.0.0.1:5000/registro_producto", {
+            method: "POST",
+            headers: {"content-type": "application/json"},
+            body: JSON.stringify(objeto)
+        }).then(state => state.text()).then(respuesta => respuesta);
     }
 }

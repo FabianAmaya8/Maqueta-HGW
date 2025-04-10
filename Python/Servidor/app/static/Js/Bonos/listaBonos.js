@@ -2,6 +2,9 @@ import {contenido ,inputs_valores, datos_inicio, productos, categorias, categori
 import { crearLista } from '../Productos/listaProductos.js';
 export function listaBonos(){
     contenido.innerHTML = `
-        ${crearLista(["Id", "Nombre Bono"])}
+        ${crearLista(
+            [{columna: "Id"}, {columna: "Nombre Bono"}, {columna: "Porcentaje"}, {columna: "Tipo"}, {columna: "Costo"}],
+            [{fila1: ["hola", "como"]}, {fila2: ["dsa", "dsa"]}]
+        )}
     `;
 }

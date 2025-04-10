@@ -1,6 +1,7 @@
 from config import datos_conexion_db
 from flask import Flask
 from app.controllers.producto_controller import modulo_producto
+from app.controllers.main_controller import menu
 import pymysql
 
 def crear_app():
@@ -11,8 +12,9 @@ def crear_app():
         user = app.config["MYSQL_USER"],
         password = app.config["MYSQL_PASSWORD"],
         database = app.config["MYSQL_DB"],
-        cursorclass = pymysql.cursors.DictoCursor
+        cursorclass = pymysql.cursors.DictCursor
     )
     app.conexion = conexion
     app.register_blueprint(modulo_producto)
+    app.register_blueprint(menu)
     return app
