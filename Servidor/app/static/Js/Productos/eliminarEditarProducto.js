@@ -7,6 +7,14 @@ export function eliminarProducto(event){
         }
     });
     fila.parentElement.removeChild(fila);
+    let datosFila = event.target.closest("tr").children;
+    let contador = 0;
+    for(let dato of datosFila){
+        if(contador == 2){
+            fetch(`http://127.0.0.1:5000//eliminar_producto?producto_id=${dato.textContent.trim()}`);
+        }
+        contador++;
+    }
 }
 var evento;
 export function editarProducto(event){

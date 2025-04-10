@@ -3,7 +3,6 @@ export function productosLista(){
     let productos_db = [];
     async function consulta(){
         await fetch("http://127.0.0.1:5000/Productos").then(state => state.json()).then(respuesta => productos_db= respuesta );
-        console.log(productos_db);
         lista(Object.keys(productos_db[0]), productos_db);
     }
     consulta();

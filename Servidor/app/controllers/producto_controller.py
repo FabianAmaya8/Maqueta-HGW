@@ -19,12 +19,21 @@ def registro_producto():
         except Exception as error:
             return "ha ocurrido un error en el registro: \n"+str(error)
 @modulo_producto.route("/Productos", methods=["GET"])
-def consultaProdcutos():
+def consulta_prodcutos():
     sql = "SELECT * FROM productos"
     try:
         with current_app.conexion.cursor() as cursor:
             cursor.execute(sql)
             respuesta = cursor.fetchall()
             return jsonify(respuesta)
+    except Exception as error:
+        return jsonify({"respuesta": "ha ocurrido un error:" + str(error)})
+@modulo_producto.route("/eliminar_producto", methods=["GET"])
+def eliminar_producto():
+    sql = "DELETE FROM productos WHERE id_producto = %s"
+    try:
+        with current_app.conexion.cursor() as cursor:
+            cursor.execute(sql, (request.args.get("producto_id")))
+            return "se ha eliminado el producto"
     except Exception as error:
         return jsonify({"respuesta": "ha ocurrido un error:" + str(error)})
