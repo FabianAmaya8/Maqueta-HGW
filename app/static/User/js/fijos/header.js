@@ -45,7 +45,7 @@ export function initHeader() {
     { href: '../../../../Index.html', text: 'Inicio', folder: '' },
     { href: '../../../../usuario/educacion/educacion.html', text: 'Educacion', folder: 'usuario/educacion' },
     { href: '../../../../usuario/catalogo/catalogo.html', text: 'Catalogo', folder: 'usuario/catalogo' },
-    { href: '../../../../usuario/personal/personal.html', text: 'Personal', folder: 'usuario/personal' },
+    { href: '../User/personal.html', text: 'Personal', folder: 'User/personal' },
     { href: '../../../../usuario/carrito/carrito.html', text: 'Tu Carrito', folder: 'usuario/carrito' }
   ];
   links.forEach(link => {
@@ -53,6 +53,7 @@ export function initHeader() {
     a.className = 'nav-link';
     a.href = link.href;
     a.dataset.folder = link.folder;
+    a.target = "_blank"; 
     
     if (link.text === 'Tu Carrito') {
       const icon = document.createElement('i');
@@ -115,6 +116,9 @@ export function initHeader() {
   
     if (opcion.text === 'Login') {
       a.id = 'loginModal'
+    }
+    if (opcion.text === 'informacion personal') {
+      a.id = 'infoPersonal'
     }
     if (opcion.text === 'referidos') {
       a.id = 'modalReferidos'
