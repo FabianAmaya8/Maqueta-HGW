@@ -37,6 +37,9 @@ function createProduct(categoria, name, price, imageUrl) {
   productCategoria.textContent = categoria;
   productCategoria.className = 'categoria';
 
+  const productSubcategoria = document.createElement('p');
+  productSubcategoria.textContent = "Subcategoría"; // Cambiado a 'Subcategoría' por semántica
+
   const productName = document.createElement('h3');
   productName.textContent = name;
   productName.className = 'nombre';
