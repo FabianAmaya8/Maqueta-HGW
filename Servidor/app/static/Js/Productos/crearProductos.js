@@ -75,11 +75,10 @@ export function agregarProducto() {
         inputs_valores.forEach(valor => {
             objeto[valor.valor] = (valor.valor != "Categoria" ? document.getElementById(valor.valor).value : parseInt(document.getElementById(valor.valor).value));
         });
-        console.log(objeto);
         fetch("http://127.0.0.1:5000/registro_producto", {
             method: "POST",
             headers: {"content-type": "application/json"},
             body: JSON.stringify(objeto)
-        }).then(state => state.text()).then(respuesta => alert(respuesta));
+        }).then(state => state.text()).then(respuesta => respuesta);
     }
 }

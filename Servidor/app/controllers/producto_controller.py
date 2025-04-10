@@ -18,3 +18,13 @@ def registro_producto():
                 return "se ha registrado correctamente el producto"
         except Exception as error:
             return "ha ocurrido un error en el registro: \n"+str(error)
+@modulo_producto.route("/Productos", methods=["GET"])
+def consultaProdcutos():
+    sql = "SELECT * FROM productos"
+    try:
+        with current_app.conexion.cursor() as cursor:
+            cursor.execute(sql)
+            respuesta = cursor.fetchall()
+            return jsonify(respuesta)
+    except Exception as error:
+        return jsonify({"respuesta": "ha ocurrido un error:" + str(error)})

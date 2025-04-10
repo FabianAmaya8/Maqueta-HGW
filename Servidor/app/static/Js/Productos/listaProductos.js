@@ -1,17 +1,23 @@
 import { inputs_valores, datos_inicio, encabezadoTablaProductos, productos, categorias, categoriasVar, contenido } from '../variablesGlobales.js';
 export function productosLista(){
-    lista(encabezadoTablaProductos);
+    let productos_db = [];
+    async function consulta(){
+        await fetch("http://127.0.0.1:5000/Productos").then(state => state.json()).then(respuesta => productos_db= respuesta );
+        console.log(productos_db);
+        lista(Object.keys(productos_db[0]), productos_db);
+    }
+    consulta();
 }
-export function crearLista(encabezado){
-    return lista(encabezado);
+export function crearLista(encabezado, valores){
+    return lista(encabezado, valores);
 }
-export function lista(encabezadoTablaProductos) {
+export function lista(encabezadoTablaProductos ,valoresFila) {
     function encabezado(){
         let encabezado = "";
             for(let i = 0; i < encabezadoTablaProductos.length; i++){
                 encabezado += `
                     <th>
-                        ${(encabezadoTablaProductos[i].columna)}
+                        ${(encabezadoTablaProductos[i])}
                     </th>
                 `;
             }
@@ -23,10 +29,10 @@ export function lista(encabezadoTablaProductos) {
     function filas(){
         function datos(fila){
             let datosVar = "";
-            for(let i = 0; i < Object.keys(productos[0]).length; i++){
+            for(let i = 0; i < encabezadoTablaProductos.length; i++){
                 datosVar += `
                     <td>
-                        ${productos[fila][(Object.keys(productos[0]))[i]]}
+                        ${valoresFila[fila][Object.keys(valoresFila[fila])[i]]}
                     </td>
                 `;
             }
@@ -50,7 +56,7 @@ export function lista(encabezadoTablaProductos) {
             return datosVar;
         }
         let filasVar = "";
-        for(let i = 0; i < productos.length; i++){
+        for(let i = 0; i < valoresFila.length; i++){
             filasVar += `
                 <tr>
                     ${datos(i)}        
