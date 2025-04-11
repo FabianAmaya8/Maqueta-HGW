@@ -13,12 +13,11 @@ def consultar_bonos():
         with current_app.conexion.cursor() as cursor:
             cursor.execute(sql, (id_bono, ))
             consulta = cursor.fetchall()
+            current_app.conexion.commit()
             return jsonify(consulta)
     except Exception as e:
         return jsonify({'error': 'Error al consultar bonos'}), 500
-    finally:
-        current_app.conexion.commit()
-        
+@modulo_bonos.route('/agregarBono', methods=['POST'])      
 def agregar_bonos():
     data = request.json()
     nombre= data.get('nombre_bono')
@@ -29,12 +28,12 @@ def agregar_bonos():
     try:
         with current_app.conexion.cursor() as cursor:
             cursor.execute(sql, (nombre, porcentaje, tipo, costo_activacion))
+            current_app.conexion.commit()
             return jsonify({'message': 'Bono agregado exitosamente'}), 201
     except Exception as e:
-        return jsonify({'error', 'error al agregar bono'}), 500
-    finally:
-        current_app.conexion.commit()
+        return jsonify({'error', 'error al agregar bono'}), 500        
 
+@modulo_bonos.route('/eliminarBonos', methods=['GET'])
 def eliminar_bonos():
     data = request.json()
     sql = 'drop from bonos where id=%s'
@@ -42,11 +41,10 @@ def eliminar_bonos():
     try:
         with current_app.conexion.cursor() as cursor:
             cursor.execute(sql, (id_bono))
+            current_app.conexion.commit()
             return jsonify({'mensaje': 'bono eliminado exitosamente'}), 200
     except Exception as e:
         return jsonify({'error': 'error al eliminar el bono'})
-    finally:
-        curent_app.conexion.commit()
 
 def modificar_bonos():
     data=request.json()
@@ -58,9 +56,7 @@ def modificar_bonos():
     try:
         with current_app.conexion.cursor() as cursor:
             cursor.execute(sql, (nombre, porcentaje, tipo, costo_activacion))
+            current_app.conexion.commit()
             return jsonify({'mensaje': 'bono modificado exitosamente'}), 200
     except Exception as e:
-        return jsonify({'error', 'error al modificar el bono'})
-    finally:
-        current_app.conexion.commit()
-
+        return jsonify({'error', 'error al modificar el bono'})      

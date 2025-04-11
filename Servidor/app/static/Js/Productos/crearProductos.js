@@ -1,34 +1,49 @@
-import {inputs_valores, datos_inicio, productos, categorias, categoriasVar, contenido} from '../variablesGlobales.js';
+import { datos_inicio, productos, categorias, categoriasVar, contenido } from '../variablesGlobales.js';
 import { navBar } from '../nav_bar.js';
-export function crearProductos(productoValores, editara){
-    crear(inputs_valores ,productoValores, editara);
+var inputs_valores = [];
+export function crearProductos(productoValores, editara) {
+    fetch("http://127.0.0.1:5000/consulta_subcategoria").then(state => state.json()).then(respuesta => {
+        let subcategoria = [];
+        for (let datos of respuesta) {
+            subcategoria.push(datos.nombre_subcategoria);
+        }
+        fetch("http://127.0.0.1:5000/consulta_categoria").then(state => state.json()).then(respuesta2 => {
+            let categoria = [];
+            for (let datos of respuesta2) {
+                categoria.push(datos.nombre_categoria);
+            }
+            inputs_valores = [{ valor: "Nombre Producto", tipo: "text", form: "input", required: "required" }, { valor: "Precio Producto", tipo: "number", form: "input", required: "required" }, { valor: "Descripción", tipo: "text", form: "input", required: "required" }, { valor: "Categoria", tipo: "text", form: categoria, required: "required" }, { valor: "Subcategoria", tipo: "text", form: subcategoria, required: "required" }];
+            let valorBoton = { valor: "Crear Producto", url: "agregarProducto()" };
+            crear(inputs_valores, valorBoton, productoValores, editara);
+        });
+    });
 }
-export function crearFormulario(inputs_valores, productoValores, editara){
-    return crear(inputs_valores, productoValores, editara);
+export function crearFormulario(inputs_valores, valorBoton, productoValores, editara) {
+    return crear(inputs_valores, valorBoton, productoValores, editara);
 }
-function crear(inputs_valores, productoValores, editara) {
+function crear(inputs_valores, valorBoton, productoValores, editara) {
     let inputsHtml = "";
-    function options(i){
+    function options(i) {
         let opciones = "";
-        for(let z = 0; z < inputs_valores[i].form.length; z++){
+        for (let z = 0; z < inputs_valores[i].form.length; z++) {
             opciones += `<option value=${z}>${inputs_valores[i].form[z]}</option>`;
         }
         return opciones
     }
-    function form(){
+    function form() {
         let formulario = "";
-        for(let i = 0; i < inputs_valores.length; i++){
-            if(typeof inputs_valores[i].form == "string"){
-                if(inputs_valores[i].form == "input"){
+        for (let i = 0; i < inputs_valores.length; i++) {
+            if (typeof inputs_valores[i].form == "string") {
+                if (inputs_valores[i].form == "input") {
                     formulario += `
                         <div class="form-floating mb-3">
                             <input ${inputs_valores[i].required} type="${inputs_valores[i].tipo}" class="form-control" id="${inputs_valores[i].valor}" placeholder="${inputs_valores[i].valor}">
                             <label for="${inputs_valores[i].valor}">${inputs_valores[i].valor}</label>
                         </div>
-                    `;        
+                    `;
                 }
             }
-            else if(Array.isArray(inputs_valores[i].form)){
+            else if (Array.isArray(inputs_valores[i].form)) {
                 formulario += `
                     <div class="mb-3">
                         <select class="form-select" id="${inputs_valores[i].valor}">
@@ -54,20 +69,12 @@ function crear(inputs_valores, productoValores, editara) {
                 <form class="inputs-form" id="formulario">
                     ${form()}
                     <div class="buttons-form">
-                        <button type="submit" class="btn btn-success" onclick="${editara ? "editarProductoBoton()" : "agregarProducto()"}">${editara ? "Editar Producto" : "Crear Producto"}</button>
+                        <button type="button" class="btn btn-success" onclick="${valorBoton.url}">${valorBoton.valor}</button>
                     </div>
                 </form>
             </div>
     `;
     contenido.innerHTML = productos_pagina;
-    document.getElementById("formulario").onsubmit = event => {
-        event.preventDefault();
-        document.getElementById("alerta_producto").classList.add("alerta_producto-on");
-        setTimeout(() => {
-            document.getElementById("alerta_producto").classList.replace("alerta_producto-on", "alerta_producto");
-        }, 3500);
-    };
-    document.getElementById("alerta_producto").textContent = ("✔️ Se ha creado el producto correctamente");
 }
 export function agregarProducto() {
     if (document.getElementById("formulario").checkValidity()) {
@@ -77,8 +84,17 @@ export function agregarProducto() {
         });
         fetch("http://127.0.0.1:5000/registro_producto", {
             method: "POST",
-            headers: {"content-type": "application/json"},
+            headers: { "content-type": "application/json" },
             body: JSON.stringify(objeto)
-        }).then(state => state.text()).then(respuesta => respuesta);
+        }).then(state => state.text()).then(respuesta => console.log(respuesta));
     }
+}
+export function alerta(respuesta) {
+    const alertaElemento = document.getElementById("alerta_producto");
+    alertaElemento.textContent = "✔️ " + respuesta;
+    alertaElemento.classList.add("alerta_producto-on");
+
+    setTimeout(() => {
+        alertaElemento.classList.replace("alerta_producto-on", "alerta_producto");
+    }, 3500);
 }

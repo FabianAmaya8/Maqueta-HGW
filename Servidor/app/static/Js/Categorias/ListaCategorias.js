@@ -1,6 +1,6 @@
-import {contenido ,inputs_valores, datos_inicio, productos, categorias, categoriasVar} from '../variablesGlobales.js';
+import { contenido, datos_inicio, productos, categorias, categoriasVar } from '../variablesGlobales.js';
 import { crearLista } from '../Productos/listaProductos.js';
-export function listaCategorias(){
+export function listaCategorias() {
     let tabla = "categorias";
     let columna = "id_categoria";
     let posicion_id = 0;
@@ -13,5 +13,5 @@ export function listaCategorias(){
             )}
         `;
         });
-    });   
+    });
 }

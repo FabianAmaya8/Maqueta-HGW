@@ -38,7 +38,7 @@ def registro_subcategoria():
     try:
         datos = request.get_json()
         nombre_subcategoria = datos.get("Nombre Subcategoria")
-        categoria = datos.get("Categoria")
+        categoria = int(datos.get("Categoria"))+1
         with current_app.conexion.cursor() as cursor:
             sql = "INSERT INTO subcategoria(nombre_subcategoria, categoria) VALUES(%s, %s)"
             cursor.execute(sql, (nombre_subcategoria, categoria))
@@ -46,3 +46,13 @@ def registro_subcategoria():
             return "La subcategoria se ha registrado correctamente"
     except Exception as error:
         return "ha ocurrido un error en el registro: "+str(error)
+@modulo_categoria.route("/consulta_subcategoria", methods=["GET"])
+def consulta_subcategoria():
+    try:
+        with current_app.conexion.cursor() as cursor:
+            sql = "SELECT * FROM subcategoria"
+            cursor.execute(sql)
+            consulta = cursor.fetchall()
+            return jsonify(consulta)
+    except Exception as error:
+        return "ha ocurrido un error en la consulta: "+str(error)
