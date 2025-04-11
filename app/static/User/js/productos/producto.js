@@ -13,24 +13,49 @@ function formatPrice(price) {
 }
 
 // Función para crear un solo producto
-function createProduct(categoria, name, price, imageUrl) {
+function createProduct(categoria, name, price, imageUrl, stock) {
   const cartProducto = document.createElement('article'); // Cambiado a 'article' por semántica
   cartProducto.className = 'cart-producto';
 
+  const stockIndicator = document.createElement('span');
+  stockIndicator.classList.add('stock-indicator');
+  if (stock > 10) {
+    stockIndicator.classList.add('in-stock');
+  } else if (stock > 0) {
+    stockIndicator.classList.add('low-stock');
+  } else {
+    stockIndicator.classList.add('out-of-stock');
+  }
+  cartProducto.appendChild(stockIndicator);
+
+  const stockLabel = document.createElement('span');
+  stockLabel.classList.add('stock-label');
+  if (stock > 10) {
+    stockLabel.textContent = 'Stock disponible';
+    stockLabel.classList.add('in-stock');
+  } else if (stock > 0) {
+    stockLabel.textContent = `¡Solo ${stock} unidades!`;
+    stockLabel.classList.add('low-stock');
+  } else {
+    stockLabel.textContent = 'Agotado';
+    stockLabel.classList.add('out-of-stock');
+  }
+  cartProducto.appendChild(stockLabel);
+
   const productLink = document.createElement('a');
   productLink.href = '/usuario/catalogo/paginaproducto.html';
-  productLink.setAttribute('aria-label', `Ver más sobre ${name}`); // Accesibilidad
+  productLink.setAttribute('aria-label', `Ver más sobre ${name}`);
 
-  const bannerProductosDiv = document.createElement('figure'); // Cambiado a 'figure'
+  const bannerProductosDiv = document.createElement('figure');
   bannerProductosDiv.className = 'baner-productos';
 
   const productImg = document.createElement('img');
   productImg.src = imageUrl;
-  productImg.alt = `Imagen del producto ${name}`; // Accesibilidad
+  productImg.alt = `Imagen del producto ${name}`;
 
   bannerProductosDiv.appendChild(productImg);
 
-  const infoProductoDiv = document.createElement('section'); // Cambiado a 'section'
+  const infoProductoDiv = document.createElement('section');
   infoProductoDiv.className = 'info-producto';
 
   const productCategoria = document.createElement('p');
@@ -42,15 +67,20 @@ function createProduct(categoria, name, price, imageUrl) {
   productName.className = 'nombre';
 
   const productPrice = document.createElement('p');
-  productPrice.textContent = formatPrice(price); // Aplica formato al precio
+  productPrice.textContent = formatPrice(price);
   productPrice.className = 'precio';
 
   const productCarrito = document.createElement('button');
   productCarrito.textContent = "Agregar al carrito";
   productCarrito.className = 'btn-carrito';
   productCarrito.id = 'añadir';
-  productCarrito.setAttribute('aria-label', `Agregar ${name} al carrito`); // Accesibilidad
-
+  productCarrito.setAttribute('aria-label', `Agregar ${name} al carrito`);
+  
+  if (stock <= 0) {
+    productCarrito.disabled = true;
+    productCarrito.classList.add('btn-deshabilitado');
+  }// Accesibilidad
+  
   productCarrito.addEventListener('click', mostrarAlerta);
 
 
@@ -66,6 +96,7 @@ function createProduct(categoria, name, price, imageUrl) {
   return cartProducto;
 }
 
+
 // Función para crear múltiples productos dependiendo de la clase
 function createProductsFromClass() {
   const cartsContainers = document.querySelectorAll('.carts');
@@ -76,11 +107,10 @@ function createProductsFromClass() {
     container.innerHTML = '';
 
     for (let i = 0; i < productCount; i++) {
-      const { categoria, name, price, imageUrl } = getRandomProduct();
-      const product = createProduct(categoria, name, price, imageUrl);
+      const { categoria, name, price, imageUrl, stock } = getRandomProduct();
+      const product = createProduct(categoria, name, price, imageUrl, stock);
       container.appendChild(product);
     }
   });
 }
-
 window.onload = createProductsFromClass;

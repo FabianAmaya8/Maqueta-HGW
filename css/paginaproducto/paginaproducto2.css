@@ -4,13 +4,13 @@
     padding: 20px;
     background-color: #fff;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-}   
+}
 
 .producto-izquierda {
     flex: 1;
 }
 
-.producto-izquierda figure{
+.producto-izquierda figure {
     width: 100%;
     object-fit: cover;
     aspect-ratio: 1 / 1;
@@ -62,18 +62,20 @@ h1 {
     padding: 10px;
     border-radius: 5px;
 }
+
 .stock-box {
     width: 190px;
     padding: 10px;
     background-color: #f8f9fa;
-    border: 2px solid #28a745;
+    border: 2px solid #dc3d21;
     border-radius: 5px;
     text-align: center;
     font-family: Arial, sans-serif;
     font-size: 16px;
     font-weight: bold;
-    color: #28a745;
+    color: #d73434;
 }
+
 .descripcion {
     font-size: 1em;
     color: #555;
@@ -94,6 +96,7 @@ h1 {
     white-space: nowrap;
     overflow: hidden;
 }
+
 .boton-uso:hover {
     background-color: #acd4c0;
     color: #000
@@ -131,8 +134,9 @@ h1 {
 
 .boton-carrito:hover {
     background-color: #acd4c0;
-    color:#000
+    color: #000
 }
+
 .Alimentacion,
 .Cuidadopersonal,
 .Accesorios,

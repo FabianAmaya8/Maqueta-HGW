@@ -92,7 +92,7 @@
 }
 
 /*----- Productos destacados -----*/
-.destacados{
+.destacados {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -132,6 +132,12 @@
     overflow: hidden;
 }
 
+.destacados-contenido .carts {
+    display: flex;
+    width: max-content;
+    position: relative;
+    animation: cambio 15s infinite linear;
+}
 /*----- Productos -----*/
 
 .productos{
@@ -151,8 +157,6 @@
     justify-items: center;
     gap: 30px;
 }
-
-
 /*----- media query -----*/
 @media (max-width: 768px){
     .anuncio{

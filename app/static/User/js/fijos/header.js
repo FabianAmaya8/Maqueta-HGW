@@ -42,17 +42,18 @@ export function initHeader() {
   nav.className = 'nav-general';
   
   const links = [
-    { href: '../../../../Index.html', text: 'Inicio', folder: '' },
-    { href: '../../../../usuario/educacion/educacion.html', text: 'Educacion', folder: 'usuario/educacion' },
-    { href: '../../../../usuario/catalogo/catalogo.html', text: 'Catalogo', folder: 'usuario/catalogo' },
-    { href: '../../../../usuario/personal/personal.html', text: 'Personal', folder: 'usuario/personal' },
-    { href: '../../../../usuario/carrito/carrito.html', text: 'Tu Carrito', folder: 'usuario/carrito' }
+    { href: '/inicio', text: 'Inicio', folder: 'User/inicio' },
+    { href: '/educacion', text: 'Educacion', folder: 'usuario/educacion' },
+    { href: '/catalogo', text: 'Catalogo', folder: 'Catalogo/catalogo' },
+    { href: '/personal', text: 'Personal', folder: 'User/personal' },
+    { href: '/carrito', text: 'Tu Carrito', folder: 'User/carrito' }
   ];
   links.forEach(link => {
     const a = document.createElement('a');
     a.className = 'nav-link';
     a.href = link.href;
     a.dataset.folder = link.folder;
+    a.target = "_blank"; 
     
     if (link.text === 'Tu Carrito') {
       const icon = document.createElement('i');
@@ -102,7 +103,7 @@ export function initHeader() {
   
   const opciones = [
     { href: '#', text: 'Login' },
-    { href: '../../../../usuario/personal/info-personal.html', text: 'informacion personal' },
+    { href: '/infoPersonal', text: 'informacion personal' },
     { href: '#', text: 'referidos' },
     { href: '#', text: 'Descargar APP' }
   ];
@@ -115,6 +116,9 @@ export function initHeader() {
   
     if (opcion.text === 'Login') {
       a.id = 'loginModal'
+    }
+    if (opcion.text === 'informacion personal') {
+      a.id = 'infoPersonal'
     }
     if (opcion.text === 'referidos') {
       a.id = 'modalReferidos'

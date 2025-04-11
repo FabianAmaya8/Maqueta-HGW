@@ -192,3 +192,18 @@ INSERT INTO ubicaciones (nombre, tipo, ubicacion_padre) VALUES ('Zapopan', 'ciud
 INSERT INTO ubicaciones (nombre, tipo, ubicacion_padre) VALUES ('Mérida', 'ciudad', @id_mexico);
 INSERT INTO ubicaciones (nombre, tipo, ubicacion_padre) VALUES ('Toluca', 'ciudad', @id_mexico);
 
+-- Insertar productos para stock
+INSERT INTO categorias (id_categoria, nombre_categoria) VALUES (1, 'Bebidas');
+INSERT INTO subcategoria (id_subcategoria, nombre_subcategoria) VALUES (2, 'Café');
+INSERT INTO subcategoria (id_subcategoria, nombre_subcategoria) VALUES (1, 'Infusiones');
+
+INSERT INTO productos (categoria, subcategoria, nombre_producto, precio_producto, imagen_producto, stock) VALUES
+(1, 1, 'Café de Arándanos', 24900, 'cafe-arandanos.jpg', 25);
+INSERT INTO productos (categoria, subcategoria, nombre_producto, precio_producto, imagen_producto, stock) VALUES
+(1, 2, 'Té Verde HGW', 18900, 'te-verde.jpg', 15);
+
+-- En categorías 
+SELECT * FROM productos;
+
+-- En subcategorías
+SELECT * FROM subcategoria WHERE id_subcategoria = 1;

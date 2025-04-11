@@ -17,9 +17,22 @@ function createProduct(categoria, name, price, imageUrl) {
   const cartProducto = document.createElement('article'); // Cambiado a 'article' por semántica
   cartProducto.className = 'cart-producto';
 
+  const links = [
+    "/usuario/catalogo/paginaproducto.html",
+    "/usuario/catalogo/paginaproducto2.html",
+    "/usuario/catalogo/paginaproducto.html"
+  ];
+
+  const randomLink = links[Math.floor(Math.random() * links.length)];
+
   const productLink = document.createElement('a');
-  productLink.href = '/usuario/catalogo/paginaproducto.html';
+  productLink.href = randomLink;
   productLink.setAttribute('aria-label', `Ver más sobre ${name}`); // Accesibilidad
+  productLink.textContent = "Ver producto";
+
+  // Suponiendo que quieres agregar el enlace a un contenedor en la página
+  document.body.appendChild(productLink);
+ // Accesibilidad
 
   const bannerProductosDiv = document.createElement('figure'); // Cambiado a 'figure'
   bannerProductosDiv.className = 'baner-productos';
