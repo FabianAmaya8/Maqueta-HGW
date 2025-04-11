@@ -14,7 +14,7 @@ body {
 }
 .banner{
     margin: 20px;
-    background: url(/img/educacion/defban.png);
+    background: url('/static/User/img/defban.png') no-repeat center center;
     background-size: cover;
     height: 80%;
     width: 80%;

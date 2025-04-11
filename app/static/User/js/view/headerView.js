@@ -36,8 +36,8 @@ export function initHeader() {
   nav.className = 'nav-general';
 
   const links = [
-    { href: '../../../../Index.html', text: 'Inicio', folder: '' },
-    { href: '../../../../usuario/catalogo/catalogo.html', text: 'Catalogo', folder: 'usuario/catalogo' }
+    { href: '/index', text: 'Inicio', folder: 'View/index' },
+    { href: '/catalogo', text: 'Catalogo', folder: 'View/catalogo' },
   ];
   links.forEach(link => {
     const a = document.createElement('a');

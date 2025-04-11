@@ -3,22 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="../../js/bootstrap.bundle.min.js"></script>
-    <link rel="stylesheet" href="../../css/bootstrap.min.css">
-    <link rel="stylesheet" href="../../css/style.css">
-    <link rel="stylesheet" href="../../css/personal/personal.css">
-    <link rel="stylesheet" href="../../css/personal/info-personal.css">
-    <link rel="shortcut icon" href="../../img/logo.png" type="image/x-icon">
+    <script src="{{ url_for('static', filename='js/bootstrap.bundle.min.js') }}"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='User/css/bootstrap.min.css') }}">
+    <script src="{{ url_for('static', filename='User/js/bootstrap.bundle.min.js') }}"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='User/css/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='User/css/personal/personal.css') }}">
+    <link rel="shortcut icon" href="{{ url_for('static', filename='User/img/logo.png') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='User/css/personal/info-personal.css') }}">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <title>HGW</title>
 </head>
 <body>
-    <script type="module" src="../../js/fijos.js"></script>
+    <script type="module" src="{{ url_for('static', filename='User/js/fijos.js') }}"></script>
     <main class="contenido">
         <div class="volver">
             <div class="volver-item">
-                <button onclick="location.href='personal.html'">
+                <button onclick="location.href='/personal'">
                     <i class='bx bx-left-arrow-alt'></i>
                     Volver
                 </button>
