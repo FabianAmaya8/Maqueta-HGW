@@ -1,5 +1,0 @@
-@import url("./variables.css");
-
-.table th{
-    color: var(--color-btn-principal-letra);
-}
