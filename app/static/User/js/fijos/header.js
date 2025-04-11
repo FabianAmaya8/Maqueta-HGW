@@ -53,7 +53,6 @@ export function initHeader() {
     a.className = 'nav-link';
     a.href = link.href;
     a.dataset.folder = link.folder;
-    a.target = "_blank"; 
     
     if (link.text === 'Tu Carrito') {
       const icon = document.createElement('i');

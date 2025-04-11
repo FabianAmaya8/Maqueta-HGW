@@ -8,4 +8,4 @@ gestPersonal_bp = Blueprint('gestPersonal_bp', __name__)
 
 @gestPersonal_bp.route('/personal')
 def gestPersonal():
-    return render_template('./User/personal.html')
+    return render_template('./User/personal/personal.html')

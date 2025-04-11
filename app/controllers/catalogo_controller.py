@@ -9,3 +9,6 @@ catalogo_bp = Blueprint('catalogo_bp', __name__)
 def mostrar_catalogo():
     return render_template('User/catalog/catalogo.html')
 
+@catalogo_bp.route('/ViewCatalogo')
+def view_catalogo():
+    return render_template('View/catalogo.html')

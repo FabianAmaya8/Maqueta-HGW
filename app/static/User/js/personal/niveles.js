@@ -1,4 +1,7 @@
-cambiarCantidad(4)
+document.addEventListener('DOMContentLoaded', () => {
+    cambiarCantidad(4);
+});
+
 function cambiarCantidad(cantidad) {
     const progresoDiv = document.querySelector('.progreso');
     

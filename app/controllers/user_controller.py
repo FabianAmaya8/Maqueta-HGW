@@ -98,7 +98,7 @@ def register():
 
                 connection.commit()
 
-            return redirect(url_for('view_bp.index'))
+            return redirect(url_for('view_bp.Home'))
 
         except Exception as e:
             print("Error durante el registro:", str(e))

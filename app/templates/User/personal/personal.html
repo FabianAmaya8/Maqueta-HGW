@@ -3,17 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="../../js/bootstrap.bundle.min.js"></script>
-    <link rel="stylesheet" href="../../css/bootstrap.min.css">
-    <link rel="stylesheet" href="../../css/style.css">
-    <link rel="stylesheet" href="../../css/personal/personal.css">
-    <link rel="shortcut icon" href="../../img/logo.png" type="image/x-icon">
+    <script src="{{ url_for('static', filename='User/js/bootstrap.bundle.min.js') }}"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='User/css/bootstrap.min.css') }}">
+    <script src="{{ url_for('static', filename='User/js/bootstrap.bundle.min.js') }}"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='User/css/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='User/css/personal/personal.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='User/css/personal/rangohonor.css') }}">
+    <link rel="shortcut icon" href="{{ url_for('static', filename='User/img/logo.png') }}" type="image/x-icon">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <title>HGW</title>
 </head>
 <body>
-    <script type="module" src="../../js/fijos.js"></script>
+    <script type="module" src="{{ url_for('static', filename='User/js/fijos.js') }}"></script>
+    <script src="{{ url_for('static', filename='User/js/personal/niveles.js') }}"></script>
+
     <main class="contenido">
         <div class="conten-item">
             <div class="perfil">
@@ -22,7 +26,7 @@
                 </div>
                 <div class="info-perfil">
                     <h3>Nombre de usuario</h3>
-                    <div class="menbresias">
+                    <div class="membresias">
                         <details>
                             <summary>Membresia Master</summary>
                             <table class="tabla">
@@ -251,6 +255,5 @@
         </div>
     </main>
 
-    <script src="../../js/personal/niveles.js"></script>
 </body>
 </html>
