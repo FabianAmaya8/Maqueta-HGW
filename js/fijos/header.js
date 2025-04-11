@@ -42,11 +42,11 @@ export function initHeader() {
   nav.className = 'nav-general';
   
   const links = [
-    { href: '../../../../Index.html', text: 'Inicio', folder: '' },
-    { href: '../../../../usuario/educacion/educacion.html', text: 'Educacion', folder: 'usuario/educacion' },
-    { href: '../../../../usuario/catalogo/catalogo.html', text: 'Catalogo', folder: 'usuario/catalogo' },
-    { href: '../../../../usuario/personal/personal.html', text: 'Personal', folder: 'usuario/personal' },
-    { href: '../../../../usuario/carrito/carrito.html', text: 'Tu Carrito', folder: 'usuario/carrito' }
+    { href: '/Login', text: 'Inicio', folder: '' },
+    { href: '/educacion', text: 'Educacion', folder: 'usuario/educacion' },
+    { href: '/catalogo', text: 'Catalogo', folder: 'usuario/catalogo' },
+    { href: '/personal', text: 'Personal', folder: 'usuario/personal' },
+    { href: '/carrito', text: 'Tu Carrito', folder: 'usuario/carrito' }
   ];
   links.forEach(link => {
     const a = document.createElement('a');
