@@ -1,19 +1,17 @@
 import { inputs_valores, datos_inicio, productos, categorias, categoriasVar, contenido } from '../variablesGlobales.js';
-export function eliminarProducto(event, tabla, columna, posicion_id){
+export function eliminarProducto(event){
     let fila = event.target.closest("tr");
+    productos.forEach((producto, index) =>{
+        if(producto.Id == parseInt(fila.firstElementChild.textContent)) {
+            productos.splice(index, 1);
+        }
+    });
+    fila.parentElement.removeChild(fila);
     let datosFila = event.target.closest("tr").children;
     let contador = 0;
-    let posicion = posicion_id;
     for(let dato of datosFila){
-        if(contador == posicion_id){
-            fetch(`http://127.0.0.1:5000//eliminar_producto?producto_id=${dato.textContent.trim()}&tabla=${tabla}&columna=${columna}`).then(state => state.text()).then(respuesta => {
-                productos.forEach((producto, index) =>{
-                    if(producto.Id == parseInt(fila.firstElementChild.textContent)) {
-                        productos.splice(index, 1);
-                    }
-                });
-                fila.parentElement.removeChild(fila);
-            });
+        if(contador == 2){
+            fetch(`http://127.0.0.1:5000//eliminar_producto?producto_id=${dato.textContent.trim()}`);
         }
         contador++;
     }

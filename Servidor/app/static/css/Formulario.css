@@ -70,7 +70,7 @@ select{
 }
 .alerta_producto{
     position: absolute;
-    right: -28rem; top: 1rem;
+    right: -23rem; top: 1rem;
     z-index: 99999;
     transition: 300ms;
 }

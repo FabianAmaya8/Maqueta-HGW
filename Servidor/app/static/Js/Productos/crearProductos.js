@@ -1,13 +1,12 @@
 import {inputs_valores, datos_inicio, productos, categorias, categoriasVar, contenido} from '../variablesGlobales.js';
 import { navBar } from '../nav_bar.js';
 export function crearProductos(productoValores, editara){
-    let valorBoton = {valor: "Crear Producto", url: "crearProducto()"};
-    crear(inputs_valores, valorBoton, productoValores, editara);
+    crear(inputs_valores ,productoValores, editara);
 }
-export function crearFormulario(inputs_valores, valorBoton, productoValores, editara){
-    return crear(inputs_valores, valorBoton, productoValores, editara);
+export function crearFormulario(inputs_valores, productoValores, editara){
+    return crear(inputs_valores, productoValores, editara);
 }
-function crear(inputs_valores, valorBoton, productoValores, editara) {
+function crear(inputs_valores, productoValores, editara) {
     let inputsHtml = "";
     function options(i){
         let opciones = "";
@@ -55,12 +54,20 @@ function crear(inputs_valores, valorBoton, productoValores, editara) {
                 <form class="inputs-form" id="formulario">
                     ${form()}
                     <div class="buttons-form">
-                        <button type="button" class="btn btn-success" onclick="${valorBoton.url}">${valorBoton.valor}</button>
+                        <button type="submit" class="btn btn-success" onclick="${editara ? "editarProductoBoton()" : "agregarProducto()"}">${editara ? "Editar Producto" : "Crear Producto"}</button>
                     </div>
                 </form>
             </div>
     `;
     contenido.innerHTML = productos_pagina;
+    document.getElementById("formulario").onsubmit = event => {
+        event.preventDefault();
+        document.getElementById("alerta_producto").classList.add("alerta_producto-on");
+        setTimeout(() => {
+            document.getElementById("alerta_producto").classList.replace("alerta_producto-on", "alerta_producto");
+        }, 3500);
+    };
+    document.getElementById("alerta_producto").textContent = ("✔️ Se ha creado el producto correctamente");
 }
 export function agregarProducto() {
     if (document.getElementById("formulario").checkValidity()) {
@@ -74,13 +81,4 @@ export function agregarProducto() {
             body: JSON.stringify(objeto)
         }).then(state => state.text()).then(respuesta => respuesta);
     }
-}
-export function alerta(respuesta){
-    const alertaElemento = document.getElementById("alerta_producto");
-    alertaElemento.textContent = "✔️ " + respuesta;
-    alertaElemento.classList.add("alerta_producto-on");
-
-    setTimeout(() => {
-        alertaElemento.classList.replace("alerta_producto-on", "alerta_producto");
-    }, 3500);
 }
