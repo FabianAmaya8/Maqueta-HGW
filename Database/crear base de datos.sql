@@ -79,10 +79,11 @@ CREATE TABLE subcategoria (
 CREATE TABLE productos (
     id_producto INT PRIMARY KEY AUTO_INCREMENT,
     categoria INT NOT NULL,
-    subcategoria INT NOT NULL,
+    subcategoria INT,
     nombre_producto VARCHAR(50) NOT NULL,
     precio_producto FLOAT NOT NULL,
-    imagen_producto TEXT NOT NULL,
+    imagen_producto TEXT ,    
+	 descripcion TEXT NOT NULL,
     stock INT NOT NULL,
     FOREIGN KEY (categoria) REFERENCES categorias(id_categoria),
     FOREIGN KEY (subcategoria) REFERENCES subcategoria(id_subcategoria)
@@ -145,6 +146,14 @@ INSERT INTO membresias (nombre_membresia, precio_membresia) VALUES
 
 INSERT INTO medios_pago (nombre_medio) VALUES
 ("tarjeta");
+
+-- inserciones productos
+INSERT INTO categorias (nombre_categoria) VALUES
+("tecnologia");
+
+INSERT INTO subcategoria (nombre_subcategoria,categoria) VALUES
+("celulares",1);
+
 
 INSERT INTO roles (nombre_rol) VALUES
 ("Admin"), 

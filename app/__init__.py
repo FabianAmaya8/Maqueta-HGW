@@ -21,8 +21,10 @@ def create_app():
 
     from app.controllers.view_controller import view_bp
     from app.controllers.user_controller import user_bp
+    from app.controllers.gesUsers_controller import gesUsers_bp
     app.register_blueprint(view_bp)
     app.register_blueprint(user_bp)
+    app.register_blueprint(gesUsers_bp)
 
     app.connection = connection
 
