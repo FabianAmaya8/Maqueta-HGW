@@ -1,0 +1,6 @@
+.contenedor-tablas{
+    width: 100% !important; height: max-content !important;
+    padding-left: 2%; padding-right: 2%;
+    display: flex;
+    justify-content: center;
+}

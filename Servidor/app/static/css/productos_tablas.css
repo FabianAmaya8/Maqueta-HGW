@@ -1,0 +1,28 @@
+.contenedor-tablas{
+    width: 100% !important; height: max-content !important;
+    padding-left: 2%; padding-right: 2%;
+    display: flex;
+    justify-content: center;
+}
+.btn-crud{
+    display: flex;
+    justify-content: center; align-items: center;
+}
+.btn-eliminar:hover{
+    animation: mov-y 550ms;
+}
+.btn-editar:hover{
+    animation: mov-y 550ms;
+}
+@keyframes mov-y{
+    50%{
+        transform: translateY(-0.25rem);
+    }
+    100%{
+        transform: translateY(0%);
+    }
+}
+.group-btn{
+    display: flex;
+    gap: 5%;
+}
