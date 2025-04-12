@@ -3,9 +3,8 @@ from flask_bcrypt import Bcrypt
 from werkzeug.utils import secure_filename
 import os
 
+segpedidos_bp = Blueprint('segpedidos_bp', __name__)
 
-gestPersonal_bp = Blueprint('gestPersonal_bp', __name__)
-
-@gestPersonal_bp.route('/personal')
-def gestPersonal():
-    return render_template('User/personal/personal.html')
+@segpedidos_bp.route('/Seg.pedidos')
+def mostrar_segpedidos():
+    return render_template('User/personal/Seg.pedidos.html')

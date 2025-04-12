@@ -26,6 +26,7 @@ def create_app():
     from app.controllers.educacion_controller import educacion_bp
     from app.controllers.infoPersonal_controller import infoPersonal_bp
     from app.controllers.carrito_controller import carrito_bp
+    from app.controllers.segpedidos_controller import segpedidos_bp
     app.register_blueprint(view_bp)
     app.register_blueprint(user_bp)
     app.register_blueprint(gestPersonal_bp)
@@ -33,6 +34,7 @@ def create_app():
     app.register_blueprint(educacion_bp)
     app.register_blueprint(infoPersonal_bp)
     app.register_blueprint(carrito_bp)
+    app.register_blueprint(segpedidos_bp)
 
     app.connection = connection
 
