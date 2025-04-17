@@ -83,7 +83,7 @@ CREATE TABLE productos (
     nombre_producto VARCHAR(50) NOT NULL,
     precio_producto FLOAT NOT NULL,
     imagen_producto TEXT ,    
-	 descripcion TEXT NOT NULL,
+	descripcion TEXT NOT NULL,
     stock INT NOT NULL,
     FOREIGN KEY (categoria) REFERENCES categorias(id_categoria),
     FOREIGN KEY (subcategoria) REFERENCES subcategoria(id_subcategoria)
