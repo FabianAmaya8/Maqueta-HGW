@@ -1,0 +1,9 @@
+body{
+    background-color: var(--color-fondo-navbar);
+    overflow-x: hidden !important;
+    height: max-content;
+}
+.contenido{
+    display: flex; 
+    height: max-content !important;
+}

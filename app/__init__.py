@@ -3,6 +3,11 @@ from flask_bcrypt import Bcrypt
 import pymysql.cursors
 from config import Config
 
+#Admin
+from app.controllers.admin.main_controller import menu
+from app.controllers.admin.producto_controller import modulo_producto
+from app.controllers.admin.registro_categoria import modulo_categoria
+
 bcrypt = Bcrypt() 
 
 def create_app():
@@ -37,5 +42,10 @@ def create_app():
     app.register_blueprint(carrito_bp)
 
     app.connection = connection
+
+    #Admin
+    app.register_blueprint(menu)
+    app.register_blueprint(modulo_producto)
+    app.register_blueprint(modulo_categoria)
 
     return app

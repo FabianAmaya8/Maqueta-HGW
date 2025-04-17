@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="{{ url_for('static', filename='User/css/bootstrap.min.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='admin/css/Formulario.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='admin/css/Navbar.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='admin/css/inicio.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='admin/css/productos_tablas.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='admin/css/lista_productos.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='admin/css/contenido.css') }}">
+    </head>
+    <body>
+        <div class="card" id="nav-bar"></div>
+        <div class="contenido" id="contenido" style="height: max-content; padding: 3rem;">
+        </div>
+
+        <script src="{{ url_for('static', filename='User/js/bootstrap.bundle.min.js') }}"></script>
+        <script type="module"  src="{{ url_for('static', filename='admin/Js/main.js') }}"></script>
+    </body>
+</html>
