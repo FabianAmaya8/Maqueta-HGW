@@ -7,18 +7,18 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <link rel="stylesheet" href="../../css/style.css">
-    <link rel="stylesheet" href="../../css/personal/transacciones.css">
-    <link rel="shortcut icon" href="img/logo.png" type="image/x-icon">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/personal/transacciones.css') }}">
+    <link rel="shortcut icon" href="{{ url_for('static', filename='img/logo.png') }}" type="image/x-icon">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 
     <title>HGW</title>
 </head>
 <body>
-    <script type="module" src="../../js/fijos.js"></script>
-    <script type="module" src="../../js/Administracion financiera/transact.js"></script>
-    <script type="module" src="../../js/mainfinam.js"></script>
+    <script type="module" src="{{ url_for('static', filename='User/js/fijos.js') }}"></script>
+    <script type="module" src="{{ url_for('static', filename='User/js/Administracion financiera/transact.js') }}"></script>
+    <script type="module" src="{{ url_for('static', filename='User/js/Administracion financiera/mainfinam.js') }}"></script>
     <div class="wrapper rounded">
         <nav class="navbar navbar-expand-lg navbar-dark dark d-lg-flex align-items-lg-start"> <a class="navbar-brand"
                 href="#">Transacciones <p class="text-muted pl-1">Bievenido a tus transacciones</p> </a> <button

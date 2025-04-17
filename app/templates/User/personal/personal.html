@@ -77,7 +77,7 @@
                         </a>
                     </div>
                     <div class="boton-item">
-                        <a href="/usuario/personal/Seg.pedidos.html">
+                        <a href="{{ url_for('segpedidos_bp.mostrar_segpedidos') }}">
                             <div class="a-content">
                                 <i class='bx bxs-truck'></i>
                                 seguimiento de pedidos 
@@ -117,7 +117,7 @@
                 <div class="info-content">
                     <div class="info-personal">
                         <div class="dato">
-                            <a href="/usuario/personal/transferencias.html">
+                            <a href="{{ url_for('transferencias_bp.mostrar_trasferencias') }}">
                                 <div class="dato-item">
                                     <i class='bx bx-user-circle'></i>
                                     Transferencias
