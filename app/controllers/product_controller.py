@@ -1,5 +1,6 @@
 from flask import Blueprint, jsonify
 import pymysql
+from .utils.datosUsuario import obtener_usuario_actual
 
 stock_bp = Blueprint('stock_bp', __name__)
 

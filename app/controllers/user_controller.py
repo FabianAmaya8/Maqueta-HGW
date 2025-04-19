@@ -2,6 +2,7 @@ from flask import Blueprint, render_template, request, redirect, url_for, sessio
 from flask_bcrypt import Bcrypt
 from werkzeug.utils import secure_filename
 import os
+from .utils.datosUsuario import obtener_usuario_actual
 
 # Crear blueprint
 user_bp = Blueprint('user_bp', __name__)
@@ -29,7 +30,14 @@ def login():
                 if result and bcrypt.check_password_hash(result['password'], password):
                     session['user_id'] = result['id']
                     session['user_role'] = result['role_id']
-                    return redirect(url_for('user_bp.inicio'))
+
+                    # Redirección según el rol
+                    role_redirects = {
+                        1: '/Admin',
+                        2: '/mod',
+                        3: '/inicio'
+                    }
+                    return redirect(role_redirects.get(result['role_id'], '/inicion'))
                 else:
                     return render_template('View/login.html', error='Credenciales incorrectas.')
 
@@ -131,4 +139,11 @@ def register():
 # INICIO
 @user_bp.route('/inicio')
 def inicio():
-    return render_template('User/inicio.html')
+
+    #Datos del usuario
+    usuario = obtener_usuario_actual()
+
+    if isinstance(usuario, str) or hasattr(usuario, 'status_code'):
+        return usuario
+
+    return render_template('User/inicio.html', user=usuario)

@@ -13,7 +13,13 @@
     <title>HGW</title>
 </head>
 <body>
+    <script>
+        const userRol = "{{ user.rol if user else 3 }}";
+        const userProfilePictureUrl = "{{ url_for('static', filename=user.url_foto_perfil) if user.url_foto_perfil else null }}";
+    </script>
+    
     <script type="module" src="{{ url_for('static', filename='User/js/fijos.js') }}"></script>
+    
     <main class="contenido">
         <div class="conten-item">
             <div class="anuncio">

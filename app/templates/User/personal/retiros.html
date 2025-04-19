@@ -13,8 +13,13 @@
 </head>
 
 <body>
-    <script type="module" src="../../js/fijos.js"></script>
-<div class="retiro-form-container">
+    <script>
+        const userRol = "{{ user.rol if user else 3 }}";
+        const userProfilePictureUrl = "{{ url_for('static', filename=user.url_foto_perfil) if user.url_foto_perfil else null }}";
+    </script>
+    <script type="module" src="{{ url_for('static', filename='User/js/fijos.js') }}"></script>
+
+    <div class="retiro-form-container">
     <h2>Formulario de Retiros</h2>
     <form>
         <label for="usuario">Usuario</label>

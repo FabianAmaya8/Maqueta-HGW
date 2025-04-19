@@ -80,32 +80,42 @@ export function initHeader() {
   // Desplegable con detalles personales
   const desplegableDiv = document.createElement('div');
   desplegableDiv.className = 'desplegable';
-  
+
   const details = document.createElement('details');
   details.className = 'contenedor-personal';
-  
+
   const summary = document.createElement('summary');
   summary.className = 'personal';
-  
+
   const personalImgDiv = document.createElement('div');
   personalImgDiv.className = 'personal-img';
-  
-  const personalImg = document.createElement('i');
-  personalImg.className = 'bx bxs-user-circle';
-  
-  personalImgDiv.appendChild(personalImg);
+
+  // Aquí va la lógica de imagen o ícono según si hay o no foto
+  if (typeof userProfilePictureUrl !== 'undefined' && userProfilePictureUrl) {
+    const personalImg = document.createElement('img');
+    personalImg.src = userProfilePictureUrl;
+    personalImg.alt = 'Perfil';
+    personalImgDiv.appendChild(personalImg);
+  } else {
+    const icon = document.createElement('i');
+    icon.className = 'bx bxs-user-circle';
+    personalImgDiv.appendChild(icon);
+  }
+
   summary.appendChild(personalImgDiv);
   details.appendChild(summary);
-  
+
   // Lista desplegable
   const ul = document.createElement('ul');
-  
+
   const opciones = [
-    { href: '#', text: 'Login' },
-    { href: '/infoPersonal', text: 'informacion personal' },
+    { href: '/', text: 'cerrar sesion' },
+    ...(userRol == 1 || userRol == 2 ? [{ href: '/Admin', text: 'administrador' }] : []),
+    { href: '/Informacion-Personal', text: 'informacion personal' },
     { href: '#', text: 'referidos' },
     { href: '#', text: 'Descargar APP' }
   ];
+  
   
   opciones.forEach(opcion => {
     const li = document.createElement('li');
@@ -113,8 +123,8 @@ export function initHeader() {
     a.href = opcion.href;
     a.textContent = opcion.text;
   
-    if (opcion.text === 'Login') {
-      a.id = 'loginModal'
+    if (opcion.text === 'administrador') {
+      a.id = 'adminPanel'
     }
     if (opcion.text === 'informacion personal') {
       a.id = 'infoPersonal'

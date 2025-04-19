@@ -2,6 +2,7 @@ from flask import Blueprint, render_template, request, redirect, url_for, flash,
 from werkzeug.utils import secure_filename
 from flask_bcrypt import Bcrypt
 import os
+from .utils.datosUsuario import obtener_usuario_actual
 
 gesUsers_bp = Blueprint('gesUsers_bp', __name__)
 bcrypt = Bcrypt()

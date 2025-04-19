@@ -11,8 +11,14 @@
     <link rel="shortcut icon" href="{{ url_for('static', filename='User/img/logo.png') }}" type="image/x-icon">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
+</head>
+<body>
+    <script>
+        const userRol = "{{ user.rol if user else 3 }}";
+        const userProfilePictureUrl = "{{ url_for('static', filename=user.url_foto_perfil) if user.url_foto_perfil else null }}";
+    </script>
     <script type="module" src="{{ url_for('static', filename='User/js/fijos.js') }}"></script>
+    
     <div class="container">
         <article class="card">
             <header class="card-header">Mis pedidos / Seguimiento </header>

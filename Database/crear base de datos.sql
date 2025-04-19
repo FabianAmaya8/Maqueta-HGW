@@ -62,16 +62,17 @@ CREATE TABLE direcciones (
     FOREIGN KEY (id_ubicacion) REFERENCES ubicaciones(id_ubicacion)
 );
 
--- Tabla de categorías y subcategorías
+-- Tabla de categorías
 CREATE TABLE categorias (
     id_categoria INT PRIMARY KEY AUTO_INCREMENT,
     nombre_categoria VARCHAR(40)
 );
 
+-- Tabla de subcategorías
 CREATE TABLE subcategoria (
     id_subcategoria INT PRIMARY KEY AUTO_INCREMENT,
     nombre_subcategoria VARCHAR(50),
-    categoria INT,
+    categoria INT NOT NULL,
     FOREIGN KEY (categoria) REFERENCES categorias(id_categoria) ON DELETE CASCADE
 );
 
@@ -82,8 +83,8 @@ CREATE TABLE productos (
     subcategoria INT,
     nombre_producto VARCHAR(50) NOT NULL,
     precio_producto FLOAT NOT NULL,
-    imagen_producto TEXT ,    
-	descripcion TEXT NOT NULL,
+    imagen_producto TEXT,
+    descripcion TEXT NOT NULL,
     stock INT NOT NULL,
     FOREIGN KEY (categoria) REFERENCES categorias(id_categoria),
     FOREIGN KEY (subcategoria) REFERENCES subcategoria(id_subcategoria)
@@ -136,74 +137,83 @@ CREATE TABLE contenido_tema (
     FOREIGN KEY (tema) REFERENCES educacion(id_tema) ON DELETE CASCADE
 );
 
--- Inserción inicial de membresías
+-- ------------------------------------------------
+-- Inserción inicial de datos
+-- ------------------------------------------------
+
+-- Membresías
 INSERT INTO membresias (nombre_membresia, precio_membresia) VALUES
-('Cliente', 10.0),
-('Pre Junior', 20.0),
-('Junior', 30.0),
-('Senior', 40.0),
-('Master', 50.0);
+    ('Cliente', 10.0),
+    ('Pre Junior', 20.0),
+    ('Junior', 30.0),
+    ('Senior', 40.0),
+    ('Master', 50.0);
 
+-- Medios de pago
 INSERT INTO medios_pago (nombre_medio) VALUES
-("tarjeta");
+    ('tarjeta');
 
--- inserciones productos
+-- Categorías (sin especificar ID manualmente)
 INSERT INTO categorias (nombre_categoria) VALUES
-("tecnologia");
+    ('tecnologia'),
+    ('Bebidas');
 
-INSERT INTO subcategoria (nombre_subcategoria,categoria) VALUES
-("celulares",1);
+-- Subcategorías, apuntando a la categoría correcta
+--   tecnología = id_categoria 1
+--   Bebidas    = id_categoria 2
+INSERT INTO subcategoria (nombre_subcategoria, categoria) VALUES
+    ('celulares', 1),
+    ('Infusiones', 2),
+    ('Café',       2);
 
-
+-- Roles
 INSERT INTO roles (nombre_rol) VALUES
-("Admin"), 
-("Moderador"), 
-("Usuario");
+    ('Admin'),
+    ('Moderador'),
+    ('Usuario');
 
--- Insertar países
-INSERT INTO ubicaciones (nombre, tipo, ubicacion_padre) VALUES ('Colombia', 'pais', NULL);
-INSERT INTO ubicaciones (nombre, tipo, ubicacion_padre) VALUES ('México', 'pais', NULL);
+-- Ubicaciones: países
+INSERT INTO ubicaciones (nombre, tipo, ubicacion_padre) VALUES
+    ('Colombia', 'pais', NULL),
+    ('México',   'pais', NULL);
 
--- Obtener los ID de los países insertados
-SET @id_colombia = LAST_INSERT_ID() - 1;
-SET @id_mexico = LAST_INSERT_ID();
+-- Capturar IDs de países para luego insertar ciudades
+SET @id_colombia = (SELECT id_ubicacion FROM ubicaciones WHERE nombre = 'Colombia');
+SET @id_mexico   = (SELECT id_ubicacion FROM ubicaciones WHERE nombre = 'México');
 
--- Insertar ciudades de Colombia
-INSERT INTO ubicaciones (nombre, tipo, ubicacion_padre) VALUES ('Bogotá', 'ciudad', @id_colombia);
-INSERT INTO ubicaciones (nombre, tipo, ubicacion_padre) VALUES ('Medellín', 'ciudad', @id_colombia);
-INSERT INTO ubicaciones (nombre, tipo, ubicacion_padre) VALUES ('Cali', 'ciudad', @id_colombia);
-INSERT INTO ubicaciones (nombre, tipo, ubicacion_padre) VALUES ('Barranquilla', 'ciudad', @id_colombia);
-INSERT INTO ubicaciones (nombre, tipo, ubicacion_padre) VALUES ('Cartagena', 'ciudad', @id_colombia);
-INSERT INTO ubicaciones (nombre, tipo, ubicacion_padre) VALUES ('Cúcuta', 'ciudad', @id_colombia);
-INSERT INTO ubicaciones (nombre, tipo, ubicacion_padre) VALUES ('Bucaramanga', 'ciudad', @id_colombia);
-INSERT INTO ubicaciones (nombre, tipo, ubicacion_padre) VALUES ('Pereira', 'ciudad', @id_colombia);
-INSERT INTO ubicaciones (nombre, tipo, ubicacion_padre) VALUES ('Santa Marta', 'ciudad', @id_colombia);
-INSERT INTO ubicaciones (nombre, tipo, ubicacion_padre) VALUES ('Ibagué', 'ciudad', @id_colombia);
+-- Ciudades de Colombia
+INSERT INTO ubicaciones (nombre, tipo, ubicacion_padre) VALUES
+    ('Bogotá',       'ciudad', @id_colombia),
+    ('Medellín',     'ciudad', @id_colombia),
+    ('Cali',         'ciudad', @id_colombia),
+    ('Barranquilla','ciudad', @id_colombia),
+    ('Cartagena',    'ciudad', @id_colombia),
+    ('Cúcuta',       'ciudad', @id_colombia),
+    ('Bucaramanga',  'ciudad', @id_colombia),
+    ('Pereira',      'ciudad', @id_colombia),
+    ('Santa Marta',  'ciudad', @id_colombia),
+    ('Ibagué',       'ciudad', @id_colombia);
 
--- Insertar ciudades de México
-INSERT INTO ubicaciones (nombre, tipo, ubicacion_padre) VALUES ('Ciudad de México', 'ciudad', @id_mexico);
-INSERT INTO ubicaciones (nombre, tipo, ubicacion_padre) VALUES ('Guadalajara', 'ciudad', @id_mexico);
-INSERT INTO ubicaciones (nombre, tipo, ubicacion_padre) VALUES ('Monterrey', 'ciudad', @id_mexico);
-INSERT INTO ubicaciones (nombre, tipo, ubicacion_padre) VALUES ('Puebla', 'ciudad', @id_mexico);
-INSERT INTO ubicaciones (nombre, tipo, ubicacion_padre) VALUES ('Tijuana', 'ciudad', @id_mexico);
-INSERT INTO ubicaciones (nombre, tipo, ubicacion_padre) VALUES ('León', 'ciudad', @id_mexico);
-INSERT INTO ubicaciones (nombre, tipo, ubicacion_padre) VALUES ('Ciudad Juárez', 'ciudad', @id_mexico);
-INSERT INTO ubicaciones (nombre, tipo, ubicacion_padre) VALUES ('Zapopan', 'ciudad', @id_mexico);
-INSERT INTO ubicaciones (nombre, tipo, ubicacion_padre) VALUES ('Mérida', 'ciudad', @id_mexico);
-INSERT INTO ubicaciones (nombre, tipo, ubicacion_padre) VALUES ('Toluca', 'ciudad', @id_mexico);
+-- Ciudades de México
+INSERT INTO ubicaciones (nombre, tipo, ubicacion_padre) VALUES
+    ('Ciudad de México','ciudad', @id_mexico),
+    ('Guadalajara',     'ciudad', @id_mexico),
+    ('Monterrey',       'ciudad', @id_mexico),
+    ('Puebla',          'ciudad', @id_mexico),
+    ('Tijuana',         'ciudad', @id_mexico),
+    ('León',            'ciudad', @id_mexico),
+    ('Ciudad Juárez',   'ciudad', @id_mexico),
+    ('Zapopan',         'ciudad', @id_mexico),
+    ('Mérida',          'ciudad', @id_mexico),
+    ('Toluca',          'ciudad', @id_mexico);
 
--- Insertar productos para stock
-INSERT INTO categorias (id_categoria, nombre_categoria) VALUES (1, 'Bebidas');
-INSERT INTO subcategoria (id_subcategoria, nombre_subcategoria) VALUES (2, 'Café');
-INSERT INTO subcategoria (id_subcategoria, nombre_subcategoria) VALUES (1, 'Infusiones');
-
-INSERT INTO productos (categoria, subcategoria, nombre_producto, precio_producto, imagen_producto, stock) VALUES
-(1, 1, 'Café de Arándanos', 24900, 'cafe-arandanos.jpg', 25);
-INSERT INTO productos (categoria, subcategoria, nombre_producto, precio_producto, imagen_producto, stock) VALUES
-(1, 2, 'Té Verde HGW', 18900, 'te-verde.jpg', 15);
-
--- En categorías 
-SELECT * FROM productos;
-
--- En subcategorías
-SELECT * FROM subcategoria WHERE id_subcategoria = 1;
+-- Productos con descripción incluida
+--   Bebidas = categoria 2, Infusiones = subcategoria 2, Café = subcategoria 3
+INSERT INTO productos (
+    categoria, subcategoria, nombre_producto,
+    precio_producto, imagen_producto, descripcion, stock
+) VALUES
+    (2, 3, 'Café de Arándanos', 24900, 'cafe-arandanos.jpg',
+    'Mezcla con arándanos secos de origen colombiano', 25),
+    (2, 2, 'Té Verde HGW',      18900, 'te-verde.jpg',
+    'Té verde premium importado', 15);

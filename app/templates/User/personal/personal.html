@@ -7,34 +7,65 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='User/css/bootstrap.min.css') }}">
     <script src="{{ url_for('static', filename='User/js/bootstrap.bundle.min.js') }}"></script>
     <link rel="stylesheet" href="{{ url_for('static', filename='User/css/style.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='User/css/personal/personal.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='User/css/personal/rangohonor.css') }}">
     <link rel="shortcut icon" href="{{ url_for('static', filename='User/img/logo.png') }}" type="image/x-icon">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='User/css/personal/personal.css') }}">
     <title>HGW</title>
 </head>
 <body>
+    <script>
+        const userRol = "{{ user.rol if user else 3 }}";
+        const userProfilePictureUrl = "{{ url_for('static', filename=user.url_foto_perfil) if user.url_foto_perfil else null }}";
+    </script>
     <script type="module" src="{{ url_for('static', filename='User/js/fijos.js') }}"></script>
-    <script src="{{ url_for('static', filename='User/js/personal/niveles.js') }}"></script>
 
     <main class="contenido">
         <div class="conten-item">
             <div class="perfil">
                 <div class="img-perfil">
-                    <img src="https://i.pravatar.cc/300" alt="Foto de perfil">
+                    {% if user.url_foto_perfil %}
+                        <img src="{{ url_for('static', filename=user.url_foto_perfil) }}" alt="Foto de perfil">
+                    {% else %}
+                        <i class='bx bx-user'></i>
+                    {% endif %}
                 </div>
                 <div class="info-perfil">
-                    <h3>Nombre de usuario</h3>
+                    <h3>{{ user.nombre_usuario }}</h3>
                     <div class="membresias">
                         <details>
-                            <summary>Membresia Master</summary>
-                            <table class="tabla">
-                                <tr><th>Membresia</th> <th>BV</th>  <th>Costo</th></tr>
-                                <td>PREJUNIOR</td> <td>50</td> <td>400.000</td><tr></tr>
-                                <td>JUNIOR</td> <td>100</td> <td>800.000</td><tr></tr>
-                                <td>SENIOR</td><td>300</td><td>2.400.000</td><tr></tr>                        </td>
-                                <td>MASTER</td><td>600</td><td>4.800.000</td>                            </td>
+                            <summary>Membresia {{user.nombre_membresia}}</summary>
+                            <table class=" table-striped">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Membresia</th>
+                                        <th scope="col">BV</th>
+                                        <th scope="col">Costo</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>PREJUNIOR</td>
+                                        <td>50</td>
+                                        <td>400.000</td>
+                                    </tr>
+                                    <tr>
+                                        <td>JUNIOR</td>
+                                        <td>100</td>
+                                        <td>800.000</td>
+                                    </tr>
+                                    <tr>
+                                        <td>SENIOR</td>
+                                        <td>300</td>
+                                        <td>2.400.000</td>
+                                    </tr>
+                                    <tr>
+                                        <td>MASTER</td>
+                                        <td>600</td>
+                                        <td>4.800.000</td>
+                                    </tr>
+                                </tbody>
                             </table>
                         </details>
                     </div>
@@ -44,12 +75,12 @@
         <div class="conten-item">
             <div class="nivel-menbresia">
                 <h2>Nivel de Membresia</h2>
-                <div class="botones">
-                    <button onclick="cambiarCantidad(1)">Cliente</button>
-                    <button onclick="cambiarCantidad(2)">PRE JUNIOR</button>
-                    <button onclick="cambiarCantidad(3)">JUNIOR</button>
-                    <button onclick="cambiarCantidad(4)">SENIOR</button>
-                    <button onclick="cambiarCantidad(5)">MASTER</button>
+                <div class="niveles">
+                    <p class="nivel">Cliente</p>
+                    <p class="nivel">PRE JUNIOR</p>
+                    <p class="nivel">JUNIOR</p>
+                    <p class="nivel">SENIOR</p>
+                    <p class="nivel">MASTER</p>
                 </div>
                 <div class="barra">
                     <div class="progreso"></div>
@@ -113,48 +144,11 @@
         </div>
         <div class="conten-item">
             <div class="info">
-                <h2>Administracion financiera</h2>
-                <div class="info-content">
-                    <div class="info-personal">
-                        <div class="dato">
-                            <a href="{{ url_for('transferencias_bp.mostrar_trasferencias') }}">
-                                <div class="dato-item">
-                                    <i class='bx bx-user-circle'></i>
-                                    Transferencias
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="info-financiera">
-                        <div class="dato">
-                            <a href="/usuario/personal/retiros.html">
-                                <div class="dato-item">
-                                    <i class='bx bx-credit-card'></i>
-                                    retiros
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="info-financiera">
-                        <div class="dato">
-                            <a href="#">
-                                <div class="dato-item">
-                                    <i class='bx bx-credit-card'></i>
-                                    historial financiero
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="conten-item">
-            <div class="info">
                 <h2>Informacion</h2>
                 <div class="info-content">
                     <div class="info-personal">
                         <div class="dato">
-                            <a href="info-personal.html">
+                            <a href="/Informacion-Personal">
                                 <div class="dato-item">
                                     <i class='bx bx-user-circle'></i>
                                     informacion personal
@@ -178,6 +172,43 @@
                                 <div class="dato-item">
                                     <i class='bx bx-trophy' ></i>
                                     rango honor
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="conten-item">
+            <div class="info">
+                <h2>Administracion financiera</h2>
+                <div class="info-content">
+                    <div class="info-personal">
+                        <div class="dato">
+                            <a href="{{ url_for('transferencias_bp.mostrar_transferencias') }}">
+                                <div class="dato-item">
+                                    <i class='bx bx-user-circle'></i>
+                                    Transferencias
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="info-financiera">
+                        <div class="dato">
+                            <a href="/usuario/personal/retiros.html">
+                                <div class="dato-item">
+                                    <i class='bx bx-credit-card'></i>
+                                    retiros
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="info-financiera">
+                        <div class="dato">
+                            <a href="#">
+                                <div class="dato-item">
+                                    <i class='bx bx-credit-card'></i>
+                                    historial financiero
                                 </div>
                             </a>
                         </div>
@@ -254,6 +285,11 @@
             </div>
         </div>
     </main>
-
+    <script src="{{ url_for('static', filename='User/js/personal/niveles.js') }}"></script>
+    <script>
+        const membresia = parseInt("{{ user.id_membresia }}");
+        cambiarCantidad(membresia);
+    </script>
+    
 </body>
 </html>
