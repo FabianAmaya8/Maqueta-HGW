@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, request, redirect, url_for, session, current_app
+from flask import Blueprint, render_template, request, redirect, url_for, session, current_app,jsonify
 from flask_bcrypt import Bcrypt
 from werkzeug.utils import secure_filename
 import os
@@ -14,8 +14,13 @@ def login():
         return render_template('View/login.html')
 
     if request.method == 'POST':
-        email = request.form.get('email') or request.form.get('usuario')
-        password = request.form.get('password') or request.form.get('contrasena')
+        # Asegurarse de que los datos vengan como JSON
+        if request.is_json:
+            data = request.get_json()
+            email = data.get('email') or data.get('usuario')
+            password = data.get('password') or data.get('contrasena')
+        else:
+            return jsonify(success=False, message='Formato de datos no válido'), 400
 
         connection = current_app.connection
         try:
@@ -31,18 +36,19 @@ def login():
                     session['user_id'] = result['id']
                     session['user_role'] = result['role_id']
 
-                    # Redirección según el rol
                     role_redirects = {
                         1: '/Admin',
                         2: '/mod',
                         3: '/inicio'
                     }
-                    return redirect(role_redirects.get(result['role_id'], '/inicion'))
+
+                    return jsonify(success=True, redirect=role_redirects.get(result['role_id'], '/inicion'))
+
                 else:
-                    return render_template('View/login.html', error='Credenciales incorrectas.')
+                    return jsonify(success=False, message="El usuario o la contraseña son incorrectos.")
 
         except Exception as e:
-            return render_template('View/login.html', error='Error de servidor: ' + str(e))
+            return jsonify(success=False, message="Error de servidor: " + str(e)), 500
 
 
 

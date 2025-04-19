@@ -3,10 +3,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
     btnIngresar.addEventListener('click', async function (event) {
         event.preventDefault();
-        const email = document.getElementById('usuario')?.value.trim();
-        const password = document.getElementById('contrasena')?.value.trim();
 
-        if (!email || !password) {
+        const usuario = document.getElementById('usuario')?.value.trim();
+        const contrasena = document.getElementById('contrasena')?.value.trim();
+
+        // 🧪 Validaciones front-end
+        if (!usuario || !contrasena) {
             Swal.fire({
                 icon: "warning",
                 title: 'Campos Vacíos',
@@ -16,6 +18,21 @@ document.addEventListener("DOMContentLoaded", function () {
             return;
         }
 
+        const usuarioRegex = /^[a-zA-Z0-9_.-]+$/; // sin espacios ni caracteres raros
+        if (!usuarioRegex.test(usuario)) {
+            Swal.fire({
+                icon: "warning",
+                title: 'Usuario no válido',
+                text: 'El usuario solo puede contener letras, números, guiones, puntos y guiones bajos.',
+                confirmButtonText: 'Aceptar',
+            });
+            return;
+        }
+
+        // 🔒 Desactivar botón mientras se hace la petición
+        btnIngresar.disabled = true;
+        btnIngresar.textContent = 'Verificando...';
+
         try {
             const response = await fetch("/login", {
                 method: "POST",
@@ -23,7 +40,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     "Content-Type": "application/json",
                     "X-Requested-With": "XMLHttpRequest"
                 },
-                body: JSON.stringify({ usuario: email, contrasena: password })
+                body: JSON.stringify({ usuario, contrasena })
             });
 
             const result = await response.json();
@@ -36,7 +53,7 @@ document.addEventListener("DOMContentLoaded", function () {
                         text: result.message || "Bienvenido",
                         confirmButtonText: "Ingresar"
                     }).then(() => {
-                        window.location.href = result.redirect || "/"; // Redirige si se proporciona una URL
+                        window.location.href = result.redirect || "/";
                     });
                 } else {
                     Swal.fire({
@@ -51,13 +68,17 @@ document.addEventListener("DOMContentLoaded", function () {
             }
 
         } catch (error) {
+            console.error("Error en el login:", error);
             Swal.fire({
                 icon: "error",
                 title: "Error de conexión",
                 text: "No se pudo conectar con el servidor. Intenta más tarde.",
                 confirmButtonText: "Aceptar"
             });
-            console.error("Error en el login:", error);
+        } finally {
+            // 🔓 Reactivar botón
+            btnIngresar.disabled = false;
+            btnIngresar.textContent = 'Iniciar Sesión';
         }
     });
 });
