@@ -92,7 +92,10 @@ CREATE TABLE productos (
 
 -- Carrito de compras y productos en el carrito
 CREATE TABLE carrito_compras (
-    id_carrito INT PRIMARY KEY AUTO_INCREMENT
+    id_carrito INT PRIMARY KEY AUTO_INCREMENT,
+    id_usuario INT NOT NULL UNIQUE,
+    fecha_creacion DATETIME DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (id_usuario) REFERENCES usuarios(id_usuario) ON DELETE CASCADE
 );
 
 CREATE TABLE productos_carrito (

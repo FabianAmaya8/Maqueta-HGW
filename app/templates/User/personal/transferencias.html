@@ -17,6 +17,7 @@
 </head>
 <body>
     <script>
+        const cantidadProductosCarrito = "{{ user.total_carrito}}";
         const userRol = "{{ user.rol if user else 3 }}";
         const userProfilePictureUrl = "{{ url_for('static', filename=user.url_foto_perfil) if user.url_foto_perfil else null }}";
     </script>

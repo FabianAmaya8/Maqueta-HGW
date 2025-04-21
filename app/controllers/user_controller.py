@@ -94,6 +94,7 @@ def register():
                 ruta_foto = ruta_relativa.replace("\\", "/")
 
             with connection.cursor() as cursor:
+                # Insertar usuario
                 cursor.execute("""
                     INSERT INTO usuarios 
                     (nombre, apellido, nombre_usuario, pss, correo_electronico, 
@@ -104,11 +105,18 @@ def register():
 
                 id_usuario = cursor.lastrowid
 
+                # Insertar dirección
                 cursor.execute("""
                     INSERT INTO direcciones 
                     (id_usuario, direccion, codigo_postal, id_ubicacion, lugar_entrega)
                     VALUES (%s, %s, %s, %s, %s)
                 """, (id_usuario, direccion, codigo_postal, ubicacion, lugar_entrega))
+
+                # Crear carrito para el usuario
+                cursor.execute("""
+                    INSERT INTO carrito_compras (id_usuario)
+                    VALUES (%s)
+                """, (id_usuario,))
 
                 connection.commit()
 

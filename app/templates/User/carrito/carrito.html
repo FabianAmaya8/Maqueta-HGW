@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="{{ url_for('static', filename='js/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='User/js/bootstrap.bundle.min.js') }}"></script>
     <link rel="stylesheet" href="{{ url_for('static', filename='User/css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='User/css/style.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='User/css/carrito/carrito.css') }}">
@@ -14,176 +14,106 @@
     <title>HGW</title>
 </head>
 <body>
-    <script type="module" src="{{ url_for('static', filename='User/js/carrito/carrito-general.js') }}"></script>
     <script>
+        const cantidadProductosCarrito = "{{ user.total_carrito}}";
         const userRol = "{{ user.rol if user else 3 }}";
         const userProfilePictureUrl = "{{ url_for('static', filename=user.url_foto_perfil) if user.url_foto_perfil else null }}";
     </script>
-    <script type="module" src="{{ url_for('static', filename='User/js/fijos.js') }}"></script>
     
-    <div class="conten-item">
-        <div class="secciones">
-            <div class="btn-section">
-                <button onclick="mostrarDiv('i1')">Carrito de Compras</button>
+    <script type="module" src="{{ url_for('static', filename='User/js/fijos.js') }}"></script>
+    <script type="module" src="{{ url_for('static', filename='User/js/carrito/carrito-general.js') }}"></script>
+
+    <div class="container py-4">
+        <h1 class="text-center mb-4">Carrito de Compras</h1>
+
+        <div class="secciones mb-4">
+            <button data-target="i1">Carrito</button>
+            <button data-target="i2">Envío</button>
+            <button data-target="i3">Pago</button>
+        </div>
+
+        <div class="contenido row">
+            <!-- Sección Izquierda -->
+            <div class="izquierda col-md-8">
+                <section class="conten-item i1 active">
+                    <h2>Productos en el Carrito</h2>
+                    <div id="carrito-items" class="carrito-item">
+                        <div class="productos">
+                            <!-- aqui se pintan los productos -->
+                        </div>
+                    </div>
+                </section>
+
+                <section class="conten-item i2">
+                    <h2>Información de Envío</h2>
+                    <form id="miFormulario">
+                        <div class="grupo-formulario">
+                            <label for="nombre">Nombre</label>
+                            <input type="text" id="nombre" name="nombre" class="form-control" required>
+                        </div>
+                
+                        <div class="grupo-formulario">
+                            <label for="direccion">Dirección</label>
+                            <input type="text" id="direccion" name="direccion" class="form-control" required>
+                        </div>
+                
+                        <div class="grupo-formulario">
+                            <label for="pais">País</label>
+                            <select id="pais" name="pais" class="form-select" required>
+                                <option value="" disabled selected>Seleccione país</option>
+                                {% for pais in paises %}
+                                    <option value="{{ pais.id_ubicacion }}">{{ pais.nombre }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+
+                        
+
+                        <div class="grupo-formulario">
+                            <label for="ciudad">Ciudad</label>
+                            <select class="form-select" id="ciudad" name="ciudad" required>
+                                <option value="" selected disabled>Seleccione ciudad</option>
+                                {% for ciudad in ciudades %}
+                                    <option value="{{ ciudad.id_ubicacion }}" data-pais="{{ ciudad.ubicacion_padre }}">{{ ciudad.nombre }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                    </form>
+                </section>                
+
+                <section class="conten-item i3">
+                    <h2>Método de Pago</h2>
+                    <div class="detalles-metodo-pago">
+                        <div class="cabecera-metodo-pago">
+                            <input type="radio" id="tarjeta" name="pago" value="tarjeta">
+                            <label for="tarjeta">Tarjeta de Crédito</label>
+                        </div>
+                        <div class="cabecera-metodo-pago">
+                            <input type="radio" id="paypal" name="pago" value="paypal">
+                            <label for="paypal">PayPal</label>
+                        </div>
+                        <input type="text" placeholder="Número de tarjeta / Correo" class="form-control">
+                    </div>
+                </section>
+
+                <div class="acciones-carrito mt-3">
+                    <button id="btnCancelar" class="btn btn-danger">Cancelar</button>
+                    <button id="btnSiguiente" class="btn btn-success">Siguiente</button>
+                    <button id="btnFinalizar" class="btn btn-primary d-none">Finalizar compra</button>
+                </div>                
             </div>
-            <div class="btn-section">
-                <button onclick="mostrarDiv('i2')">Detalles de Envío</button>
-            </div>
-            <div class="btn-section">
-                <button onclick="mostrarDiv('i3')">Opciones de Pago</button>
+
+            <!-- Sección Derecha -->
+            <div class="derecha col-md-4">
+                <aside class="resumen shadow rounded">
+                    <h4 class="text-center">Resumen</h4>
+                    <div class="resumen-carrito">
+                        <p>Subtotal: <span class="subtotal">$0.00</span></p>
+                        <p>Total: <span class="total">$0.00</span></p>
+                    </div>
+                </aside>
             </div>
         </div>
     </div>
-    <main class="contenido">
-        <div class="izquierda">
-            <div class="conten-item i1">
-                <!-- seccion 1. Carrito De Compras -->
-                
-                <div id="carrito-de-compras">
-                    <h2>Carrito de Compras</h2>
-                    <div class="carrito-item">
-                        <section class="productos 3"></section>
-                    </div>
-                    <div class="acciones-carrito">
-                        <button onclick="mostrarDiv('i2')" class="siguiente">Siguiente</button>
-                        <button class="cancelar">Cancelar</button>
-                    </div>
-                </div>
-            </div>
-            <div class="conten-item i2">
-                <!-- seccion 2. Detalles de Envío -->
-                
-                <div id="detalles-envio">
-                    <h2>Detalles de Envío</h2>
-                    <div class="carrito-item">
-                        <section>
-                            <form id="miFormulario">
-                                <div class="grupo-formulario">
-                                    <label for="nombre">Nombre</label>
-                                    <input type="text" id="nombre" name="nombre" required />
-                                </div>
-                                <div class="grupo-formulario">
-                                    <label for="apellido">Apellido</label>
-                                    <input type="text" id="apellido" name="apellido" required />
-                                </div>
-                                <div class="grupo-formulario">
-                                    <label for="direccion">Dirección</label>
-                                    <input type="text" id="direccion" name="direccion" required />
-                                </div>
-                                <div class="grupo-formulario">
-                                    <label for="direccion2">Dirección 2</label>
-                                    <input type="text" id="direccion2" name="direccion2" />
-                                </div>
-                                <div class="grupo-formulario">
-                                    <label for="pais">País</label>
-                                    <select id="pais" name="pais" required>
-                                        <option>Seleccione pais</option>
-                                        <option>Colombia</option>
-                                        <option>Peru</option>
-                                        <option>Ecuador</option>
-                                        <option>Argentina</option>
-                                        <option>Mexico</option>
-                                        <option>Bolivia</option>
-                                        <option>El salvador</option>
-                                        <option>Panama</option>
-                                        <option>Chile</option>
-                                    </select>
-                                </div>
-                                <div class="grupo-formulario">
-                                    <label for="ciudad">Ciudad</label>
-                                    <input type="text" id="ciudad" name="ciudad" required />
-                                </div>
-                                <div class="grupo-formulario">
-                                    <label for="codigo-postal">Código Postal</label>
-                                    <input type="text" id="codigo-postal" name="codigo-postal" required/>
-                                </div>
-                                <div class="grupo-formulario">
-                                    <label for="telefono">Teléfono</label>
-                                    <input type="tel" id="telefono" name="telefono" required />
-                                </div>
-                                <div class="acciones-carrito">
-                                    <button type="submit" name="accion" value="siguiente">Siguiente</button>
-                                </div>
-                                <div class="acciones-carrito">
-                                    <button type="button" name="accion" value="cancelar" onclick="mostrarDiv('i1')" class="cancelar">Cancelar</button>
-                                </div>
-                            </form>
-                        </section>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="conten-item i3">
-                <!-- Sección 3. Opciones de Pago -->
-                <div id="opciones-pago">
-                    <h2>Opciones de Pago</h2>
-                    <div class="carrito-item">
-                        <section>
-                            <form id="formularioPago">
-                                <div class="grupo-formulario">
-                                    <label for="tarjeta-credito">
-                                        <input type="radio" id="tarjeta-credito" name="metodo-pago" value="tarjeta-credito" checked>
-                                        Tarjeta de Crédito
-                                    </label>
-                                </div>
-                                <div class="grupo-formulario">
-                                    <label for="input-name">Nombre del Titular</label>
-                                    <input type="text" id="input-name" name="nombre-titular" placeholder="e.g. Jane Appleseed" required>
-                                </div>
-                                <div class="grupo-formulario">
-                                    <label for="input-number">Número de Tarjeta</label>
-                                    <input type="text" id="input-number" name="numero-tarjeta" placeholder="e.g. 1234 5678 9123 0000" required>
-                                </div>
-                                <div class="grupo-formulario">
-                                    <label for="fecha-expiracion">Fecha de Expiración</label>
-                                    <div class="fecha-expiracion">
-                                        <input type="number" id="input-month" name="mes-expiracion" placeholder="MM" required>
-                                        <input type="number" id="input-year" name="anio-expiracion" placeholder="YY" required>
-                                    </div>
-                                </div>
-                                <div class="grupo-formulario">
-                                    <label for="input-cvc">CVV</label>
-                                    <input type="text" id="input-cvc" name="cvv" placeholder="e.g. 123" required>
-                                </div>
-                                <div class="grupo-formulario">
-                                    <label for="pay-pal">
-                                        <input type="radio" id="pay-pal" name="metodo-pago" value="pay-pal">
-                                        PayPal
-                                    </label>
-                                </div>
-                                <div class="grupo-formulario">
-                                    <p>
-                                        Si seleccionas PayPal, serás redirigido a la página oficial de PayPal para completar tu pago.
-                                    </p>
-                                </div>
-                                <div class="acciones-carrito">
-                                    <button type="submit" name="accion">Finalizar Compra</button>
-                                    <button type="button" name="accion" value="cancelar" onclick="mostrarDiv('i2')" class="cancelar">Cancelar</button>
-                                </div>
-                            </form>
-                        </section>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-        <div class="derecha">
-            <div class="resumen">
-                <h3>Resumen</h3>
-                <div class="item-resumen">
-                    <span>Subtotal:</span>
-                    <span class="subtotal"></span>
-                </div>
-                <div class="item-resumen">
-                    <span>Envío:</span>
-                    <span>$10000.00</span>
-                </div>
-                <div class="totales">
-                    <span>Total:</span>
-                    <span class="total"></span>
-                </div>
-            </div>
-        </div>
-    </main>
 </body>
 </html>
