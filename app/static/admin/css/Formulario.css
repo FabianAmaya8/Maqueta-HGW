@@ -1,6 +1,6 @@
 @import url('./variables.css');
 
-.form-floating>label {
+.form-floating > label {
     color: var(--color-btn-principal-letra);
 }
 
@@ -11,40 +11,43 @@
     flex: 1;
     gap: 1rem;
     height: 100%;
-}
-
-.inputs-form>div {
     width: 100%;
 }
 
-.form-floating>input:focus {
+.inputs-form > div {
+    width: 100%;
+    max-width: 30rem;
+}
+
+.form-floating > input:focus {
     box-shadow: 0 0 0 0.25rem var(--color-focus-input) !important;
     border-color: var(--color-focus-input);
 }
 
-.form-floating>input:focus~label {
+.form-floating > input:focus ~ label {
     color: var(--color-letra-input) !important;
 }
 
 .imagen-contenedor {
-    flex: 1;
     height: 25rem;
     border: solid 0.2rem var(--color-btn-principal-letra);
     transition: 100ms;
+    width: 45%;
+    margin-right: 7%;
 }
 
-.imagen-contenedor>label:hover {
+.imagen-contenedor > label:hover {
     cursor: pointer;
 }
 
-.imagen-contenedor:hover>label>svg,
+.imagen-contenedor:hover > label > svg,
 .imagen-contenedor:hover {
     transition: 100ms;
     fill: var(--color-letra-input);
     border-color: var(--color-letra-input);
 }
 
-.imagen-contenedor>label {
+.imagen-contenedor > label {
     width: 100%;
     height: 100%;
     display: flex;
@@ -52,7 +55,7 @@
     align-items: center;
 }
 
-.imagen-contenedor>label>svg {
+.imagen-contenedor > label > svg {
     width: 20%;
     height: 20%;
     fill: var(--color-btn-principal-letra);
@@ -64,22 +67,21 @@
     height: max-content;
     display: flex;
     align-items: center;
-    justify-content: center;
-    gap: 7%;
-    padding-left: 3rem;
-    padding-right: 3rem;
-    padding-top: 3rem;
-    padding-bottom: 4rem;
+    padding: 3rem 3rem 4rem;
     border-radius: 0.5rem;
     background-color: var(--color-form-fondo);
     box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
 }
 
 .buttons-form {
-    width: 100%;
-    height: max-content;
-    display: flex;
-    justify-content: end;
+    margin-top: auto;
+    margin-bottom: -1rem;
+    width: max-content;
+    height: auto;
+}
+
+select {
+    height: calc(3.5rem + (var(--bs-border-width) * 2));
 }
 
 select:focus {
@@ -88,21 +90,31 @@ select:focus {
     color: var(--color-btn-principal-letra);
 }
 
-select {
-    height: calc(3.5rem + calc(var(--bs-border-width)* 2));
-}
-
 .alerta_producto {
     position: absolute;
-    right: -28rem;
     top: 1rem;
+    right: -28rem;
     z-index: 99999;
     transition: 300ms;
 }
 
 .alerta_producto-on {
-    transition: 300ms;
     right: 0;
+    transition: 300ms;
 }
 
-@media screen and (max-width: 900px) {}
+@media screen and (max-width: 900px) {
+    .formulario {
+        flex-direction: column;
+        padding: 2rem;
+        gap: 2rem;
+    }
+
+    .inputs-form > div {
+        max-width: 100%;
+    }
+
+    .imagen-contenedor {
+        height: 20rem;
+    }
+}

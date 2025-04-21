@@ -9,10 +9,12 @@ import { crearCategoria, agregarCategoria } from './Categorias/CrearCategorias.j
 import { listaCategorias } from './Categorias/ListaCategorias.js'
 import { crearSubcategoria, agregarSubcategoria } from './Categorias/subcategorias/CrearSubcategoria.js';
 import { listaSubcategoria } from './Categorias/subcategorias/ListaSubcategoria.js';
+import { mostrarSubcategoria } from './Productos/crearProductos.js';
 window.onload = () => {
     inicio();
     navBar();
 };
+window.mostrarSubcategoria = mostrarSubcategoria;
 window.alerta = alerta;
 window.crearProductos = crearProductos;
 window.agregarCategoria = agregarCategoria

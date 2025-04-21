@@ -46,6 +46,7 @@ def create_app():
     app.register_blueprint(segpedidos_bp)
 
     app.connection = connection
+    app.conexion = connection
 
     #Admin
     app.register_blueprint(menu)

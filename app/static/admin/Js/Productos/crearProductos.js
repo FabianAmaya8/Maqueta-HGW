@@ -1,6 +1,7 @@
 import { datos_inicio, productos, categorias, categoriasVar, contenido } from '../variablesGlobales.js';
 import { navBar } from '../nav_bar.js';
 var inputs_valores = [];
+let general = "";
 export function crearProductos(productoValores, editara) {
     fetch("http://127.0.0.1:5000/consulta_subcategoria").then(state => state.json()).then(respuesta => {
         let subcategoria = [];
@@ -12,16 +13,40 @@ export function crearProductos(productoValores, editara) {
             for (let datos of respuesta2) {
                 categoria.push(datos.nombre_categoria);
             }
-            inputs_valores = [{ valor: "Nombre Producto", tipo: "text", form: "input", required: "required" }, { valor: "Precio Producto", tipo: "number", form: "input", required: "required" }, { valor: "Descripción", tipo: "text", form: "input", required: "required" }, { valor: "Categoria", tipo: "text", form: categoria, required: "required" }, { valor: "Subcategoria", tipo: "text", form: subcategoria, required: "required" }];
+            inputs_valores = [{ valor: "Nombre Producto", tipo: "text", form: "input", required: "required", style: "" }, { valor: "Precio Producto", tipo: "number", form: "input", required: "required", style: "" }, { valor: "Descripción", tipo: "text", form: "input", required: "required", style: "" }, { valor: "Categorias", tipo: "text", form: categoria, required: "required", extra: "onchange=mostrarSubcategoria()"}, { valor: "Subcategoria", tipo: "number", form: "div", required: "required", style: "" }, { valor: "Stock", tipo: "number", form: "input", required: "required", style: "" }];
             let valorBoton = { valor: "Crear Producto", url: "agregarProducto()" };
-            crear(inputs_valores, valorBoton, productoValores, editara);
+            let apartado = "productos";
+            crear(inputs_valores, valorBoton, productoValores, editara, apartado);
         });
     });
 }
-export function crearFormulario(inputs_valores, valorBoton, productoValores, editara) {
-    return crear(inputs_valores, valorBoton, productoValores, editara);
+export function crearFormulario(inputs_valores, valorBoton, productoValores, editara, apartado = "") {
+    return crear(inputs_valores, valorBoton, productoValores, editara, apartado);
 }
-function crear(inputs_valores, valorBoton, productoValores, editara) {
+export function mostrarSubcategoria(productoValores, editara){
+            let categoria = parseInt(document.getElementById("Categorias").value);
+            categoria += 1;
+            fetch(`http://127.0.0.1:5000/consulta_subcategoria_id?id=${categoria}`).then(state => state.json()).then(respuesta => {
+                let subcategoria_nodo = document.getElementById("divSubcategoria");
+                console.log(respuesta);
+                function opciones(){
+                    let html = "";
+                    respuesta.forEach((subcategoria, i) => {
+                        html += `<option value="${parseInt(i+1)}">${subcategoria.nombre_subcategoria}</option>`;
+                    });                    
+                    return html;
+                }
+                subcategoria_nodo.innerHTML =  `
+                    <div class="mb-0">
+                        <select class="form-select" id="Subcategoria">
+                            <option selected disabled>subcategoria</option>
+                            ${opciones()}
+                        </select>
+                    </div>
+                    `
+            });
+}
+function crear(inputs_valores, valorBoton, productoValores, editara, apartado) {
     let inputsHtml = "";
     function options(i) {
         let opciones = "";
@@ -34,10 +59,17 @@ function crear(inputs_valores, valorBoton, productoValores, editara) {
         let formulario = "";
         for (let i = 0; i < inputs_valores.length; i++) {
             if (typeof inputs_valores[i].form == "string") {
+                if(inputs_valores[i].form == "div"){
+                    formulario += `
+                        <div class="form-floating mb-3" id="divSubcategoria">
+                            
+                        </div>
+                    `;
+                }
                 if (inputs_valores[i].form == "input") {
                     formulario += `
                         <div class="form-floating mb-3">
-                            <input ${inputs_valores[i].required} type="${inputs_valores[i].tipo}" class="form-control" id="${inputs_valores[i].valor}" placeholder="${inputs_valores[i].valor}">
+                            <input ${`style=${inputs_valores[i].style != "" ? inputs_valores[i].style != "": ""}`} ${inputs_valores[i].required} type="${inputs_valores[i].tipo}" class="form-control" id="${inputs_valores[i].valor}" placeholder="${inputs_valores[i].valor}">
                             <label for="${inputs_valores[i].valor}">${inputs_valores[i].valor}</label>
                         </div>
                     `;
@@ -46,7 +78,7 @@ function crear(inputs_valores, valorBoton, productoValores, editara) {
             else if (Array.isArray(inputs_valores[i].form)) {
                 formulario += `
                     <div class="mb-3">
-                        <select class="form-select" id="${inputs_valores[i].valor}">
+                        <select class="form-select" ${inputs_valores[i].extra != ""? inputs_valores[i].extra : ""} id="${inputs_valores[i].valor}">
                             <option selected disabled>${inputs_valores[i].valor}</option>
                             ${options(i)}
                         </select>
@@ -58,30 +90,38 @@ function crear(inputs_valores, valorBoton, productoValores, editara) {
     }
     let productos_pagina = `
         <div class="formulario">
-                <div class="imagen-contenedor">
+                ${
+                    apartado == "productos" ?
+                    `<div class="imagen-contenedor">
                     <label for="imagen" class="img_producto">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-image-fill" viewBox="0 0 16 16">
                             <path d="M.002 3a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2h-12a2 2 0 0 1-2-2zm1 9v1a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V9.5l-3.777-1.947a.5.5 0 0 0-.577.093l-3.71 3.71-2.66-1.772a.5.5 0 0 0-.63.062zm5-6.5a1.5 1.5 0 1 0-3 0 1.5 1.5 0 0 0 3 0"/>
                         </svg>
                     </label>
                     <input form="formulario" type="file" accept="image/*" hidden id="imagen">
-                </div>
+                    </div>`: ""
+                }
                 <form class="inputs-form" id="formulario">
                     ${form()}
-                    <div class="buttons-form">
-                        <button type="button" class="btn btn-success" onclick="${valorBoton.url}">${valorBoton.valor}</button>
+                    <div class="buttons-form" style=" visibility: hidden;">
+                        <button type="button" class="btn btn-success">aaaaaa</button>
                     </div>
                 </form>
+                <div class="buttons-form">
+                    <button type="button" class="btn btn-success" onclick="${valorBoton.url}">${valorBoton.valor}</button>
+                </div>
             </div>
     `;
     contenido.innerHTML = productos_pagina;
+    general = productos_pagina;
 }
 export function agregarProducto() {
     if (document.getElementById("formulario").checkValidity()) {
         let objeto = { Id: productos.length + 1 };
         inputs_valores.forEach(valor => {
-            objeto[valor.valor] = (valor.valor != "Categoria" ? document.getElementById(valor.valor).value : parseInt(document.getElementById(valor.valor).value));
+            objeto[valor.valor] = (valor.valor != "Categorias" && valor.valor != "Subcategoria" ? document.getElementById(valor.valor).value : parseInt(document.getElementById(valor.valor).value));
         });
+        console.log(objeto);
         fetch("http://127.0.0.1:5000/registro_producto", {
             method: "POST",
             headers: { "content-type": "application/json" },
