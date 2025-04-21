@@ -92,7 +92,7 @@
                 <h2>Administracion de Pedidos</h2>
                 <div class="botones-pedidos">
                     <div class="boton-item">
-                        <a href="pedidos.html">
+                        <a href="{{ url_for('admin_pedidos_bp.mostrar_adminpedidos') }}">
                             <div class="a-content">
                                 <i class='bx bx-envelope-open'></i>
                                 Todo
@@ -100,7 +100,7 @@
                         </a>
                     </div>
                     <div class="boton-item">
-                        <a href="pedidos.html">
+                        <a href="{{ url_for('admin_pedidos_bp.mostrar_adminpedidos') }}">
                             <div class="a-content">
                                 <i class='bx bx-envelope-open'></i>
                                 Reservado
@@ -116,7 +116,7 @@
                         </a>
                     </div>
                     <div class="boton-item">
-                        <a href="pedidos.html">
+                        <a href="{{ url_for('admin_pedidos_bp.mostrar_adminpedidos') }}">
                             <div class="a-content">
                                 <i class='bx bx-send' ></i>
                                 pendiente de envio
@@ -124,7 +124,7 @@
                         </a>
                     </div>
                     <div class="boton-item">
-                        <a href="pedidos.html">
+                        <a href="{{ url_for('admin_pedidos_bp.mostrar_adminpedidos') }}">
                             <div class="a-content">
                                 <i class='bx bx-send' ></i>
                                 enviado
@@ -132,7 +132,7 @@
                         </a>
                     </div>
                     <div class="boton-item">
-                        <a href="pedidos.html">
+                        <a href="{{ url_for('admin_pedidos_bp.mostrar_adminpedidos') }}"></a>
                             <div class="a-content">
                                 <i class='bx bx-check-circle'></i>
                                 completado
@@ -195,7 +195,7 @@
                     </div>
                     <div class="info-financiera">
                         <div class="dato">
-                            <a href="/usuario/personal/retiros.html">
+                            <a href="{{ url_for('retiros_bp.mostrar_retiros') }}">
                                 <div class="dato-item">
                                     <i class='bx bx-credit-card'></i>
                                     retiros
