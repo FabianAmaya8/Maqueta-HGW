@@ -1,20 +1,16 @@
-import { productsData } from './data-productos.js';
 import { mostrarAlerta } from './alerta-añadir.js';
-
-// Función para seleccionar un producto aleatoriamente
-function getRandomProduct() {
-  const randomIndex = Math.floor(Math.random() * productsData.length);
-  return productsData[randomIndex];
-}
 
 // Función para formatear el precio con signo de pesos y separadores de miles
 function formatPrice(price) {
-  return `$${price.toLocaleString()}`; // Agrega el signo de pesos y formatea números grandes
+  return `$${price.toLocaleString()}`;
 }
 
 // Función para crear un solo producto
 function createProduct(categoria, name, price, imageUrl, stock) {
-  const cartProducto = document.createElement('article'); // Cambiado a 'article' por semántica
+
+  const imagenProductoUrl = 'static/' + imageUrl;
+
+  const cartProducto = document.createElement('article');
   cartProducto.className = 'cart-producto';
 
   const stockIndicator = document.createElement('span');
@@ -50,7 +46,7 @@ function createProduct(categoria, name, price, imageUrl, stock) {
   bannerProductosDiv.className = 'baner-productos';
 
   const productImg = document.createElement('img');
-  productImg.src = imageUrl;
+  productImg.src = imagenProductoUrl;
   productImg.alt = `Imagen del producto ${name}`;
 
   bannerProductosDiv.appendChild(productImg);
@@ -75,42 +71,54 @@ function createProduct(categoria, name, price, imageUrl, stock) {
   productCarrito.className = 'btn-carrito';
   productCarrito.id = 'añadir';
   productCarrito.setAttribute('aria-label', `Agregar ${name} al carrito`);
-  
+
   if (stock <= 0) {
     productCarrito.disabled = true;
     productCarrito.classList.add('btn-deshabilitado');
-  }// Accesibilidad
-  
-  productCarrito.addEventListener('click', mostrarAlerta);
+  }
 
+  productCarrito.addEventListener('click', mostrarAlerta);
 
   infoProductoDiv.appendChild(productCategoria);
   infoProductoDiv.appendChild(productName);
   infoProductoDiv.appendChild(productPrice);
-  
+
   productLink.appendChild(bannerProductosDiv);
   productLink.appendChild(infoProductoDiv);
-  
+
   cartProducto.appendChild(productLink);
   cartProducto.appendChild(productCarrito);
+
   return cartProducto;
 }
 
+// Función para cargar productos desde el backend
+async function fetchProducts(limit = 10) {
+  try {
+    const response = await fetch(`/usuario/catalogo/obtener_productos?limit=${limit}`);
+    const productos = await response.json();
+    return productos;
+  } catch (error) {
+    console.error('Error al obtener productos:', error);
+    return [];
+  }
+}
 
-// Función para crear múltiples productos dependiendo de la clase
-function createProductsFromClass() {
+// Función para crear productos en los contenedores .carts
+async function createProductsFromClass() {
   const cartsContainers = document.querySelectorAll('.carts');
 
-  cartsContainers.forEach(container => {
-    const productCount = parseInt(container.classList[1]); // Asume que la clase es 'carts X', donde X es el número de productos
-
+  for (const container of cartsContainers) {
+    const productCount = parseInt(container.classList[1]); // Clase como 'carts 6'
     container.innerHTML = '';
 
-    for (let i = 0; i < productCount; i++) {
-      const { categoria, name, price, imageUrl, stock } = getRandomProduct();
-      const product = createProduct(categoria, name, price, imageUrl, stock);
+    const productos = await fetchProducts(productCount);
+
+    productos.forEach(p => {
+      const product = createProduct(p.categoria, p.nombre, p.precio, p.imagen, p.stock);
       container.appendChild(product);
-    }
-  });
+    });
+  }
 }
+
 window.onload = createProductsFromClass;

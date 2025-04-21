@@ -15,6 +15,7 @@ venv/
 __pycache__/
 
 profile_pictures/
+product_images/
 
 # Editor directories and files
 .vscode/*
