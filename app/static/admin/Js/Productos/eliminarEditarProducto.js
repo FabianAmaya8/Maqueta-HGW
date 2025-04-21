@@ -6,7 +6,7 @@ export function eliminarProducto(event, tabla, columna, posicion_id) {
     let posicion = posicion_id;
     for (let dato of datosFila) {
         if (contador == posicion_id) {
-            fetch(`http://127.0.0.1:5000//eliminar_producto?producto_id=${dato.textContent.trim()}&tabla=${tabla}&columna=${columna}`).then(state => state.text()).then(respuesta => {
+            fetch(`http://127.0.0.1:5000/eliminar_producto?producto_id=${dato.textContent.trim()}&tabla=${tabla}&columna=${columna}`).then(state => state.text()).then(respuesta => {
                 productos.forEach((producto, index) => {
                     if (producto.Id == parseInt(fila.firstElementChild.textContent)) {
                         productos.splice(index, 1);

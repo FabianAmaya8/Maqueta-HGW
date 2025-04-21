@@ -9,12 +9,13 @@ def registro_producto():
         nombre_p = datos.get("Nombre Producto")
         precio_p = datos.get("Precio Producto")
         descripcion = datos.get("Descripción")
-        categoria = int(datos.get("Categoria"))+1
-        sucategoria = int(datos.get("Subcategoria"))+1
+        categoria = int(datos.get("Categorias"))+1
+        subcategoria = int(datos.get("Subcategoria"))
+        stock = int(datos.get("Stock"))
         try:
             with current_app.conexion.cursor() as cursor:
-                sql = "INSERT INTO productos(categoria, nombre_producto, precio_producto, descripcion, subcategoria) VALUES(%s, %s, %s, %s, %s)"
-                cursor.execute(sql, (categoria, nombre_p, precio_p, descripcion, sucategoria))
+                sql = "INSERT INTO productos(categoria, nombre_producto, precio_producto, descripcion, subcategoria, stock) VALUES(%s, %s, %s, %s, %s, %s)"
+                cursor.execute(sql, (categoria, nombre_p, precio_p, descripcion, subcategoria, stock))
                 current_app.conexion.commit()
                 return "El producto se ha registrado correctamente"
         except Exception as error:
