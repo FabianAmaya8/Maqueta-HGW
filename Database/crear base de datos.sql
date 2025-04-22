@@ -136,6 +136,16 @@ CREATE TABLE contenido_tema (
     tema INT NOT NULL,
     FOREIGN KEY (tema) REFERENCES educacion(id_tema) ON DELETE CASCADE
 );
+CREATE TABLE retiros(
+    id_retiro INT PRIMARY KEY AUTO_INCREMENT,
+    id_usuario INT not null,
+    saldo_disponible DOUBLE NOT NULL,
+    banco VARCHAR(100),
+    numero_cuenta_celular VARCHAR(100),
+    monto_retiro DOUBLE NOT NULL,
+    fecha_solicitud TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (id_usuario) REFERENCES usuarios(id_usuario) ON DELETE CASCADE
+);
 
 -- ------------------------------------------------
 -- Inserción inicial de datos
