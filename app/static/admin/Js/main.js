@@ -10,6 +10,8 @@ import { listaCategorias } from './Categorias/ListaCategorias.js'
 import { crearSubcategoria, agregarSubcategoria } from './Categorias/subcategorias/CrearSubcategoria.js';
 import { listaSubcategoria } from './Categorias/subcategorias/ListaSubcategoria.js';
 import { mostrarSubcategoria } from './Productos/crearProductos.js';
+import { creacion, agregarUsuario } from './usuario/administrarUsuario.js';
+import {listaUsuarios} from './usuario/listaUsuario.js'
 window.onload = () => {
     inicio();
     navBar();
@@ -32,3 +34,6 @@ window.eliminarProducto = eliminarProducto;
 window.listaBonos = listaBonos;
 window.administrarBonos = administrarBonos;
 window.agregarBono = agregarBono;
+window.administrarUsuarios = creacion;
+window.agregarUsuario=agregarUsuario;
+window.listaUsuarios=listaUsuarios;

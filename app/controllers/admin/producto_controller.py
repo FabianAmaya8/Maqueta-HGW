@@ -54,4 +54,4 @@ def eliminar_producto():
             current_app.conexion.commit()
             return "se ha eliminado el producto"
     except Exception as error:
-        return jsonify({"respuesta": "ha ocurrido un error:" + str(error)})
+        return "ha ocurrido un error:" + str(error)

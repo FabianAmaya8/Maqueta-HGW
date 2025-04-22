@@ -12,7 +12,8 @@ def consultar_bonos():
             consulta = cursor.fetchall()
             return jsonify(consulta)
     except Exception as e:
-        return jsonify({'error': 'Error al consultar bonos'}), 500
+        print(str(e))
+        return jsonify({'error': 'Error al consultar bonos', 'detalle':str(e)}), 500
     
 @modulo_bonos.route('/agregarBono', methods=['POST'])      
 def agregar_bonos():
@@ -33,18 +34,19 @@ def agregar_bonos():
         print("Error:", e)
         return jsonify({'error': 'Error al agregar bono'}), 500
 
-@modulo_bonos.route('/eliminarBonos', methods=['GET'])
-def eliminar_bonos():
-    data = request.get_json()
-    sql = 'drop from bonos where id=%s'
-    id_bono = data.get('id_bono')
+@modulo_bonos.route('/eliminarBonos', methods=['POST'])
+def eliminacionBonos():
     try:
+        tabla = request.args.get("tabla")
+        columna = request.args.get("columna")
+        producto_id = request.args.get("id_bonos")
         with current_app.conexion.cursor() as cursor:
-            cursor.execute(sql, (id_bono))
+            sql = f"DELETE FROM {tabla} WHERE {columna} = %s"
+            cursor.execute(sql, (producto_id,))
             current_app.conexion.commit()
-            return jsonify({'mensaje': 'bono eliminado exitosamente'}), 200
+            return 'el usuario se ha eliminado exitosamente'
     except Exception as e:
-        return jsonify({'error': 'error al eliminar el bono'})
+        return jsonify({'error': 'error al eliminar usuario: ' + str(e)})
 
 @modulo_bonos.route('/editarBonos', methods=['POST'])
 def modificar_bonos():

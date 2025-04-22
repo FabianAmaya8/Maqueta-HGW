@@ -14,7 +14,12 @@ export function navBar() {
                 <div class="collapse navbar-collapse" id="menuNavbar">
                 <ul class="navbar-nav d-flex w-100">
                     <li class="nav-item active"> <a class="btn btn-primary btn-lg" onclick="inicio()"> Inicio </a> </li>
-                    <li class="nav-item"> <a class="btn btn-primary btn-lg"> Gestion de Usuario </a> </li>
+                    <li class="nav-item btn-group btn-group-normal"> <a class="btn btn-primary btn-lg dropdown-toggle" data-bs-offset="0, -10"> Gestion de Usuario </a> 
+                        <ul class="dropdown-menu">
+                            <li> <a class="btn btn-secondary dropdown-item" onclick="listaUsuarios()">Lista de Usuarios</a> </li>
+                            <li> <a class="btn btn-secondary dropdown-item" onclick="administrarUsuarios()">Administrar Usuarios</a> </li>
+                        </ul>
+                    </li>
                     <li class="nav-item btn-group btn-group-normal"> <a class="btn btn-primary btn-lg dropdown-toggle" data-bs-offset="0, -10"> Bonos </a> 
                         <ul class="dropdown-menu">
                             <li> <a class="btn btn-secondary dropdown-item" onclick="listaBonos()">Lista de Bonos</a> </li>

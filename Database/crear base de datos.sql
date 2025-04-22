@@ -107,7 +107,7 @@ CREATE TABLE productos_carrito (
 CREATE TABLE bonos (
     id_bono INT PRIMARY KEY AUTO_INCREMENT,
     nombre_bono VARCHAR(50) NOT NULL,
-    porcentaje DECIMAL(5,2),
+    porcentaje FLOAT(5,2),
     tipo VARCHAR(50),
     costo_activacion INT
 );
