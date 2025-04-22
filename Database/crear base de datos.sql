@@ -106,6 +106,9 @@ CREATE TABLE productos_carrito (
     FOREIGN KEY (carrito) REFERENCES carrito_compras(id_carrito) ON DELETE CASCADE
 );
 
+ALTER TABLE productos_carrito
+ADD CONSTRAINT unique_producto_carrito UNIQUE (producto, carrito);
+
 -- Tabla de bonos
 CREATE TABLE bonos (
     id_bono INT PRIMARY KEY AUTO_INCREMENT,
@@ -156,19 +159,6 @@ INSERT INTO membresias (nombre_membresia, precio_membresia) VALUES
 INSERT INTO medios_pago (nombre_medio) VALUES
     ('tarjeta');
 
--- Categorías (sin especificar ID manualmente)
-INSERT INTO categorias (nombre_categoria) VALUES
-    ('tecnologia'),
-    ('Bebidas');
-
--- Subcategorías, apuntando a la categoría correcta
---   tecnología = id_categoria 1
---   Bebidas    = id_categoria 2
-INSERT INTO subcategoria (nombre_subcategoria, categoria) VALUES
-    ('celulares', 1),
-    ('Infusiones', 2),
-    ('Café',       2);
-
 -- Roles
 INSERT INTO roles (nombre_rol) VALUES
     ('Admin'),
@@ -210,13 +200,3 @@ INSERT INTO ubicaciones (nombre, tipo, ubicacion_padre) VALUES
     ('Mérida',          'ciudad', @id_mexico),
     ('Toluca',          'ciudad', @id_mexico);
 
--- Productos con descripción incluida
---   Bebidas = categoria 2, Infusiones = subcategoria 2, Café = subcategoria 3
-INSERT INTO productos (
-    categoria, subcategoria, nombre_producto,
-    precio_producto, imagen_producto, descripcion, stock
-) VALUES
-    (2, 3, 'Café de Arándanos', 24900, 'cafe-arandanos.jpg',
-    'Mezcla con arándanos secos de origen colombiano', 25),
-    (2, 2, 'Té Verde HGW',      18900, 'te-verde.jpg',
-    'Té verde premium importado', 15);

@@ -1,4 +1,4 @@
-import { mostrarAlerta } from './alerta-añadir.js';
+import { alertaView } from './../productos/alerta-añadir.js';
 
 // Función para formatear el precio con signo de pesos y separadores de miles
 function formatPrice(price) {
@@ -96,31 +96,7 @@ function createProduct(categoria, subcategoria, name, price, imageUrl, stock, id
   }
 
   productCarrito.addEventListener('click', async () => {
-    try {
-      const response = await fetch('/usuario/catalogo/agregar_carrito', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ id_producto: idProducto })
-      });
-
-      let resultText = await response.text();
-      let result;
-      try {
-        result = JSON.parse(resultText);
-      } catch {
-        result = { error: resultText };
-      }
-
-      if (response.ok) {
-        mostrarAlerta();
-      } else {
-        const msg = result.error || `Error ${response.status}: ${response.statusText}`;
-        alert(msg);
-      }
-    } catch (error) {
-      console.error('Error de conexión con el servidor:', error);
-      alert('Error de conexión con el servidor.');
-    }
+    alertaView();
   });
 
   cartProducto.appendChild(productCarrito);

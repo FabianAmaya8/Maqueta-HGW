@@ -1,9 +1,14 @@
 export function resumenCarrito() {
+
+    // Función para formatear el precio con signo de pesos y separadores de miles
+    function formatPrice(price) {
+        return `$${price.toLocaleString()}`;
+    }
     function recalcularTotales() {
         let precioCarritoTotal = 0;
 
         document.querySelectorAll('.item-carrito').forEach(item => {
-            const precioTexto = item.querySelector('.precio').textContent.replace('$', '');
+            const precioTexto = item.querySelector('.precioModificado').textContent.replace('$', '');
             const precioUnitario = parseFloat(precioTexto);
             const cantidad = parseInt(item.querySelector('input').value, 10);
             precioCarritoTotal += precioUnitario * cantidad;
@@ -12,11 +17,11 @@ export function resumenCarrito() {
         const totalCompra = precioCarritoTotal + 10000;
 
         document.querySelectorAll('.subtotal').forEach(el => {
-            el.textContent = `$${precioCarritoTotal.toFixed(2)}`;
+            el.textContent = formatPrice(precioCarritoTotal);
         });
 
         document.querySelectorAll('.total').forEach(el => {
-            el.textContent = `$${totalCompra.toFixed(2)}`;
+            el.textContent = formatPrice(totalCompra);
         });
     }
 

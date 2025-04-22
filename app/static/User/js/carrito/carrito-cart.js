@@ -1,4 +1,10 @@
 export function carritoCart() {
+
+    // Función para formatear el precio con signo de pesos y separadores de miles
+    function formatPrice(price) {
+        return `$${price.toLocaleString()}`;
+    }
+    
     async function createItemCarrito(name, price, imageUrl, cantidad = 1, id_producto) {
         const itemCarrito = document.createElement('div');
         itemCarrito.className = 'item-carrito';
@@ -21,10 +27,15 @@ export function carritoCart() {
         titulo.textContent = name;
         const precio = document.createElement('span');
         precio.className = 'precio';
-        precio.textContent = `$${price.toFixed(2)}`;
+        precio.textContent = formatPrice(price);
+
+        const precioModificado = document.createElement('div');
+        precioModificado.className = 'precioModificado';
+        precioModificado.textContent = `$${price.toFixed(2)}`;
 
         infoProducto.appendChild(titulo);
         infoProducto.appendChild(precio);
+        infoProducto.appendChild(precioModificado);
         producto.appendChild(infoProducto);
         itemCarrito.appendChild(producto);
 
@@ -46,7 +57,7 @@ export function carritoCart() {
 
         const botnEliminar = document.createElement('button');
         const botonEliminar = document.createElement('i');
-        botonEliminar.className = 'bx bx-trash-alt';
+        botonEliminar.className = 'bx bxs-trash';
         botonEliminar.style.cursor = 'pointer';
         botonEliminar.title = "Eliminar";
         botonEliminar.addEventListener('click', () => {
@@ -108,8 +119,8 @@ export function carritoCart() {
                             producto.nombre_producto,
                             producto.precio_producto,
                             producto.imagen_producto
-                                ? `/static/img/hgw/${producto.imagen_producto}`
-                                : '/static/img/hgw/producto.png',
+                                ? `/static/${producto.imagen_producto}`
+                                : '',
                             producto.cantidad_producto,
                             producto.id_producto
                         ).then(item => container.appendChild(item));
