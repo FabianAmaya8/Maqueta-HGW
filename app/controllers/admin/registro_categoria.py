@@ -46,6 +46,18 @@ def registro_subcategoria():
             return "La subcategoria se ha registrado correctamente"
     except Exception as error:
         return "ha ocurrido un error en el registro: "+str(error)
+@modulo_categoria.route("/consulta_subcategoria_id", methods=["GET"])
+def consulta_subcategoria_id():
+    try:
+        id = request.args.get("id")
+        with current_app.conexion.cursor() as cursor:
+            sql = "SELECT * FROM subcategoria where categoria = %s"
+            cursor.execute(sql, (id))
+            consulta = cursor.fetchall()
+            return jsonify(consulta)
+    except Exception as error:
+        return jsonify({error: "ha ocurrido un error en la consulta: "+str(error)})
+
 @modulo_categoria.route("/consulta_subcategoria", methods=["GET"])
 def consulta_subcategoria():
     try:
@@ -54,5 +66,14 @@ def consulta_subcategoria():
             cursor.execute(sql)
             consulta = cursor.fetchall()
             return jsonify(consulta)
+    except Exception as error:
+        return "ha ocurrido un error en la consulta: "+str(error)
+@modulo_categoria.route("/encabezado_subcategoria", methods=["GET"])
+def encabezado_subcategoria():
+    sql = "SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_SCHEMA = 'HGW_database' AND TABLE_NAME = 'subcategoria';"
+    try:
+        with current_app.conexion.cursor() as cursor:
+            cursor.execute(sql)
+            return jsonify(cursor.fetchall())
     except Exception as error:
         return "ha ocurrido un error en la consulta: "+str(error)

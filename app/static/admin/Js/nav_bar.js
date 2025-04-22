@@ -68,10 +68,7 @@ export function navBar() {
                     </a>
                     <ul class="dropdown-menu dropdown-menu-end">
                         <li>
-                            <a class="btn btn-secondary dropdown-item btn-usuario-lista">Cerrar Sesión</a>
-                        </li>
-                        <li>
-                            <a class="dropdown-item btn btn-secondary btn-usuario-lista">Gestion Usuario</a>
+                            <a href="/" class="btn btn-secondary dropdown-item btn-usuario-lista">Cerrar Sesión</a>
                         </li>
                         <li>
                             <a href="/inicio" class="dropdown-item btn btn-secondary btn-usuario-lista">Vista Inicio</a>

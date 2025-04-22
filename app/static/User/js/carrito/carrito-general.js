@@ -1,14 +1,8 @@
-import { carritoCart } from '../../js/carrito/carrito-cart.js';
-import { activacion, mostrarDiv } from '../../js/carrito/activacion.js';
-import { configurarFormularioEnvio } from '../../js/carrito/formulario.js';
-import { configurarFormularioPago } from '../../js/carrito/formulario.js';
-
-
+import { carritoCart } from './carrito-cart.js';
+import { carritoNavegacion } from './carrito-navegacion.js';
+import { resumenCarrito } from './resumenCarrito.js';
 
 // Inicializaciones
 carritoCart();
-activacion();
-configurarFormularioEnvio();
-configurarFormularioPago();
-
-window.mostrarDiv = mostrarDiv; // Hacer mostrarDiv accesible globalmente
+carritoNavegacion();
+resumenCarrito();

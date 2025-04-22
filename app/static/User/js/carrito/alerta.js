@@ -1,6 +1,3 @@
-// alerta.js
-
-// Alerta de compra completada
 export function mostrarCompraCompletada() {
     Swal.fire({
         title: '¡Compra completada!',

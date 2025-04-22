@@ -7,6 +7,7 @@ from config import Config
 from app.controllers.admin.main_controller import menu
 from app.controllers.admin.producto_controller import modulo_producto
 from app.controllers.admin.registro_categoria import modulo_categoria
+from app.controllers.admin.bonos_controller import modulo_bonos
 
 bcrypt = Bcrypt() 
 
@@ -51,10 +52,12 @@ def create_app():
     app.register_blueprint(admin_pedidos_bp)
 
     app.connection = connection
+    app.conexion = connection
 
     #Admin
     app.register_blueprint(menu)
     app.register_blueprint(modulo_producto)
     app.register_blueprint(modulo_categoria)
+    app.register_blueprint(modulo_bonos)
 
     return app
