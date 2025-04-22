@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='User/css/bootstrap.min.css') }}">
+    <script src="{{ url_for('static', filename='User/js/bootstrap.bundle.min.js') }}"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='User/css/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='User/css/admin_pedidos.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='User/css/personal/personal.css') }}">
+    <link rel="shortcut icon" href="{{ url_for('static', filename='User/img/logo.png') }}" type="image/x-icon">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <title>HGW</title>
+    </head>
+<body>
+    <script>
+        const userRol = "{{ user.rol if user else 3 }}";
+        const userProfilePictureUrl = "{{ url_for('static', filename=user.url_foto_perfil) if user.url_foto_perfil else null }}";
+    </script>
+    <script type="module" src="{{ url_for('static', filename='User/js/fijos.js') }}"></script>
+     
+    <div class="volver mb-3">
+        <button class="btn btn-secondary" onclick="location.href='/personal'">
+            <i class='bx bx-left-arrow-alt'></i> Volver
+        </button>
+        <h2 style="text-align:center; padding: 0px 0;">Administración de Pedidos</h2>  
+    </div>
+
+        <div class="container card shadow mt-3" style="background-color: #fff;">
+            <!-- nav options -->
+            <ul class="nav nav-pills mb-3 shadow-sm" id="pills-tab" role="tablist">
+                <li class="nav-item">
+                    <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab"
+                        aria-controls="pills-home" aria-selected="true">Reservado</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab"
+                        aria-controls="pills-profile" aria-selected="false">Sin Revisar</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#pills-contact" role="tab"
+                        aria-controls="pills-contact" aria-selected="false">Pendiente de Envío</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#pills-contact" role="tab"
+                        aria-controls="pills-contact" aria-selected="false">Enviado </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#pills-contact" role="tab"
+                        aria-controls="pills-contact" aria-selected="false">Completado</a>
+                </li>
+            </ul>
+        
+            <!-- content -->
+            <div class="tab-content" id="pills-tabContent p-3">
+                <!-- 1st card -->
+                <div class="tab-pane fade show active" id="Reservado" role="tabpanel" aria-labelledby="Reservado-tab">
+                    <div class="card-body">
+                        <h5 class="card-title">Reservado</h5>
+
+                <!-- 2nd card -->
+                <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
+                    
+                </div>
+                <!-- 3nd card -->
+                <div class="tab-pane fade third" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
+                    <div class="form">
+                        
+                        <button class="btn btn-success">Insert</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+</body>
+</html>

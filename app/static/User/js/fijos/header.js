@@ -61,11 +61,12 @@ export function initHeader() {
       const span = document.createElement('span');
       span.className = 'cart-count';
   
-      const cartItemCount = Math.floor(Math.random() * 10);
+      let cartItemCount = 0;
+      cartItemCount = cantidadProductosCarrito;
       span.textContent = cartItemCount;
+
   
       a.className = 'nav-link cart'
-  
   
       a.appendChild(icon);
       a.appendChild(span);

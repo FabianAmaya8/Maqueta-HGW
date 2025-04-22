@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="{{ url_for('static', filename='User/js/bootstrap.bundle.min.js') }}"></script>
     <link rel="stylesheet" href="{{ url_for('static', filename='User/css/bootstrap.min.css') }}">
-    <link rel="stylesheet" href="/css/catalogo.css">
     <link rel="shortcut icon" href="../../img/logo.png" type="image/x-icon">
     <link rel="stylesheet" href="{{ url_for('static', filename='User/css/style.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='User/css/personal/personal.css') }}">
@@ -20,6 +19,7 @@
 
 <body>
     <script>
+        const cantidadProductosCarrito = "{{ user.total_carrito}}";
         const userRol = "{{ user.rol if user else 3 }}";
         const userProfilePictureUrl = "{{ url_for('static', filename=user.url_foto_perfil) if user.url_foto_perfil else null }}";
     </script>

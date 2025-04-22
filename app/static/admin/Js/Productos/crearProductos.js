@@ -32,7 +32,7 @@ export function mostrarSubcategoria(productoValores, editara){
                 function opciones(){
                     let html = "";
                     respuesta.forEach((subcategoria, i) => {
-                        html += `<option value="${parseInt(i+1)}">${subcategoria.nombre_subcategoria}</option>`;
+                        html += `<option value="${parseInt(subcategoria.id_subcategoria)}">${subcategoria.nombre_subcategoria}</option>`;
                     });                    
                     return html;
                 }
@@ -116,19 +116,57 @@ function crear(inputs_valores, valorBoton, productoValores, editara, apartado) {
     general = productos_pagina;
 }
 export function agregarProducto() {
-    if (document.getElementById("formulario").checkValidity()) {
-        let objeto = { Id: productos.length + 1 };
-        inputs_valores.forEach(valor => {
-            objeto[valor.valor] = (valor.valor != "Categorias" && valor.valor != "Subcategoria" ? document.getElementById(valor.valor).value : parseInt(document.getElementById(valor.valor).value));
-        });
-        console.log(objeto);
-        fetch("http://127.0.0.1:5000/registro_producto", {
-            method: "POST",
-            headers: { "content-type": "application/json" },
-            body: JSON.stringify(objeto)
-        }).then(state => state.text()).then(respuesta => console.log(respuesta));
+    // 1️⃣ Asegurarnos de que el formulario es válido
+    if (!document.getElementById("formulario").checkValidity()) {
+      return;
     }
-}
+  
+    // 2️⃣ Obtener referencia al input de imagen
+    const inputFile = document.getElementById("imagen");
+    const file = inputFile.files[0];
+    if (!file) {
+      alert("Por favor selecciona una imagen.");
+      return;
+    }
+  
+    // 3️⃣ Leer el archivo como Base64
+    const reader = new FileReader();
+    reader.onload = () => {
+      const imagenBase64 = reader.result; 
+      // reader.result será algo como "data:image/png;base64,...."
+  
+      // 4️⃣ Construir el objeto JSON con todos los campos + Base64
+      const objeto = { Id: productos.length + 1, imagen: imagenBase64 };
+      inputs_valores.forEach(valor => {
+        const key = valor.valor;
+        if (key === "Categorias" || key === "Subcategoria") {
+          objeto[key] = parseInt(document.getElementById(key).value, 10);
+        } else {
+          objeto[key] = document.getElementById(key).value;
+        }
+      });
+  
+      console.log("Enviando JSON:", objeto);
+  
+      // 5️⃣ Enviar JSON al servidor
+      fetch("http://127.0.0.1:5000/registro_producto", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(objeto)
+      })
+        .then(r => r.text())
+        .then(texto => console.log("Respuesta servidor:", texto))
+        .catch(err => console.error("Error en fetch:", err));
+    };
+  
+    reader.onerror = err => {
+      console.error("Error leyendo la imagen:", err);
+      alert("No se pudo leer la imagen.");
+    };
+  
+    reader.readAsDataURL(file);
+  }
+  
 export function alerta(respuesta) {
     const alertaElemento = document.getElementById("alerta_producto");
     alertaElemento.textContent = "✔️ " + respuesta;
