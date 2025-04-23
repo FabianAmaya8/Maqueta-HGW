@@ -86,8 +86,8 @@ CREATE TABLE productos (
     imagen_producto TEXT NOT NULL,
     descripcion TEXT NOT NULL,
     stock INT NOT NULL,
-    FOREIGN KEY (categoria) REFERENCES categorias(id_categoria),
-    FOREIGN KEY (subcategoria) REFERENCES subcategoria(id_subcategoria)
+    FOREIGN KEY (categoria) REFERENCES categorias(id_categoria) ON DELETE CASCADE,
+    FOREIGN KEY (subcategoria) REFERENCES subcategoria(id_subcategoria) ON DELETE CASCADE
 );
 
 -- Carrito de compras y productos en el carrito

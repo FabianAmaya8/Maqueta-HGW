@@ -2,6 +2,21 @@ from flask import Flask, current_app, Blueprint, jsonify, request
 
 modulo_categoria = Blueprint("modulo_categoria", __name__)
 
+@modulo_categoria.route("/editar_categoria", methods=["POST"])
+def editar_categoria():
+    try:
+        datos = request.get_json()
+        id = datos.get("id_principal")
+        nombre_categoria = datos.get("Nombre Categoria")
+        with current_app.conexion.cursor() as cursor:
+            sql = "UPDATE categorias SET nombre_categoria = %s WHERE id_categoria = %s"
+            cursor.execute(sql, (nombre_categoria, id))
+            current_app.conexion.commit()
+            return "La categoria se ha editado correctamente"
+    except Exception as error:
+        return "ha ocurrido un error en el registro: "+str(error)
+
+
 @modulo_categoria.route("/registro_categoria", methods=["POST"])
 def registro_categoria():
     try:
@@ -33,6 +48,22 @@ def encabezado():
             return jsonify(cursor.fetchall())
     except Exception as error:
         return "ha ocurrido un error en la consulta: "+str(error)
+    
+@modulo_categoria.route("/editar_subcategoria", methods=["POST"])
+def editar_subcategoria():
+    try:
+        datos = request.get_json()
+        id = datos.get("id_principal")
+        nombre_subcategoria = datos.get("Nombre Subcategoria")
+        categoria = int(datos.get("Categoria"))+1
+        with current_app.conexion.cursor() as cursor:
+            sql = "UPDATE subcategoria set nombre_subcategoria = %s, categoria = %s WHERE id_subcategoria = %s"
+            cursor.execute(sql, (nombre_subcategoria, categoria, id))
+            current_app.conexion.commit()
+            return "La subcategoria se ha editado correctamente"
+    except Exception as error:
+        return "ha ocurrido un error en el registro: "+str(error)
+
 @modulo_categoria.route("/registro_subcategoria", methods=["POST"])
 def registro_subcategoria():
     try:
@@ -62,7 +93,7 @@ def consulta_subcategoria_id():
 def consulta_subcategoria():
     try:
         with current_app.conexion.cursor() as cursor:
-            sql = "SELECT * FROM subcategoria"
+            sql = "SELECT sc.id_subcategoria, sc.nombre_subcategoria, ct.nombre_categoria as categoria FROM subcategoria sc join categorias ct on ct.id_categoria = sc.categoria"
             cursor.execute(sql)
             consulta = cursor.fetchall()
             return jsonify(consulta)
