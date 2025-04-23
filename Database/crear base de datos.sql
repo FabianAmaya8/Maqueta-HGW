@@ -142,6 +142,27 @@ CREATE TABLE contenido_tema (
     tema INT NOT NULL,
     FOREIGN KEY (tema) REFERENCES educacion(id_tema) ON DELETE CASCADE
 );
+CREATE TABLE retiros(
+    id_retiro INT PRIMARY KEY AUTO_INCREMENT,
+    id_usuario INT not null,
+    saldo_disponible DOUBLE NOT NULL,
+    banco VARCHAR(100),
+    numero_cuenta_celular VARCHAR(100),
+    monto_retiro DOUBLE NOT NULL,
+    fecha_solicitud TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (id_usuario) REFERENCES usuarios(id_usuario) ON DELETE CASCADE
+);
+CREATE TABLE transacciones (
+    id_transaccion INT PRIMARY KEY AUTO_INCREMENT,
+    nombre_usuario_emisor VARCHAR(50) NOT NULL,   -- Usuario que realiza la transacción
+    nombre_usuario_receptor VARCHAR(50) NOT NULL, -- Usuario receptor de la transacción
+    monto DOUBLE NOT NULL,
+    fecha_transaccion TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    descripcion TEXT,
+    FOREIGN KEY (nombre_usuario_emisor) REFERENCES usuarios(nombre_usuario) ON DELETE CASCADE,
+    FOREIGN KEY (nombre_usuario_receptor) REFERENCES usuarios(nombre_usuario) ON DELETE CASCADE
+);
+
 
 -- ------------------------------------------------
 -- Inserción inicial de datos

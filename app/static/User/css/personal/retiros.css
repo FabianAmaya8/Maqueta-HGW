@@ -1,18 +1,19 @@
 .retiro-form-container {
-    background-color: #ffffff;
+    background-color: #def8de;
     padding: 50px;
     margin: 40px auto 0 auto;
-    /* solo margen arriba */
     border-radius: 20px;
     max-width: 600px;
     box-shadow: 0 12px 28px rgba(0, 0, 0, 0.1);
 }
 
-.retiro-form-container h2 {
+.retiro-form-container h1 {
     text-align: center;
-    color: #2e7d32;
+    color: #090909;
     font-size: 28px;
     margin-bottom: 30px;
+    font-weight: 700;
+    line-height: 1.2;
 }
 
 .retiro-form-container form {
@@ -31,7 +32,7 @@
 .retiro-form-container select {
     padding: 14px;
     margin-bottom: 22px;
-    border: 1px solid #bbb;
+    border: 2px solid #bbb;
     border-radius: 12px;
     font-size: 16px;
 }
@@ -42,7 +43,7 @@
 }
 
 .form-btn button {
-    background-color: #2e7d32;
+    background-color: #007bff;
     color: white;
     padding: 14px 30px;
     border: none;

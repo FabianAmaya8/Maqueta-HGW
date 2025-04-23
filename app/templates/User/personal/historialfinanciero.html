@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='User/css/bootstrap.min.css') }}">
+    <script src="{{ url_for('static', filename='User/js/bootstrap.bundle.min.js') }}"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='User/css/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='User/css/admin_pedidos.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='User/css/personal/personal.css') }}">
+    <link rel="shortcut icon" href="{{ url_for('static', filename='User/img/logo.png') }}" type="image/x-icon">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <title>HGW</title>
+</head>
+
+<body>
+    <script>
+        const userRol = "{{ user.rol if user else 3 }}";
+        const userProfilePictureUrl = "{{ url_for('static', filename=user.url_foto_perfil) if user.url_foto_perfil else null }}";
+    </script>
+    <script type="module" src="{{ url_for('static', filename='User/js/fijos.js') }}"></script>
+
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Historial de Movimientos</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 2rem;
+            background-color: #f5f5f5;
+        }
+
+        h2 {
+            color: #2c3e50;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+            margin-top: 1rem;
+        }
+
+        th,
+        td {
+            padding: 12px;
+            border-bottom: 1px solid #ddd;
+            text-align: center;
+        }
+
+        th {
+            background-color: #2ecc71;
+            color: white;
+        }
+
+        tr:hover {
+            background-color: #f1f1f1;
+        }
+
+        .btn-volver {
+            margin-top: 1rem;
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #27ae60;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+
+        .btn-volver:hover {
+            background-color: #1e8449;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h2>Historial de Movimientos</h2>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Tipo</th>
+                <th>Usuario</th>
+                <th>Receptor</th>
+                <th>Fecha</th>
+                <th>Monto</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for mov in historial %}
+            <tr>
+                <td>{{ mov[0] }}</td> <!-- Tipo: Retiro / Transferencia -->
+                <td>{{ mov[1] }}</td> <!-- Usuario -->
+                <td>{{ mov[2] if mov[2] else '-' }}</td> <!-- Receptor o '-' -->
+                <td>{{ mov[3] }}</td> <!-- Fecha -->
+                <td>${{ "%.2f"|format(mov[4]) }}</td> <!-- Monto -->
+            </tr>
+            {% else %}
+            <tr>
+                <td colspan="5">No hay movimientos registrados.</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ url_for('transferencias_bp.mostrar_transferencias') }}" class="btn-volver">⬅ Volver</a>
+
+</body>
+
+</html>
