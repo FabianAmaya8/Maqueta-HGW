@@ -24,6 +24,7 @@ def create_app():
         database=app.config['MYSQL_DB'],
         cursorclass=pymysql.cursors.DictCursor
     )
+    app.config['MYSQL_CONNECTION'] = connection
 
     from app.controllers.view_controller import view_bp
     from app.controllers.user_controller import user_bp

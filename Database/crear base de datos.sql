@@ -152,6 +152,17 @@ CREATE TABLE retiros(
     fecha_solicitud TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (id_usuario) REFERENCES usuarios(id_usuario) ON DELETE CASCADE
 );
+CREATE TABLE transacciones (
+    id_transaccion INT PRIMARY KEY AUTO_INCREMENT,
+    nombre_usuario_emisor VARCHAR(50) NOT NULL,   -- Usuario que realiza la transacción
+    nombre_usuario_receptor VARCHAR(50) NOT NULL, -- Usuario receptor de la transacción
+    monto DOUBLE NOT NULL,
+    fecha_transaccion TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    descripcion TEXT,
+    FOREIGN KEY (nombre_usuario_emisor) REFERENCES usuarios(nombre_usuario) ON DELETE CASCADE,
+    FOREIGN KEY (nombre_usuario_receptor) REFERENCES usuarios(nombre_usuario) ON DELETE CASCADE
+);
+
 
 -- ------------------------------------------------
 -- Inserción inicial de datos
