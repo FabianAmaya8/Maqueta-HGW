@@ -86,8 +86,8 @@ CREATE TABLE productos (
     imagen_producto TEXT NOT NULL,
     descripcion TEXT NOT NULL,
     stock INT NOT NULL,
-    FOREIGN KEY (categoria) REFERENCES categorias(id_categoria),
-    FOREIGN KEY (subcategoria) REFERENCES subcategoria(id_subcategoria)
+    FOREIGN KEY (categoria) REFERENCES categorias(id_categoria) ON DELETE CASCADE,
+    FOREIGN KEY (subcategoria) REFERENCES subcategoria(id_subcategoria) ON DELETE CASCADE
 );
 
 -- Carrito de compras y productos en el carrito
@@ -113,7 +113,7 @@ ADD CONSTRAINT unique_producto_carrito UNIQUE (producto, carrito);
 CREATE TABLE bonos (
     id_bono INT PRIMARY KEY AUTO_INCREMENT,
     nombre_bono VARCHAR(50) NOT NULL,
-    porcentaje DECIMAL(5,2),
+    porcentaje FLOAT(5,2),
     tipo VARCHAR(50),
     costo_activacion INT
 );

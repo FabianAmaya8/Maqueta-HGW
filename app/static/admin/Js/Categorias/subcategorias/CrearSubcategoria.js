@@ -28,3 +28,19 @@ export function agregarSubcategoria() {
         });
     }
 }
+export function editarSubcategoria(id){
+    if (document.getElementById("formulario").checkValidity()) {
+        let objeto = {};
+        datos_subcategoria.forEach(valor => {
+            objeto[valor.valor] = (valor.valor != "Categoria" ? document.getElementById(valor.valor).value : parseInt(document.getElementById(valor.valor).value));
+        });
+        objeto.id_principal = id;
+        fetch("http://127.0.0.1:5000/editar_subcategoria", {
+            method: "POST",
+            headers: { "content-type": "application/json" },
+            body: JSON.stringify(objeto)
+        }).then(state => state.text()).then(respuesta => {
+            alerta(respuesta);
+        });
+    }
+}
