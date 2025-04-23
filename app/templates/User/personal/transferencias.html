@@ -64,12 +64,11 @@
             </div>
             </div>
         
-            <!-- Historial -->
             <div class="history">
-            <h3>Historial</h3>
-            <table>
-            <thead>
-                <tr>
+              <h3>Historial</h3>
+              <table class="table table-striped">
+                <thead>
+                  <tr>
                     <th>USUARIO</th>
                     <th>RECEPTOR</th>
                     <th>FECHA</th>
@@ -77,22 +76,21 @@
                   </tr>
                 </thead>
                 <tbody>
+                  {% for transaccion in historial %}
                   <tr>
-                    <td>johndoe</td>
-                    <td>mariaperez</td>
-                    <td>2025-04-20</td>
-                    <td>$100.00</td>
+                    <td>{{ transaccion.nombre_usuario_emisor }}</td>
+                    <td>{{ transaccion.nombre_usuario_receptor }}</td>
+                    <td>{{ transaccion.fecha_transaccion.strftime('%Y-%m-%d %H:%M') }}</td>
+                    <td>${{ "%.2f"|format(transaccion.monto) }}</td>
                   </tr>
+                  {% else %}
                   <tr>
-                    <td>luisa12</td>
-                    <td>storeHGW</td>
-                    <td>2025-04-19</td>
-                    <td>$250.00</td>
+                    <td colspan="4">No hay transacciones registradas.</td>
                   </tr>
+                  {% endfor %}
                 </tbody>
               </table>
             </div>
-          </div>
         
         <!-- Modal -->
           <div id="modal" class="modal">
@@ -100,12 +98,8 @@
               <span class="close" onclick="closeModal()">✖</span>
               <h3>Nueva Transacción</h3>
               <div class="modal-body">
-                <form action="{{ url_for('transferencias_bp.mostrar_transferencias') }}" method="POST">
+                <form action="{{ url_for('transferencias_bp.registrar_transferencia') }}" method="POST">
                     <div class="modal-body">
-                        <div class="mb-3">
-                          <label for="nombre_usuario_emisor" class="form-label">Usuario Emisor</label>
-                          <input type="text" class="form-control" id="nombre_usuario_emisor" name="nombre_usuario_emisor" required>
-                        </div>
                         <div class="mb-3">
                           <label for="nombre_usuario_receptor" class="form-label">Usuario Receptor</label>
                           <input type="text" class="form-control" id="nombre_usuario_receptor" name="nombre_usuario_receptor" required>

@@ -38,6 +38,7 @@ def create_app():
     from app.controllers.carrito_controller import carrito_bp
     from app.controllers.segpedidos_controller import segpedidos_bp
     from app.controllers.adminpedidos_controller import admin_pedidos_bp 
+    from app.controllers.historial_controler import historial_bp
 
     app.register_blueprint(view_bp)
     app.register_blueprint(user_bp)
@@ -51,7 +52,8 @@ def create_app():
     app.register_blueprint(carrito_bp)
     app.register_blueprint(segpedidos_bp)
     app.register_blueprint(admin_pedidos_bp)
-
+    app.register_blueprint(historial_bp)
+    
     app.connection = connection
     app.conexion = connection
 
