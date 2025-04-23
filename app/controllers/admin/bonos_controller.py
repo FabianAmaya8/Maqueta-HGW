@@ -55,10 +55,11 @@ def modificar_bonos():
     porcentaje=data.get('porcentaje')
     tipo=data.get('tipo')
     costo_activacion=data.get('costo_activacion')
+    id_bono=data.get('id_bono')
     sql='update bonos set nombre_bono=%s, porcentaje=%s, tipo=%s, costo_activacion=%s where id_bono=%s '
     try:
         with current_app.conexion.cursor() as cursor:
-            cursor.execute(sql, (nombre, porcentaje, tipo, costo_activacion))
+            cursor.execute(sql, (nombre, porcentaje, tipo, costo_activacion,id_bono))
             current_app.conexion.commit()
             return jsonify({'mensaje': 'bono modificado exitosamente'}), 200
     except Exception as e:

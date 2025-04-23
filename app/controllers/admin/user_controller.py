@@ -1,7 +1,10 @@
 from flask import Blueprint, request, jsonify, current_app
+from flask_bcrypt import Bcrypt
 import pymysql
 
 modulo_usuarios=Blueprint('modulo_usuarios',__name__)
+
+bcrypt = Bcrypt()
 
 @modulo_usuarios.route('/consultar_usuarios', methods=['GET'])
 def consulta():
@@ -35,6 +38,7 @@ def crearUsuario():
     apellido=data.get('apellido')
     usuario=data.get('usuario')
     contrasena=data.get('contraseña')
+    hashed=bcrypt.generate_password_hash(contrasena).decode('utf-8')
     correo=data.get('correo')
     contacto=data.get('contacto')
     patrocinador=data.get('patrocinador')
@@ -44,7 +48,7 @@ def crearUsuario():
     sql='insert into usuarios( nombre, apellido, nombre_usuario, pss, correo_electronico, numero_telefono, patrocinador, membresia, medio_pago, rol) values (%s, %s,%s,%s,%s,%s,%s,%s,%s,%s)'
     try:
         with current_app.conexion.cursor() as cursor:
-            cursor.execute(sql, (nombre, apellido, usuario, contrasena, correo, contacto, patrocinador, membresia, medio_pago, rol))
+            cursor.execute(sql, (nombre, apellido, usuario, hashed, correo, contacto, patrocinador, membresia, medio_pago, rol))
             current_app.conexion.commit()
             return 'usuario creado exitosamente'
     except Exception as e:
@@ -65,3 +69,26 @@ def encabezado():
             return jsonify(cursor.fetchall())
     except Exception as error:
         return jsonify({'error': 'ha ocurrido un error en la consulta: ' + str(error)})
+@modulo_usuarios.route('/editar_usuario', methods=['POST'])
+def edicion():
+    data=request.get_json()
+    nombre=data.get('nombre')
+    apellido=data.get('apellido')
+    usuario=data.get('usuario')
+    contrasena=data.get('contraseña')
+    hashed=bcrypt.generate_password_hash(contrasena).decode('utf-8')
+    correo=data.get('correo')
+    contacto=data.get('contacto')
+    patrocinador=data.get('patrocinador')
+    membresia=data.get('membresia')
+    medio_pago=data.get('medio_pago')
+    rol=data.get('rol')
+    id_usuario=data.get('id_usuario')
+    sql='update usuarios set nombre = %s, apellido = %s, nombre_usuario = %s, pss = %s, correo_electronico = %s, numero_telefono = %s, patrocinador = %s, membresia = %s, medio_pago = %s, rol = %s WHERE id_usuario = %s'
+    try:
+        with current_app.conexion.cursor() as cursor:
+            cursor.execute(sql, (nombre, apellido, usuario, hashed, correo, contacto, patrocinador, membresia, medio_pago, rol, id_usuario))
+            current_app.conexion.commit()
+            return 'usuario editado exitosamente'
+    except Exception as e:
+        return 'ha ocurrido un error: '+ str(e)

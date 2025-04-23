@@ -17,6 +17,7 @@ export function productosLista() {
 export function crearLista(encabezado, valores, tabla, columna, posicion_id, funcion) {
     return lista(encabezado, valores, tabla, columna, posicion_id, funcion);
 }
+
 export function lista(encabezadoTabla, valoresFila, tabla, columna, posicion_id, funcion) {
     function encabezado() {
         let encabezadoHTML = "";
@@ -95,3 +96,4 @@ export function lista(encabezadoTabla, valoresFila, tabla, columna, posicion_id,
     contenido.innerHTML = productos_pagina;
     return productos_pagina;
 }
+

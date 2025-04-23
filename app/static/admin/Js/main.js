@@ -4,13 +4,13 @@ import { crearProductos, agregarProducto, alerta } from './Productos/crearProduc
 import { productosLista } from './Productos/listaProductos.js';
 import { editarProducto, editarProductoBoton, eliminarProducto } from './Productos/eliminarEditarProducto.js';
 import { listaBonos } from './Bonos/listaBonos.js';
-import { administrarBonos, agregarBono } from './Bonos/administrarBonos.js';
 import { crearCategoria, agregarCategoria, editarCategoria } from './Categorias/CrearCategorias.js';
+import { administrarBonos, agregarBono, editarBonos, edicionBono} from './Bonos/administrarBonos.js';
 import { listaCategorias } from './Categorias/ListaCategorias.js'
 import { crearSubcategoria, agregarSubcategoria, editarSubcategoria } from './Categorias/subcategorias/CrearSubcategoria.js';
 import { listaSubcategoria } from './Categorias/subcategorias/ListaSubcategoria.js';
 import { mostrarSubcategoria } from './Productos/crearProductos.js';
-import { creacion, agregarUsuario } from './usuario/administrarUsuario.js';
+import { creacion, agregarUsuario, modificarUsuario, editarUsuarios } from './usuario/administrarUsuario.js';
 import {listaUsuarios} from './usuario/listaUsuario.js'
 window.onload = () => {
     inicio();
@@ -39,3 +39,7 @@ window.agregarBono = agregarBono;
 window.administrarUsuarios = creacion;
 window.agregarUsuario=agregarUsuario;
 window.listaUsuarios=listaUsuarios;
+window.editarUsuarios=editarUsuarios;
+window.modificarUsuario=modificarUsuario;
+window.editarBonos=editarBonos;
+window.edicionBono=edicionBono;

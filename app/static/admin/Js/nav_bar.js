@@ -17,13 +17,15 @@ export function navBar() {
                     <li class="nav-item btn-group btn-group-normal"> <a class="btn btn-primary btn-lg dropdown-toggle" data-bs-offset="0, -10"> Gestion de Usuario </a> 
                         <ul class="dropdown-menu">
                             <li> <a class="btn btn-secondary dropdown-item" onclick="listaUsuarios()">Lista de Usuarios</a> </li>
-                            <li> <a class="btn btn-secondary dropdown-item" onclick="administrarUsuarios()">Administrar Usuarios</a> </li>
+                            <li> <a class="btn btn-secondary dropdown-item" onclick="administrarUsuarios()">crear Usuarios</a> </li>
+                            <li> <a class="btn btn-secondary dropdown-item" onclick="editarUsuarios()">Editar Usuarios</a> </li>
                         </ul>
                     </li>
                     <li class="nav-item btn-group btn-group-normal"> <a class="btn btn-primary btn-lg dropdown-toggle" data-bs-offset="0, -10"> Bonos </a> 
                         <ul class="dropdown-menu">
                             <li> <a class="btn btn-secondary dropdown-item" onclick="listaBonos()">Lista de Bonos</a> </li>
-                            <li> <a class="btn btn-secondary dropdown-item" onclick="administrarBonos()">Administrar Bonos</a> </li>
+                            <li> <a class="btn btn-secondary dropdown-item" onclick="administrarBonos()">crear Bonos</a> </li>
+                            <li> <a class="btn btn-secondary dropdown-item" onclick="editarBonos()">Editar Bonos</a> </li>
                         </ul>
                     </li>
                     <li class="nav-item btn-group btn-group-normal">
