@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='User/css/bootstrap.min.css') }}">
+    <script src="{{ url_for('static', filename='User/js/bootstrap.bundle.min.js') }}"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='User/css/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='User/css/index.css') }}">
+    <link rel="shortcut icon" href="{{ url_for('static', filename='User/img/logo.png') }}" type="image/x-icon">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    
+    <title>HGW</title>
+</head>
+<body>
+    <script>
+        const cantidadProductosCarrito = "{{ user.total_carrito}}";
+        const userRol = "{{ user.rol if user else 3 }}";
+        const userProfilePictureUrl = "{{ url_for('static', filename=user.url_foto_perfil) if user.url_foto_perfil else null }}";
+    </script>
+    
+    <script type="module" src="{{ url_for('static', filename='User/js/fijos.js') }}"></script>
+    
+    <main class="contenido">
+        <div class="conten-item">
+            <div class="anuncio">
+                <div class="text-content">
+                    <h1>Descubre los Mejores Productos Naturales</h1>
+                    <p>
+                        ¡Es hora de transformar tu salud y tu vida!
+                    </p> 
+                    <p>Con los productos naturales de HGW, no solo fortaleces tubienestar, sino que también abres las puertas a una oportunidad única para generar ingresos y alcanzar tu
+                        libertad financiera.
+                    </p>
+                    <p>
+                        Cuidarte nunca fue tan gratificante. <b>¡Únete ahora!</b>
+                    </p>
+                    <div class="bts">
+                        <a href="/usuario/registro/registro.html" class="button">Unete</a>
+                        <a href="/usuario/catalogo/catalogo.html" class="button">Compra</a>
+                    </div>
+                </div>
+                <div class="slider-conten">
+                    <div class="slider">
+                        <ul>
+                            <li><img src="{{ url_for('static', filename='User/img/productos/lactti.jpg')}}" alt=""></li>
+                            <li><img src="{{ url_for('static', filename='User/img/productos/soya.jpg')}}" alt=""></li>
+                            <li><img src="{{ url_for('static', filename='User/img/productos/te.jpg')}}" alt=""></li>
+                            <li><img src="{{ url_for('static', filename='User/img/productos/teazul.jpg')}}" alt=""></li>
+                            <li><img src="{{ url_for('static', filename='User/img/productos/unete.jpg')}}" alt=""></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+        <div class="conten-item">
+            <div class="destacados">
+                <h2>Productos destacados</h2>
+                <div id="carouselExampleAutoplaying" class="carousel slide destacados-contenido" data-bs-ride="carousel">
+                    <div class="carousel-indicators">
+                        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="3" aria-label="Slide 4"></button>
+                    </div>
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <div class="carts 4"></div>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="carts 4"></div>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="carts 4"></div>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="carts 4"></div>
+                        </div>
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true">
+                            <i class='bx bxs-chevron-left'></i>
+                        </span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true">
+                            <i class='bx bxs-chevron-right'></i>
+                        </span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="conten-item">
+            <div class="productos">
+                <h2>Productos</h2>
+                <div class="productos-container">
+                    <div class="carts 12"></div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script type="module" src="{{ url_for('static', filename='User/js/productos/producto.js') }}"></script>
+
+    
+</body>
+</html>

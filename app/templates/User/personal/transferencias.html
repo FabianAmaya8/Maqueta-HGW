@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='User/css/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='User/css/personal/transacciones.css') }}">
+    <link rel="shortcut icon" href="{{ url_for('static', filename='img/logo.png') }}" type="image/x-icon">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+    <title>HGW</title>
+</head>
+<body>
+    <script>
+        const cantidadProductosCarrito = "{{ user.total_carrito}}";
+        const userRol = "{{ user.rol if user else 3 }}";
+        const userProfilePictureUrl = "{{ url_for('static', filename=user.url_foto_perfil) if user.url_foto_perfil else null }}";
+    </script>
+    <script type="module" src="{{ url_for('static', filename='User/js/fijos.js') }}"></script>
+    <script type="module" src="{{ url_for('static', filename='User/js/Administracion financiera/transact.js') }}"></script>
+    <script type="module" src="{{ url_for('static', filename='User/js/Administracion financiera/mainfinam.js') }}"></script>
+    <div class="wrapper rounded">
+        <body>
+        
+        <div class="container">
+            <!-- Encabezado -->
+            <div class="header">
+            <div class="title-area">
+                <h1>Transacciones</h1>
+                <p>Bienvenido a tus transacciones</p>
+            </div>
+            <div class="search-icon">
+                <span>🔔</span>
+                <input type="text" placeholder="Search" class="search-bar">
+            </div>
+            </div>
+        
+            <!-- Resumen -->
+            <div class="summary">
+            <div class="section wallet">
+                <div><strong>Billetera</strong></div>
+                <div class="amount">$9,758.23</div>
+            </div>
+        
+            <div class="section">
+                <div class="tag">⬇️ Ingreso</div>
+                <div class="amount">$2,500.00</div>
+            </div>
+        
+            <div class="section">
+                <div class="tag">⬆️ Egreso</div>
+                <div class="amount">$961.23</div>
+            </div>
+        
+            <div class="section">
+                <button class="btn-new" onclick="openModal()">Nueva Transacción</button>
+            </div>
+            </div>
+        
+            <!-- Historial -->
+            <div class="history">
+            <h3>Historial</h3>
+            <table>
+            <thead>
+                <tr>
+                    <th>USUARIO</th>
+                    <th>RECEPTOR</th>
+                    <th>FECHA</th>
+                    <th>MONTO</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>johndoe</td>
+                    <td>mariaperez</td>
+                    <td>2025-04-20</td>
+                    <td>$100.00</td>
+                  </tr>
+                  <tr>
+                    <td>luisa12</td>
+                    <td>storeHGW</td>
+                    <td>2025-04-19</td>
+                    <td>$250.00</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        
+        <!-- Modal -->
+          <div id="modal" class="modal">
+            <div class="modal-content">
+              <span class="close" onclick="closeModal()">✖</span>
+              <h3>Nueva Transacción</h3>
+              <div class="modal-body">
+                <form action="{{ url_for('transferencias_bp.mostrar_transferencias') }}" method="POST">
+                    <div class="modal-body">
+                        <div class="mb-3">
+                          <label for="nombre_usuario_emisor" class="form-label">Usuario Emisor</label>
+                          <input type="text" class="form-control" id="nombre_usuario_emisor" name="nombre_usuario_emisor" required>
+                        </div>
+                        <div class="mb-3">
+                          <label for="nombre_usuario_receptor" class="form-label">Usuario Receptor</label>
+                          <input type="text" class="form-control" id="nombre_usuario_receptor" name="nombre_usuario_receptor" required>
+                        </div>
+                        <div class="mb-3">
+                          <label for="monto" class="form-label">Monto</label>
+                          <input type="number" step="0.01" class="form-control" id="monto" name="monto" required>
+                        </div>
+                        <div class="mb-3">
+                          <label for="descripcion" class="form-label">Descripción</label>
+                          <textarea class="form-control" id="descripcion" name="descripcion" rows="3"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Confirmar</button>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+        
+          <script>
+            function openModal() {
+              document.getElementById("modal").style.display = "block";
+            }
+        
+            function closeModal() {
+              document.getElementById("modal").style.display = "none";
+            }
+        
+            window.onclick = function(e) {
+              const modal = document.getElementById("modal");
+              if (e.target === modal) closeModal();
+            }
+          </script>
+        
+        </body>
+        </html>
+        

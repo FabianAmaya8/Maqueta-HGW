@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="{{ url_for('static', filename='user/js/bootstrap.bundle.min.js') }}"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='User/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='User/css/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='User/css/personal/personal.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='User/css/personal/info-personal.css') }}">
+    <link rel="shortcut icon" href="{{ url_for('static', filename='User/img/logo.png') }}">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <title>HGW</title>
+</head>
+<body>
+    <script>
+        const cantidadProductosCarrito = "{{ user.total_carrito}}";
+        const userRol = "{{ user.rol if user else 3 }}";
+        const userProfilePictureUrl = "{{ url_for('static', filename=user.url_foto_perfil) if user.url_foto_perfil else null }}";
+    </script>
+    <script type="module" src="{{ url_for('static', filename='User/js/fijos.js') }}"></script>
+
+    <main class="contenido">
+        <div class="volver mb-3">
+            <button class="btn btn-secondary" onclick="location.href='/personal'">
+                <i class='bx bx-left-arrow-alt'></i> Volver
+            </button>
+        </div>
+
+        <div class="container">
+            <div class="perfil d-flex align-items-center mb-4">
+                <div class="img-perfil me-4">
+                    {% if user.url_foto_perfil %}
+                        <img src="{{ url_for('static', filename=user.url_foto_perfil) }}" alt="Foto de perfil">
+                    {% else %}
+                        <i class='bx bx-user' style="font-size: 100px;"></i>
+                    {% endif %}
+                </div>
+                <div class="info-perfil">
+                    <h3 class="mb-1">{{ user.nombre_usuario }}</h3>
+                    <p class="mb-0">Membresía: {{ user.nombre_membresia }}</p>
+                </div>
+            </div>
+
+            <form id="form-info" method="POST" action="{{ url_for('infoPersonal_bp.actualizar_info_personal') }}">
+                <div class="datos-personales card p-4">
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <h4 class="mb-0">Datos personales</h4>
+                        <div class="btns">
+                            <button type="button" class="btn btn-primary" id="btn-editar">Editar</button>
+                            <button type="submit" class="btn btn-success d-none" id="btn-guardar">Guardar</button>
+                            <button type="button" class="btn btn-secondary d-none" id="btn-cancelar">Cancelar</button>
+                        </div>
+                    </div>
+
+                    <div class="card-body row g-3">
+                        <div class="col-md-6">
+                            <label class="form-label">Nombre</label>
+                            <input type="text" class="form-control campo-editar" name="nombre" value="{{ user.nombre if user.nombre else '' }}" readonly>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">Apellido</label>
+                            <input type="text" class="form-control campo-editar" name="apellido" value="{{ user.apellido if user.apellido else '' }}" readonly>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">Usuario</label>
+                            <input type="text" class="form-control campo-editar" name="nombre_usuario" value="{{ user.nombre_usuario if user.nombre_usuario else '' }}" readonly>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">Email</label>
+                            <input type="email" class="form-control campo-editar" name="correo_electronico" value="{{ user.correo_electronico if user.correo_electronico else '' }}" readonly>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">Teléfono</label>
+                            <input type="text" class="form-control campo-editar" name="numero_telefono" value="{{ user.numero_telefono if user.numero_telefono else '' }}" readonly>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">Patrocinador</label>
+                            <input type="text" class="form-control campo-editar" name="patrocinador" value="{{ user.patrocinador if user.patrocinador else '' }}" readonly>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">País</label>
+                            <input type="text" class="form-control campo-editar" name="pais" value="{{ user.pais if user.pais else '' }}" readonly>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">Ciudad</label>
+                            <input type="text" class="form-control campo-editar" name="ciudad" value="{{ user.ciudad if user.ciudad else '' }}" readonly>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">Dirección</label>
+                            <input type="text" class="form-control campo-editar" name="direccion" value="{{ user.direccion if user.direccion else '' }}" readonly>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">Código Postal</label>
+                            <input type="text" class="form-control campo-editar" name="codigo_postal" value="{{ user.codigo_postal if user.codigo_postal else '' }}" readonly>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">Lugar de entrega</label>
+                            <input type="text" class="form-control campo-editar" name="lugar_entrega" value="{{ user.lugar_entrega if user.lugar_entrega else '' }}" readonly>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </main>
+
+    <script>
+        const btnEditar = document.getElementById("btn-editar");
+        const btnGuardar = document.getElementById("btn-guardar");
+        const btnCancelar = document.getElementById("btn-cancelar");
+        const campos = document.querySelectorAll(".campo-editar");
+
+        btnEditar.addEventListener("click", () => {
+            campos.forEach(input => input.removeAttribute("readonly"));
+            btnEditar.classList.add("d-none");
+            btnGuardar.classList.remove("d-none");
+            btnCancelar.classList.remove("d-none");
+        });
+
+        btnCancelar.addEventListener("click", () => {
+            campos.forEach(input => {
+                input.setAttribute("readonly", true);
+                input.value = input.defaultValue;
+            });
+            btnEditar.classList.remove("d-none");
+            btnGuardar.classList.add("d-none");
+            btnCancelar.classList.add("d-none");
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="{{ url_for('static', filename='User/js/bootstrap.bundle.min.js') }}"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='User/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='User/css/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='User/css/carrito/carrito.css') }}">
+    <link rel="shortcut icon" href="{{ url_for('static', filename='User/img/logo.png') }}" type="image/x-icon">
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <title>HGW</title>
+</head>
+<body>
+    <script>
+        const cantidadProductosCarrito = "{{ user.total_carrito}}";
+        const userRol = "{{ user.rol if user else 3 }}";
+        const userProfilePictureUrl = "{{ url_for('static', filename=user.url_foto_perfil) if user.url_foto_perfil else null }}";
+    </script>
+    
+    <script type="module" src="{{ url_for('static', filename='User/js/fijos.js') }}"></script>
+    <script type="module" src="{{ url_for('static', filename='User/js/carrito/carrito-general.js') }}"></script>
+
+    <div class="container py-4">
+        <h1 class="text-center mb-4">Carrito de Compras</h1>
+
+        <div class="secciones mb-4">
+            <button data-target="i1">Carrito</button>
+            <button data-target="i2">Envío</button>
+            <button data-target="i3">Pago</button>
+        </div>
+
+        <div class="contenido row">
+            <!-- Sección Izquierda -->
+            <div class="izquierda col-md-8">
+                <section class="conten-item i1 active">
+                    <h2>Productos en el Carrito</h2>
+                    <div id="carrito-items" class="carrito-item">
+                        <div class="productos">
+                            <!-- aqui se pintan los productos -->
+                        </div>
+                    </div>
+                </section>
+
+                <section class="conten-item i2">
+                    <h2>Información de Envío</h2>
+                    <form id="miFormulario">
+                        <div class="grupo-formulario">
+                            <label for="nombre">Nombre</label>
+                            <input type="text" id="nombre" name="nombre" class="form-control" required>
+                        </div>
+                
+                        <div class="grupo-formulario">
+                            <label for="direccion">Dirección</label>
+                            <input type="text" id="direccion" name="direccion" class="form-control" required>
+                        </div>
+                
+                        <div class="grupo-formulario">
+                            <label for="pais">País</label>
+                            <select id="pais" name="pais" class="form-select" required>
+                                <option value="" disabled selected>Seleccione país</option>
+                                {% for pais in paises %}
+                                    <option value="{{ pais.id_ubicacion }}">{{ pais.nombre }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+
+                        
+
+                        <div class="grupo-formulario">
+                            <label for="ciudad">Ciudad</label>
+                            <select class="form-select" id="ciudad" name="ciudad" required>
+                                <option value="" selected disabled>Seleccione ciudad</option>
+                                {% for ciudad in ciudades %}
+                                    <option value="{{ ciudad.id_ubicacion }}" data-pais="{{ ciudad.ubicacion_padre }}">{{ ciudad.nombre }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                    </form>
+                </section>                
+
+                <section class="conten-item i3">
+                    <h2>Método de Pago</h2>
+                    <div class="detalles-metodo-pago">
+                        <div class="cabecera-metodo-pago">
+                            <input type="radio" id="tarjeta" name="pago" value="tarjeta">
+                            <label for="tarjeta">Tarjeta de Crédito</label>
+                        </div>
+                        <div class="cabecera-metodo-pago">
+                            <input type="radio" id="paypal" name="pago" value="paypal">
+                            <label for="paypal">PayPal</label>
+                        </div>
+                        <input type="text" placeholder="Número de tarjeta / Correo" class="form-control">
+                    </div>
+                </section>
+
+                <div class="acciones-carrito mt-3">
+                    <button id="btnCancelar" class="btn btn-danger">Cancelar</button>
+                    <button id="btnSiguiente" class="btn btn-success">Siguiente</button>
+                    <button id="btnFinalizar" class="btn btn-primary d-none">Finalizar compra</button>
+                </div>                
+            </div>
+
+            <!-- Sección Derecha -->
+            <div class="derecha col-md-4">
+                <aside class="resumen shadow rounded">
+                    <h4 class="text-center">Resumen</h4>
+                    <div class="resumen-carrito">
+                        <p>Subtotal: <span class="subtotal">$0.00</span></p>
+                        <p>Total: <span class="total">$0.00</span></p>
+                    </div>
+                </aside>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="{{ url_for('static', filename='user/js/bootstrap.bundle.min.js') }}"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='User/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='User/css/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='User/css/personal/personal.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='User/css/personal/retiros.css') }}">
+    <link rel="shortcut icon" href="{{ url_for('static', filename='User/img/logo.png') }}">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <title>HGW</title>
+</head>
+
+<body>
+    <script>
+        const cantidadProductosCarrito = "{{ user.total_carrito}}";
+        const userRol = "{{ user.rol if user else 3 }}";
+        const userProfilePictureUrl = "{{ url_for('static', filename=user.url_foto_perfil) if user.url_foto_perfil else null }}";
+    </script>
+    <script type="module" src="{{ url_for('static', filename='User/js/fijos.js') }}"></script>
+
+    <div class="retiro-form-container">
+    <h2>Formulario de Retiros</h2>
+    <form method="POST">
+        <label for="usuario">Usuario</label>
+        <input type="text" id="usuario" name="usuario" placeholder="Nombre de usuario" required>
+
+        <label for="saldo">Saldo disponible</label>
+        <input type="number" id="saldo" name="saldo" placeholder="Ej: 50000" required>
+
+        <label for="banco">Banco</label>
+        <select id="banco" name="banco" required>
+            <option value="">Selecciona un banco</option>
+            <option value="Bancolombia">Bancolombia</option>
+            <option value="Nequi">Nequi</option>
+            <option value="Daviplata">Daviplata</option>
+            <option value="BBVA">BBVA</option>
+            <option value="Otro">Otro</option>
+        </select>
+
+        <label for="cuenta">Número de cuenta / celular</label>
+        <input type="text" id="cuenta" name="cuenta" placeholder="Ej: 3001234567" required>
+
+        <label for="retiro">Monto a retirar</label>
+        <input type="number" id="retiro" name="retiro" placeholder="Ej: 30000" required>
+
+        <div class="form-btn">
+            <button onclick="mostrarAlerta()" type="submit">Confirmar Solicitud</button>
+        </div>
+    </form>
+</div>
+</body>
+</html>
